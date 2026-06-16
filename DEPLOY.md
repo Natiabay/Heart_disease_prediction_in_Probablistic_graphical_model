@@ -4,13 +4,31 @@
 
 Repository: [https://github.com/Natiabay/micro_research-](https://github.com/Natiabay/micro_research-.git)
 
+**Important:** Push from the `heart-disease-bn` folder only — not from the parent `PGM!!!!` folder.
+
 ```bash
-cd heart-disease-bn
-git init
-git add .
-git commit -m "Heart Disease BN — PGM medical diagnosis project"
-git branch -M main
-git remote add origin https://github.com/Natiabay/micro_research-.git
+cd ~/Desktop/PGM\!!!!/heart-disease-bn
+chmod +x push_to_github.sh
+./push_to_github.sh
+```
+
+If you see `src refspec main does not match any`, you are in the **wrong folder** or the parent folder has an empty git repo. Fix:
+
+```bash
+# Remove accidental empty git repo in parent (safe)
+rm -rf ~/Desktop/PGM\!!!!/.git
+
+# Then push from heart-disease-bn
+cd ~/Desktop/PGM\!!!!/heart-disease-bn
+git push -u origin main
+```
+
+First-time GitHub login on this machine:
+
+```bash
+sudo apt install gh
+gh auth login
+cd ~/Desktop/PGM\!!!!/heart-disease-bn
 git push -u origin main
 ```
 
