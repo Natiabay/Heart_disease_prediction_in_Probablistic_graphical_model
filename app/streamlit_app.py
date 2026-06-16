@@ -302,7 +302,7 @@ def tab_network_explorer(expert_model, learned_model, report):
     with col2:
         st.metric("Nodes", len(model.nodes()))
         st.metric("Edges", len(model.edges()))
-        st.metric("Is DAG", "Yes" if model.is_dag() else "No")
+        st.metric("Is DAG", "Yes" if nx.is_directed_acyclic_graph(model) else "No")
         st.markdown("**Edges (parent → child)**")
         st.dataframe(
             pd.DataFrame(list(model.edges()), columns=["Parent", "Child"]),
