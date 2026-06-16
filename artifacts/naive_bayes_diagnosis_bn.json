@@ -1,15 +1,15 @@
 {
-  "name": "Expert Heart Disease BN",
+  "name": "Naive Bayes Diagnosis BN",
   "nodes": [
     "Age",
-    "Chol",
-    "Trestbps",
-    "Thalach",
     "HeartDisease",
     "Sex",
     "CP",
+    "Trestbps",
+    "Chol",
     "Fbs",
     "Restecg",
+    "Thalach",
     "Exang",
     "Oldpeak",
     "Slope",
@@ -19,30 +19,6 @@
   "edges": [
     [
       "Age",
-      "Chol"
-    ],
-    [
-      "Age",
-      "Trestbps"
-    ],
-    [
-      "Age",
-      "Thalach"
-    ],
-    [
-      "Age",
-      "HeartDisease"
-    ],
-    [
-      "Chol",
-      "HeartDisease"
-    ],
-    [
-      "Trestbps",
-      "HeartDisease"
-    ],
-    [
-      "Thalach",
       "HeartDisease"
     ],
     [
@@ -54,11 +30,23 @@
       "HeartDisease"
     ],
     [
+      "Trestbps",
+      "HeartDisease"
+    ],
+    [
+      "Chol",
+      "HeartDisease"
+    ],
+    [
       "Fbs",
       "HeartDisease"
     ],
     [
       "Restecg",
+      "HeartDisease"
+    ],
+    [
+      "Thalach",
       "HeartDisease"
     ],
     [
@@ -82,9 +70,9 @@
       "HeartDisease"
     ]
   ],
-  "method": "Sequential MLE + Laplace smoothing (ESS\u22481)",
-  "description": "Parameters learned on the expert DAG using Sequential MLE + Laplace smoothing (ESS\u22481). Structure is fixed by medical/clinical intuition.",
+  "method": "Naive Bayes structure + Sequential MLE (Laplace)",
+  "description": "Classic diagnostic BN: P(disease | symptoms) \u221d P(disease) \u220f P(symptom | disease). Optimal structure for symptom-based medical diagnosis.",
   "score": null,
-  "n_edges": 16,
+  "n_edges": 13,
   "n_nodes": 14
 }

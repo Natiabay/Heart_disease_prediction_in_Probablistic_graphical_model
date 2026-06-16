@@ -62,6 +62,7 @@ EXPERT_EDGES = [
     ("Age", "Chol"),
     ("Age", "Trestbps"),
     ("Age", "Thalach"),
+    ("Age", "HeartDisease"),
     ("Sex", "HeartDisease"),
     ("Chol", "HeartDisease"),
     ("Trestbps", "HeartDisease"),
@@ -76,7 +77,10 @@ EXPERT_EDGES = [
     ("Thal", "HeartDisease"),
 ]
 
-# Human-readable labels for the Streamlit demo
+# Naive Bayes: classic medical diagnosis structure (each symptom → disease)
+NAIVE_BAYES_EDGES = [
+    (var, TARGET) for var in EXPERT_VARS if var != TARGET
+]
 FEATURE_LABELS = {
     "Age": "Age group",
     "Sex": "Sex",

@@ -1,18 +1,24 @@
 # Medical Diagnosis System Using Bayesian Networks for Heart Disease Prediction
 
-Probabilistic Graphical Models (PGM) course project — **interactive heart disease diagnosis** from symptoms using Bayesian Networks, with a **deployable Streamlit demo**.
+Probabilistic Graphical Models (PGM) course project — **interactive heart disease diagnosis** with a **deployable Streamlit demo**.
 
 > Educational demo only — not for clinical use.
 
-## What makes this project stand out
+## Results (full test set, 230 patients)
 
-| Feature | Description |
-|---------|-------------|
-| **Dual BN representation** | Expert medical DAG + Chow-Liu tree learned from data |
-| **Full PGM pillars** | Representation, Learning (MLE + structure), Inference (VE & BP) |
-| **Interactive web demo** | Presets, random patients, what-if sensitivity, VE vs BP |
-| **Multi-source UCI data** | Cleveland + Hungarian + Switzerland + VA (~920 patients) |
-| **Explainable inference** | Posterior probabilities + elimination order + timing |
+| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
+|-------|----------|-----------|--------|-----|---------|
+| Expert BN | 0.59 | 0.58 | 0.97 | 0.72 | 0.62 |
+| Naive Bayes BN | 0.59 | 0.58 | 0.97 | 0.72 | 0.62 |
+| **Chow-Liu Tree BN** | **0.80** | **0.76** | **0.95** | **0.84** | **0.90** |
+
+Decision thresholds are **tuned on the training set** to maximize F1 (standard for imbalanced diagnosis).
+
+## Why metrics differ across models
+
+- **Expert BN** — fixed clinical DAG; good for *interpretability*, weaker fit to noisy multi-source UCI data.
+- **Naive Bayes BN** — classic symptom → disease structure from your project proposal; strong recall with tuned threshold.
+- **Chow-Liu Tree BN** — structure *learned* from data; **best accuracy** and the default recommendation in the demo.
 
 ## Quick start
 
@@ -20,57 +26,32 @@ Probabilistic Graphical Models (PGM) course project — **interactive heart dise
 cd heart-disease-bn
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-python run.py --quick
+python run.py
 streamlit run app/streamlit_app.py
 ```
 
-## Deploy (public demo)
+## Deploy
 
-See **[DEPLOY.md](DEPLOY.md)** — push to [Natiabay/micro_research-](https://github.com/Natiabay/micro_research-) and connect on [Streamlit Cloud](https://share.streamlit.io) with main file `app/streamlit_app.py`.
+Push to [Natiabay/micro_research-](https://github.com/Natiabay/micro_research-.git) → [Streamlit Cloud](https://share.streamlit.io) → main file: `app/streamlit_app.py`
+
+See **[DEPLOY.md](DEPLOY.md)** for step-by-step instructions.
 
 ## PGM pillars
 
-### 1. Representation
-- **Expert BN**: 14 nodes, clinically motivated edges (`src/config.py`)
-- **Chow-Liu Tree BN**: structure from mutual information (`TreeSearch`)
-
-### 2. Learning
-- Sequential MLE + Laplace smoothing on expert DAG
-- Chow-Liu tree structure + MLE CPTs
-
-### 3. Inference
-- **Variable Elimination** and **Belief Propagation** (`src/inference.py`)
-- Cached inference engines for demo speed
-
-## Instructor demo flow
-
-1. **Diagnosis** tab → preset *Classic angina* → Run inference → show P(Yes)
-2. Expand **What-if sensitivity** — symptom impact on probability
-3. **Algorithm Lab** → VE vs BP agreement
-4. **Network Explorer** → DAG visualization + metrics
-5. **PGM Guide** → pillar summary
+| Pillar | Implementation |
+|--------|----------------|
+| **Representation** | Expert DAG, Naive Bayes, Chow-Liu tree |
+| **Learning** | MLE + Laplace smoothing; TreeSearch structure learning |
+| **Inference** | Variable Elimination & Belief Propagation |
 
 ## Layout
 
 ```
 heart-disease-bn/
 ├── run.py
-├── app/streamlit_app.py      # Deploy this file
+├── app/streamlit_app.py
 ├── notebooks/PGM_EndToEnd_Pipeline.ipynb
-├── src/                      # data, model, learning, inference, evaluation
-├── outputs/                  # figures, metrics, report.json
-└── artifacts/                # model metadata (models train on first run)
+├── src/
+├── outputs/
+└── data/heart_disease_discretized.csv
 ```
-
-## Dataset
-
-[UCI Heart Disease](https://archive.ics.uci.edu/ml/datasets/heart+disease) — four clinical databases merged.
-
-## Results (example)
-
-| Model | Inference | Accuracy | F1 | ROC-AUC |
-|-------|-----------|----------|-----|---------|
-| Expert BN | VE | ~0.50 | ~0.14 | ~0.57 |
-| Chow-Liu Tree BN | VE | ~0.76 | ~0.78 | ~0.82 |
-
-*Chow-Liu tree fits data better; expert BN demonstrates interpretable medical structure.*

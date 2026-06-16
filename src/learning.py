@@ -12,7 +12,7 @@ from pgmpy.structure_score import BIC
 
 from .config import EXPERT_VARS, TARGET, ProjectConfig
 from .fit_manual import fit_cpds_sequential
-from .model import build_expert_structure, expert_model_skeleton
+from .model import build_expert_structure, expert_model_skeleton, naive_bayes_skeleton
 
 
 @dataclass
@@ -41,7 +41,7 @@ def learn_expert_bn(
     cols = [c for c in EXPERT_VARS if c in train_df.columns]
     data = train_df[cols].astype(str).copy()
 
-    pseudo = 1.0 if use_bayesian else 0.0
+    pseudo = 2.0 if use_bayesian else 0.0
     model = fit_cpds_sequential(model, data, pseudo_count=pseudo)
     method = (
         "Sequential MLE + Laplace smoothing (ESS≈1)"
@@ -70,6 +70,29 @@ def _ensure_target_parents(model: DiscreteBayesianNetwork, cols: list[str]) -> N
                     model.add_edge(parent, TARGET)
 
 
+def learn_naive_bayes_bn(train_df: pd.DataFrame) -> LearningResult:
+    """
+    Naive Bayes BN — standard structure for medical diagnosis (PGM Representation).
+
+    Each symptom/risk factor is conditionally independent given disease state
+    (all features are direct parents of HeartDisease).
+    """
+    model = naive_bayes_skeleton()
+    cols = [c for c in EXPERT_VARS if c in train_df.columns]
+    data = train_df[cols].astype(str).copy()
+    model = fit_cpds_sequential(model, data, pseudo_count=1.0)
+
+    return LearningResult(
+        name="Naive Bayes Diagnosis BN",
+        model=model,
+        method="Naive Bayes structure + Sequential MLE (Laplace)",
+        description=(
+            "Classic diagnostic BN: P(disease | symptoms) ∝ P(disease) ∏ P(symptom | disease). "
+            "Optimal structure for symptom-based medical diagnosis."
+        ),
+    )
+
+
 def learn_tree_bn(train_df: pd.DataFrame) -> LearningResult:
     """
     Chow-Liu tree structure learning (PGM Learning pillar).
@@ -90,7 +113,6 @@ def learn_tree_bn(train_df: pd.DataFrame) -> LearningResult:
 
     model = DiscreteBayesianNetwork(list(tree.edges()))
     model.add_nodes_from(cols)
-    _ensure_target_parents(model, cols)
     model = fit_cpds_sequential(model, data, pseudo_count=0.5)
     bic = BIC(data).score(model)
 

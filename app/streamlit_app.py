@@ -23,7 +23,7 @@ if str(ROOT) not in sys.path:
 
 from app.presets import PRESETS
 from src.config import FEATURE_LABELS, OUTPUT_DIR, STATE_LABELS, TARGET, ProjectConfig
-from src.data import load_cached_or_build, records_to_evidence, train_test_split_data
+from src.data import load_cached_or_build, prepare_train_test, records_to_evidence, train_test_split_data
 from src.inference import (
     compare_inference,
     disease_probability,
@@ -31,7 +31,11 @@ from src.inference import (
     predict_disease,
     sensitivity_analysis,
 )
-from src.learning import learn_expert_bn, learn_structure_and_parameters
+from src.learning import (
+    learn_expert_bn,
+    learn_naive_bayes_bn,
+    learn_structure_and_parameters,
+)
 
 st.set_page_config(
     page_title="Heart Disease BN | PGM Medical Diagnosis",
@@ -45,12 +49,12 @@ REPORT_PATH = OUTPUT_DIR / "report.json"
 
 @st.cache_resource(show_spinner="Training Bayesian Networks on UCI data …")
 def load_models():
-    """Train expert + Chow-Liu BNs (fast sequential CPT fit, ~15s cold start)."""
     df = load_cached_or_build()
-    train, _ = train_test_split_data(df)
+    train, _, _ = prepare_train_test(df)
     expert = learn_expert_bn(train)
-    learned = learn_structure_and_parameters(train, ProjectConfig(structure_learning_iters=40))
-    return expert.model, learned.model
+    naive = learn_naive_bayes_bn(train)
+    tree = learn_structure_and_parameters(train, ProjectConfig(structure_learning_iters=40))
+    return expert.model, naive.model, tree.model
 
 
 @st.cache_data
@@ -63,7 +67,7 @@ def load_report():
 @st.cache_data
 def load_test_sample():
     df = load_cached_or_build()
-    _, test = train_test_split_data(df)
+    _, test, _ = prepare_train_test(df)
     return test
 
 
@@ -141,7 +145,7 @@ def collect_evidence(model, key_prefix: str = "") -> dict[str, str]:
     return evidence
 
 
-def tab_diagnosis(expert_model, learned_model, report):
+def tab_diagnosis(expert_model, naive_model, tree_model, report):
     st.header("Interactive diagnosis")
     st.markdown(
         "Enter patient symptoms and risk factors. The BN computes "
@@ -150,8 +154,16 @@ def tab_diagnosis(expert_model, learned_model, report):
 
     c1, c2, c3 = st.columns([1.2, 1, 1])
     with c1:
-        network = st.selectbox("Bayesian Network model", ["Expert BN", "Chow-Liu Tree BN"])
-        model = expert_model if network == "Expert BN" else learned_model
+        network = st.selectbox(
+            "Bayesian Network model",
+            ["Naive Bayes BN (recommended)", "Chow-Liu Tree BN", "Expert BN"],
+        )
+        model_map = {
+            "Naive Bayes BN (recommended)": naive_model,
+            "Chow-Liu Tree BN": tree_model,
+            "Expert BN": expert_model,
+        }
+        model = model_map[network]
 
         preset = st.selectbox("Load preset profile", ["— Custom —"] + list(PRESETS.keys()))
         if preset != "— Custom —":
@@ -251,15 +263,24 @@ def tab_diagnosis(expert_model, learned_model, report):
         st.info("Configure patient evidence and click **Run Bayesian inference**.")
 
 
-def tab_algorithm_lab(expert_model, learned_model):
+def tab_algorithm_lab(expert_model, naive_model, tree_model):
     st.header("Algorithm laboratory")
     st.markdown(
         "Compare **Variable Elimination** and **Belief Propagation** on identical evidence. "
         "Both implement the Inference pillar; results should match on the same DAG."
     )
 
-    model_choice = st.radio("Model", ["Expert BN", "Chow-Liu Tree BN"], horizontal=True)
-    model = expert_model if model_choice == "Expert BN" else learned_model
+    model_choice = st.radio(
+        "Model",
+        ["Naive Bayes BN", "Chow-Liu Tree BN", "Expert BN"],
+        horizontal=True,
+    )
+    model_map = {
+        "Naive Bayes BN": naive_model,
+        "Chow-Liu Tree BN": tree_model,
+        "Expert BN": expert_model,
+    }
+    model = model_map[model_choice]
     evidence = collect_evidence(model, key_prefix="lab_")
 
     if st.button("Compare algorithms", type="primary"):
@@ -286,12 +307,21 @@ def tab_algorithm_lab(expert_model, learned_model):
             st.warning(f"Posterior difference |Δ| = {diff:.4f} (may occur on approximate BP).")
 
 
-def tab_network_explorer(expert_model, learned_model, report):
+def tab_network_explorer(expert_model, naive_model, tree_model, report):
     st.header("Network explorer")
     st.markdown("Visualize the **Representation** pillar: DAG structure learned vs expert-defined.")
 
-    choice = st.radio("View network", ["Expert BN", "Chow-Liu Tree BN"], horizontal=True)
-    model = expert_model if choice == "Expert BN" else learned_model
+    choice = st.radio(
+        "View network",
+        ["Naive Bayes BN", "Chow-Liu Tree BN", "Expert BN"],
+        horizontal=True,
+    )
+    model_map = {
+        "Naive Bayes BN": naive_model,
+        "Chow-Liu Tree BN": tree_model,
+        "Expert BN": expert_model,
+    }
+    model = model_map[choice]
 
     col1, col2 = st.columns([1.2, 1])
     with col1:
@@ -365,7 +395,7 @@ streamlit run app/streamlit_app.py
 def main():
     report = load_report()
     sidebar(report)
-    expert_model, learned_model = load_models()
+    expert_model, naive_model, tree_model = load_models()
 
     tab1, tab2, tab3, tab4 = st.tabs([
         "Diagnosis",
@@ -375,11 +405,11 @@ def main():
     ])
 
     with tab1:
-        tab_diagnosis(expert_model, learned_model, report)
+        tab_diagnosis(expert_model, naive_model, tree_model, report)
     with tab2:
-        tab_algorithm_lab(expert_model, learned_model)
+        tab_algorithm_lab(expert_model, naive_model, tree_model)
     with tab3:
-        tab_network_explorer(expert_model, learned_model, report)
+        tab_network_explorer(expert_model, naive_model, tree_model, report)
     with tab4:
         tab_pgm_concepts()
 

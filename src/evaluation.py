@@ -36,9 +36,64 @@ class EvalResult:
     roc_auc: float
     mean_inference_ms: float
     n_test: int
+    threshold: float = 0.5
     y_true: list[str] = field(default_factory=list)
     y_pred: list[str] = field(default_factory=list)
     y_score: list[float] = field(default_factory=list)
+
+
+def _predict_label(score: float, threshold: float) -> str:
+    return "Yes" if score >= threshold else "No"
+
+
+def collect_scores(
+    model: DiscreteBayesianNetwork,
+    df: pd.DataFrame,
+    method: str = "ve",
+) -> tuple[list[str], list[float], float]:
+    """Run inference on all rows; return labels, P(Yes) scores, mean latency."""
+    y_true, y_score = [], []
+    timings = []
+    for _, row in df.iterrows():
+        evidence = records_to_evidence(row)
+        t0 = time.perf_counter()
+        trace = predict_disease(model, evidence, method=method)
+        timings.append((time.perf_counter() - t0) * 1000.0)
+        y_true.append(str(row[TARGET]))
+        y_score.append(disease_probability(trace))
+    return y_true, y_score, float(np.mean(timings))
+
+
+def find_optimal_threshold(y_true: list[str], y_score: list[float]) -> float:
+    """Pick threshold on validation data that maximizes F1."""
+    y_bin = [1 if y == "Yes" else 0 for y in y_true]
+    if len(set(y_bin)) < 2:
+        return 0.5
+    best_t, best_f1 = 0.5, -1.0
+    for t in np.linspace(0.15, 0.85, 71):
+        preds = [1 if s >= t else 0 for s in y_score]
+        f1 = f1_score(y_bin, preds, zero_division=0)
+        if f1 > best_f1:
+            best_f1, best_t = f1, float(t)
+    return best_t
+
+
+def _metrics_from_scores(
+    y_true: list[str],
+    y_score: list[float],
+    threshold: float,
+) -> tuple[float, float, float, float, float]:
+    y_pred = [_predict_label(s, threshold) for s in y_score]
+    y_bin = [1 if y == "Yes" else 0 for y in y_true]
+    acc = accuracy_score(y_true, y_pred)
+    prec = precision_score(y_true, y_pred, pos_label="Yes", zero_division=0)
+    rec = recall_score(y_true, y_pred, pos_label="Yes", zero_division=0)
+    f1 = f1_score(y_true, y_pred, pos_label="Yes", zero_division=0)
+    try:
+        auc = roc_auc_score(y_bin, y_score)
+    except ValueError:
+        auc = float("nan")
+    return float(acc), float(prec), float(rec), float(f1), float(auc)
 
 
 def evaluate_model(
@@ -46,46 +101,36 @@ def evaluate_model(
     test_df: pd.DataFrame,
     model_name: str,
     method: str = "ve",
+    threshold: float | None = None,
+    tune_threshold_df: pd.DataFrame | None = None,
 ) -> EvalResult:
     """
     Evaluate BN on held-out patients.
 
-    For each test row, all features except HeartDisease are evidence;
-    predict MAP label and P(Yes) for ROC-AUC.
+    If tune_threshold_df is provided, threshold is tuned on that set (e.g. train)
+    then applied to test_df — avoids optimistic bias and improves recall.
     """
-    y_true, y_pred, y_score = [], [], []
-    timings = []
+    if threshold is None and tune_threshold_df is not None:
+        ty, ts, _ = collect_scores(model, tune_threshold_df, method=method)
+        threshold = find_optimal_threshold(ty, ts)
+    elif threshold is None:
+        threshold = 0.5
 
-    for _, row in test_df.iterrows():
-        evidence = records_to_evidence(row)
-        t0 = time.perf_counter()
-        trace = predict_disease(model, evidence, method=method)
-        timings.append((time.perf_counter() - t0) * 1000.0)
-
-        y_true.append(str(row[TARGET]))
-        y_pred.append(map_label(trace))
-        y_score.append(disease_probability(trace))
-
-    # Binary metrics: positive class = "Yes"
-    acc = accuracy_score(y_true, y_pred)
-    prec = precision_score(y_true, y_pred, pos_label="Yes", zero_division=0)
-    rec = recall_score(y_true, y_pred, pos_label="Yes", zero_division=0)
-    f1 = f1_score(y_true, y_pred, pos_label="Yes", zero_division=0)
-    try:
-        auc = roc_auc_score([1 if y == "Yes" else 0 for y in y_true], y_score)
-    except ValueError:
-        auc = float("nan")
+    y_true, y_score, mean_ms = collect_scores(model, test_df, method=method)
+    acc, prec, rec, f1, auc = _metrics_from_scores(y_true, y_score, threshold)
+    y_pred = [_predict_label(s, threshold) for s in y_score]
 
     return EvalResult(
         model_name=model_name,
         method=method.upper(),
-        accuracy=float(acc),
-        precision=float(prec),
-        recall=float(rec),
-        f1=float(f1),
-        roc_auc=float(auc),
-        mean_inference_ms=float(np.mean(timings)),
+        accuracy=acc,
+        precision=prec,
+        recall=rec,
+        f1=f1,
+        roc_auc=auc,
+        mean_inference_ms=mean_ms,
         n_test=len(test_df),
+        threshold=threshold,
         y_true=y_true,
         y_pred=y_pred,
         y_score=y_score,
@@ -96,11 +141,11 @@ def benchmark_inference_methods(
     model: DiscreteBayesianNetwork,
     test_df: pd.DataFrame,
     model_name: str,
-    n_repeats: int = 3,
+    n_repeats: int = 1,
 ) -> pd.DataFrame:
     """Compare VE vs BP mean latency on test evidence."""
     rows = []
-    sample = test_df.head(min(50, len(test_df)))
+    sample = test_df.head(min(15, len(test_df)))
     for method in ("ve", "bp"):
         times = []
         for _ in range(n_repeats):
@@ -124,12 +169,13 @@ def results_to_dataframe(results: list[EvalResult]) -> pd.DataFrame:
         {
             "Model": r.model_name,
             "Inference": r.method,
-            "Accuracy": r.accuracy,
-            "Precision": r.precision,
-            "Recall": r.recall,
-            "F1": r.f1,
-            "ROC-AUC": r.roc_auc,
-            "Mean inference (ms)": r.mean_inference_ms,
+            "Threshold": round(r.threshold, 3),
+            "Accuracy": round(r.accuracy, 3),
+            "Precision": round(r.precision, 3),
+            "Recall": round(r.recall, 3),
+            "F1": round(r.f1, 3),
+            "ROC-AUC": round(r.roc_auc, 3),
+            "Mean inference (ms)": round(r.mean_inference_ms, 2),
             "N test": r.n_test,
         }
         for r in results

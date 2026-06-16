@@ -142,6 +142,26 @@ def load_discretized_dataset() -> pd.DataFrame:
     return disc
 
 
+def train_modes(train_df: pd.DataFrame) -> dict[str, str]:
+    """Per-column mode on training data (excluding Unknown when possible)."""
+    modes = {}
+    feature_cols = [c for c in EXPERT_VARS if c in train_df.columns]
+    for col in feature_cols:
+        series = train_df[col].astype(str)
+        known = series[series != "Unknown"]
+        modes[col] = known.mode().iloc[0] if len(known) else series.mode().iloc[0]
+    return modes
+
+
+def impute_unknowns(df: pd.DataFrame, modes: dict[str, str]) -> pd.DataFrame:
+    """Replace Unknown with training-set modes (reduces noise from missing UCI values)."""
+    out = df.copy()
+    for col, mode in modes.items():
+        if col in out.columns:
+            out[col] = out[col].astype(str).replace("Unknown", mode)
+    return out
+
+
 def train_test_split_data(
     df: pd.DataFrame,
     test_size: float = 0.25,
@@ -155,6 +175,17 @@ def train_test_split_data(
         stratify=df[TARGET],
     )
     return train.reset_index(drop=True), test.reset_index(drop=True)
+
+
+def prepare_train_test(
+    df: pd.DataFrame,
+    test_size: float = 0.25,
+    seed: int = 42,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Split then impute Unknowns using train modes only (no leakage)."""
+    train, test = train_test_split_data(df, test_size=test_size, seed=seed)
+    modes = train_modes(train)
+    return impute_unknowns(train, modes), impute_unknowns(test, modes), train
 
 
 def records_to_evidence(row: pd.Series, query_var: str = TARGET) -> dict[str, str]:

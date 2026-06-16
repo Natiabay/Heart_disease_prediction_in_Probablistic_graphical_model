@@ -9,7 +9,7 @@ from pgmpy.factors.discrete import TabularCPD
 import networkx as nx
 from pgmpy.models import DiscreteBayesianNetwork
 
-from .config import EXPERT_EDGES, EXPERT_VARS, TARGET
+from .config import EXPERT_EDGES, EXPERT_VARS, NAIVE_BAYES_EDGES, TARGET
 
 
 @dataclass
@@ -36,6 +36,13 @@ def build_expert_structure() -> dict:
             "directly inform the disease node."
         ),
     }
+
+
+def naive_bayes_skeleton() -> DiscreteBayesianNetwork:
+    """Naive Bayes DAG: every symptom/risk factor is a direct parent of disease."""
+    model = DiscreteBayesianNetwork(NAIVE_BAYES_EDGES)
+    model.add_nodes_from(EXPERT_VARS)
+    return model
 
 
 def expert_model_skeleton() -> DiscreteBayesianNetwork:
