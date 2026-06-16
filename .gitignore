@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+env/
+.env
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+data/raw/
+data/*.csv
+!data/README.md
+
+# Keep metadata; models regenerate on Streamlit cold start (expert .pkl can be 70MB+)
+artifacts/*.pkl
+.streamlit/secrets.toml

@@ -1,0 +1,397 @@
+{
+  "dataset": {
+    "n_samples": 920,
+    "n_features": 13,
+    "prevalence": 0.5532608695652174,
+    "by_source": {
+      "cleveland": 303,
+      "hungarian": 294,
+      "switzerland": 123,
+      "va": 200
+    },
+    "columns": [
+      "Age",
+      "Sex",
+      "CP",
+      "Trestbps",
+      "Chol",
+      "Fbs",
+      "Restecg",
+      "Thalach",
+      "Exang",
+      "Oldpeak",
+      "Slope",
+      "Ca",
+      "Thal",
+      "HeartDisease"
+    ]
+  },
+  "expert_structure": {
+    "name": "Expert Heart Disease BN",
+    "variables": [
+      "Age",
+      "Sex",
+      "CP",
+      "Trestbps",
+      "Chol",
+      "Fbs",
+      "Restecg",
+      "Thalach",
+      "Exang",
+      "Oldpeak",
+      "Slope",
+      "Ca",
+      "Thal",
+      "HeartDisease"
+    ],
+    "edges": [
+      [
+        "Age",
+        "Chol"
+      ],
+      [
+        "Age",
+        "Trestbps"
+      ],
+      [
+        "Age",
+        "Thalach"
+      ],
+      [
+        "Sex",
+        "HeartDisease"
+      ],
+      [
+        "Chol",
+        "HeartDisease"
+      ],
+      [
+        "Trestbps",
+        "HeartDisease"
+      ],
+      [
+        "CP",
+        "HeartDisease"
+      ],
+      [
+        "Fbs",
+        "HeartDisease"
+      ],
+      [
+        "Restecg",
+        "HeartDisease"
+      ],
+      [
+        "Thalach",
+        "HeartDisease"
+      ],
+      [
+        "Exang",
+        "HeartDisease"
+      ],
+      [
+        "Oldpeak",
+        "HeartDisease"
+      ],
+      [
+        "Slope",
+        "HeartDisease"
+      ],
+      [
+        "Ca",
+        "HeartDisease"
+      ],
+      [
+        "Thal",
+        "HeartDisease"
+      ]
+    ],
+    "description": "Expert-defined DAG: demographic and clinical risk factors probabilistically influence HeartDisease. Age affects cholesterol, blood pressure, and exercise capacity; symptoms and test results directly inform the disease node."
+  },
+  "expert_repr": {
+    "n_nodes": 14,
+    "n_edges": 15,
+    "nodes": [
+      "Age",
+      "Chol",
+      "Trestbps",
+      "Thalach",
+      "Sex",
+      "HeartDisease",
+      "CP",
+      "Fbs",
+      "Restecg",
+      "Exang",
+      "Oldpeak",
+      "Slope",
+      "Ca",
+      "Thal"
+    ],
+    "edges": [
+      [
+        "Age",
+        "Chol"
+      ],
+      [
+        "Age",
+        "Trestbps"
+      ],
+      [
+        "Age",
+        "Thalach"
+      ],
+      [
+        "Chol",
+        "HeartDisease"
+      ],
+      [
+        "Trestbps",
+        "HeartDisease"
+      ],
+      [
+        "Thalach",
+        "HeartDisease"
+      ],
+      [
+        "Sex",
+        "HeartDisease"
+      ],
+      [
+        "CP",
+        "HeartDisease"
+      ],
+      [
+        "Fbs",
+        "HeartDisease"
+      ],
+      [
+        "Restecg",
+        "HeartDisease"
+      ],
+      [
+        "Exang",
+        "HeartDisease"
+      ],
+      [
+        "Oldpeak",
+        "HeartDisease"
+      ],
+      [
+        "Slope",
+        "HeartDisease"
+      ],
+      [
+        "Ca",
+        "HeartDisease"
+      ],
+      [
+        "Thal",
+        "HeartDisease"
+      ]
+    ],
+    "is_dag": true
+  },
+  "learned_repr": {
+    "n_nodes": 14,
+    "n_edges": 13,
+    "nodes": [
+      "Oldpeak",
+      "Slope",
+      "Exang",
+      "Ca",
+      "Thalach",
+      "CP",
+      "Thal",
+      "Restecg",
+      "Chol",
+      "Trestbps",
+      "Age",
+      "HeartDisease",
+      "Fbs",
+      "Sex"
+    ],
+    "edges": [
+      [
+        "Oldpeak",
+        "Slope"
+      ],
+      [
+        "Oldpeak",
+        "Exang"
+      ],
+      [
+        "Slope",
+        "Ca"
+      ],
+      [
+        "Exang",
+        "Thalach"
+      ],
+      [
+        "Exang",
+        "CP"
+      ],
+      [
+        "Ca",
+        "Thal"
+      ],
+      [
+        "Ca",
+        "Restecg"
+      ],
+      [
+        "Ca",
+        "Chol"
+      ],
+      [
+        "Thalach",
+        "Trestbps"
+      ],
+      [
+        "Thalach",
+        "Age"
+      ],
+      [
+        "CP",
+        "HeartDisease"
+      ],
+      [
+        "Chol",
+        "Fbs"
+      ],
+      [
+        "HeartDisease",
+        "Sex"
+      ]
+    ],
+    "is_dag": true
+  },
+  "metrics": [
+    {
+      "Model": "Expert Heart Disease BN",
+      "Inference": "VE",
+      "Accuracy": 0.5,
+      "Precision": 0.5714285714285714,
+      "Recall": 0.0784313725490196,
+      "F1": 0.13793103448275862,
+      "ROC-AUC": 0.566826730692277,
+      "Mean inference (ms)": 24.153851840019342,
+      "N test": 100
+    },
+    {
+      "Model": "Expert Heart Disease BN",
+      "Inference": "BP",
+      "Accuracy": 0.56,
+      "Precision": 1.0,
+      "Recall": 0.15384615384615385,
+      "F1": 0.26666666666666666,
+      "ROC-AUC": 0.5769230769230771,
+      "Mean inference (ms)": 2262.0009493999896,
+      "N test": 25
+    },
+    {
+      "Model": "Chow-Liu Tree BN",
+      "Inference": "VE",
+      "Accuracy": 0.76,
+      "Precision": 0.7288135593220338,
+      "Recall": 0.8431372549019608,
+      "F1": 0.7818181818181819,
+      "ROC-AUC": 0.8241296518607443,
+      "Mean inference (ms)": 1.2950719399304944,
+      "N test": 100
+    },
+    {
+      "Model": "Chow-Liu Tree BN",
+      "Inference": "BP",
+      "Accuracy": 0.76,
+      "Precision": 0.7058823529411765,
+      "Recall": 0.9230769230769231,
+      "F1": 0.8,
+      "ROC-AUC": 0.7692307692307693,
+      "Mean inference (ms)": 19.91753731999779,
+      "N test": 25
+    }
+  ],
+  "state_labels": {
+    "Age": [
+      "Young",
+      "Middle",
+      "Senior",
+      "Elderly"
+    ],
+    "Sex": [
+      "Female",
+      "Male"
+    ],
+    "CP": [
+      "Typical angina",
+      "Atypical angina",
+      "Non-anginal pain",
+      "Asymptomatic",
+      "Unknown"
+    ],
+    "Trestbps": [
+      "Low",
+      "Normal",
+      "High",
+      "Unknown"
+    ],
+    "Chol": [
+      "Low",
+      "Borderline",
+      "High",
+      "Unknown"
+    ],
+    "Fbs": [
+      "Normal",
+      "High",
+      "Unknown"
+    ],
+    "Restecg": [
+      "Normal",
+      "ST-T abnormality",
+      "LV hypertrophy",
+      "Unknown"
+    ],
+    "Thalach": [
+      "Low",
+      "Medium",
+      "High",
+      "Unknown"
+    ],
+    "Exang": [
+      "No",
+      "Yes",
+      "Unknown"
+    ],
+    "Oldpeak": [
+      "None",
+      "Mild",
+      "Severe",
+      "Unknown"
+    ],
+    "Slope": [
+      "Upsloping",
+      "Flat",
+      "Downsloping",
+      "Unknown"
+    ],
+    "Ca": [
+      "0",
+      "1",
+      "2",
+      "3+",
+      "Unknown"
+    ],
+    "Thal": [
+      "Normal",
+      "Fixed defect",
+      "Reversible defect",
+      "Unknown"
+    ],
+    "HeartDisease": [
+      "No",
+      "Yes"
+    ]
+  }
+}

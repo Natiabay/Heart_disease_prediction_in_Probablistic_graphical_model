@@ -1,0 +1,8 @@
+{
+  "name": "Expert Heart Disease BN",
+  "method": "Sequential MLE + Laplace smoothing (ESS\u22481)",
+  "description": "Parameters learned on the expert DAG using Sequential MLE + Laplace smoothing (ESS\u22481). Structure is fixed by medical/clinical intuition.",
+  "score": null,
+  "n_edges": 15,
+  "n_nodes": 14
+}
