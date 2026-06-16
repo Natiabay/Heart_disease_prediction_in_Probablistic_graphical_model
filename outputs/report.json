@@ -270,13 +270,13 @@
     {
       "Model": "Expert Heart Disease BN",
       "Inference": "VE",
-      "Accuracy": 0.5,
-      "Precision": 0.5714285714285714,
-      "Recall": 0.0784313725490196,
-      "F1": 0.13793103448275862,
-      "ROC-AUC": 0.566826730692277,
-      "Mean inference (ms)": 24.153851840019342,
-      "N test": 100
+      "Accuracy": 0.5217391304347826,
+      "Precision": 0.8695652173913043,
+      "Recall": 0.15748031496062992,
+      "F1": 0.26666666666666666,
+      "ROC-AUC": 0.618874703768825,
+      "Mean inference (ms)": 11.259239130433478,
+      "N test": 230
     },
     {
       "Model": "Expert Heart Disease BN",
@@ -286,19 +286,19 @@
       "Recall": 0.15384615384615385,
       "F1": 0.26666666666666666,
       "ROC-AUC": 0.5769230769230771,
-      "Mean inference (ms)": 2262.0009493999896,
+      "Mean inference (ms)": 2364.802226119999,
       "N test": 25
     },
     {
       "Model": "Chow-Liu Tree BN",
       "Inference": "VE",
-      "Accuracy": 0.76,
-      "Precision": 0.7288135593220338,
-      "Recall": 0.8431372549019608,
-      "F1": 0.7818181818181819,
-      "ROC-AUC": 0.8241296518607443,
-      "Mean inference (ms)": 1.2950719399304944,
-      "N test": 100
+      "Accuracy": 0.7913043478260869,
+      "Precision": 0.7883211678832117,
+      "Recall": 0.8503937007874016,
+      "F1": 0.8181818181818182,
+      "ROC-AUC": 0.8560507606452106,
+      "Mean inference (ms)": 1.189975278263635,
+      "N test": 230
     },
     {
       "Model": "Chow-Liu Tree BN",
@@ -307,8 +307,8 @@
       "Precision": 0.7058823529411765,
       "Recall": 0.9230769230769231,
       "F1": 0.8,
-      "ROC-AUC": 0.7692307692307693,
-      "Mean inference (ms)": 19.91753731999779,
+      "ROC-AUC": 0.8301282051282052,
+      "Mean inference (ms)": 29.562495200011654,
       "N test": 25
     }
   ],

@@ -159,7 +159,7 @@ def run_pipeline(output_dir: Path, quick: bool = False, use_hillclimb: bool = Fa
     # --- Save artifacts for Streamlit ---
     print("\n[Deploy] Saving model artifacts")
     save_model(expert_learned.model, "expert_heart_disease_bn", get_learning_summary(expert_learned))
-    save_model(learned.model, "data-driven_heart_disease_bn", get_learning_summary(learned))
+    save_model(learned.model, "data_driven_heart_disease_bn", get_learning_summary(learned))
 
     report = {
         "dataset": summary,

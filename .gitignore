@@ -15,9 +15,7 @@ env/
 .DS_Store
 
 data/raw/
-data/*.csv
-!data/README.md
-
-# Keep metadata; models regenerate on Streamlit cold start (expert .pkl can be 70MB+)
-artifacts/*.pkl
 .streamlit/secrets.toml
+
+# Bundled processed dataset for Streamlit Cloud (no download needed)
+!data/heart_disease_discretized.csv

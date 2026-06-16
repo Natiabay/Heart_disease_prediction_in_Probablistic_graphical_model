@@ -22,7 +22,6 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from app.presets import PRESETS
-from src.artifacts import artifacts_exist, load_model
 from src.config import FEATURE_LABELS, OUTPUT_DIR, STATE_LABELS, TARGET, ProjectConfig
 from src.data import load_cached_or_build, records_to_evidence, train_test_split_data
 from src.inference import (
@@ -44,14 +43,13 @@ st.set_page_config(
 REPORT_PATH = OUTPUT_DIR / "report.json"
 
 
-@st.cache_resource(show_spinner="Loading Bayesian Networks …")
+@st.cache_resource(show_spinner="Training Bayesian Networks on UCI data …")
 def load_models():
-    if artifacts_exist():
-        return load_model("expert_heart_disease_bn"), load_model("data-driven_heart_disease_bn")
+    """Train expert + Chow-Liu BNs (fast sequential CPT fit, ~15s cold start)."""
     df = load_cached_or_build()
     train, _ = train_test_split_data(df)
     expert = learn_expert_bn(train)
-    learned = learn_structure_and_parameters(train, ProjectConfig(structure_learning_iters=80))
+    learned = learn_structure_and_parameters(train, ProjectConfig(structure_learning_iters=40))
     return expert.model, learned.model
 
 

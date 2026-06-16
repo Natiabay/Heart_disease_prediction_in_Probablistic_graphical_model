@@ -1,0 +1,86 @@
+{
+  "name": "Expert Heart Disease BN",
+  "nodes": [
+    "Age",
+    "Chol",
+    "Trestbps",
+    "Thalach",
+    "Sex",
+    "HeartDisease",
+    "CP",
+    "Fbs",
+    "Restecg",
+    "Exang",
+    "Oldpeak",
+    "Slope",
+    "Ca",
+    "Thal"
+  ],
+  "edges": [
+    [
+      "Age",
+      "Chol"
+    ],
+    [
+      "Age",
+      "Trestbps"
+    ],
+    [
+      "Age",
+      "Thalach"
+    ],
+    [
+      "Chol",
+      "HeartDisease"
+    ],
+    [
+      "Trestbps",
+      "HeartDisease"
+    ],
+    [
+      "Thalach",
+      "HeartDisease"
+    ],
+    [
+      "Sex",
+      "HeartDisease"
+    ],
+    [
+      "CP",
+      "HeartDisease"
+    ],
+    [
+      "Fbs",
+      "HeartDisease"
+    ],
+    [
+      "Restecg",
+      "HeartDisease"
+    ],
+    [
+      "Exang",
+      "HeartDisease"
+    ],
+    [
+      "Oldpeak",
+      "HeartDisease"
+    ],
+    [
+      "Slope",
+      "HeartDisease"
+    ],
+    [
+      "Ca",
+      "HeartDisease"
+    ],
+    [
+      "Thal",
+      "HeartDisease"
+    ]
+  ],
+  "method": "Sequential MLE + Laplace smoothing (ESS\u22481)",
+  "description": "Parameters learned on the expert DAG using Sequential MLE + Laplace smoothing (ESS\u22481). Structure is fixed by medical/clinical intuition.",
+  "score": null,
+  "n_edges": 15,
+  "n_nodes": 14
+}

@@ -1,8 +1,0 @@
-{
-  "name": "Chow-Liu Tree BN",
-  "method": "TreeSearch (Chow-Liu) + Sequential MLE",
-  "description": "Tree-structured BN from Chow-Liu algorithm (mutual information MST), with CPTs fit via sequential MLE.",
-  "score": -8683.861480525247,
-  "n_edges": 13,
-  "n_nodes": 14
-}
