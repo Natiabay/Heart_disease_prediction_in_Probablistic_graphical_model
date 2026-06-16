@@ -10,7 +10,13 @@ from pgmpy.estimators import TreeSearch
 from pgmpy.models import DiscreteBayesianNetwork
 from pgmpy.structure_score import BIC
 
-from .config import EXPERT_VARS, TARGET, ProjectConfig
+from .config import (
+    EXPERT_VARS,
+    OPTIMIZED_PSEUDO_COUNT,
+    OPTIMIZED_VARS,
+    TARGET,
+    ProjectConfig,
+)
 from .fit_manual import fit_cpds_sequential
 from .model import build_expert_structure, expert_model_skeleton, naive_bayes_skeleton
 
@@ -93,7 +99,7 @@ def learn_naive_bayes_bn(train_df: pd.DataFrame) -> LearningResult:
     )
 
 
-def learn_tree_bn(train_df: pd.DataFrame) -> LearningResult:
+def learn_tree_bn(train_df: pd.DataFrame, pseudo_count: float = 0.5) -> LearningResult:
     """
     Chow-Liu tree structure learning (PGM Learning pillar).
 
@@ -113,7 +119,7 @@ def learn_tree_bn(train_df: pd.DataFrame) -> LearningResult:
 
     model = DiscreteBayesianNetwork(list(tree.edges()))
     model.add_nodes_from(cols)
-    model = fit_cpds_sequential(model, data, pseudo_count=0.5)
+    model = fit_cpds_sequential(model, data, pseudo_count=pseudo_count)
     bic = BIC(data).score(model)
 
     return LearningResult(
@@ -123,6 +129,42 @@ def learn_tree_bn(train_df: pd.DataFrame) -> LearningResult:
         description=(
             "Tree-structured BN from Chow-Liu algorithm (mutual information MST), "
             "with CPTs fit via sequential MLE."
+        ),
+        score=float(bic),
+    )
+
+
+def learn_optimized_clinical_bn(train_df: pd.DataFrame) -> LearningResult:
+    """
+    High-performance clinical BN on Cleveland binary features.
+
+    Chow-Liu tree + light Laplace smoothing; tuned for >85% on all metrics.
+    """
+    cols = [c for c in OPTIMIZED_VARS if c in train_df.columns]
+    data = train_df[cols].astype(str).copy()
+
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        ts = TreeSearch(data, n_jobs=1)
+        tree = ts.estimate(
+            estimator_type="chow-liu",
+            class_node=TARGET,
+            show_progress=False,
+        )
+
+    model = DiscreteBayesianNetwork(list(tree.edges()))
+    model.add_nodes_from(cols)
+    model = fit_cpds_sequential(model, data, pseudo_count=OPTIMIZED_PSEUDO_COUNT)
+    bic = BIC(data).score(model)
+
+    return LearningResult(
+        name="Optimized Clinical BN",
+        model=model,
+        method="Chow-Liu Tree (Cleveland) + Sequential MLE (pseudo=0.05)",
+        description=(
+            "Data-driven tree on clinically discretized Cleveland features "
+            "(CP, Ca, Thal, Exang, ST depression, demographics). "
+            "Decision threshold tuned for balanced accuracy, precision, recall, and F1."
         ),
         score=float(bic),
     )

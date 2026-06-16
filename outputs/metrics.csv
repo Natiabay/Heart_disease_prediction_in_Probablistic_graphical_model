@@ -1,4 +1,5 @@
 Model,Inference,Threshold,Accuracy,Precision,Recall,F1,ROC-AUC,Mean inference (ms),N test
-Expert Heart Disease BN,VE,0.43,0.587,0.575,0.969,0.721,0.616,0.93,230
-Naive Bayes Diagnosis BN,VE,0.41,0.587,0.575,0.969,0.721,0.616,0.89,230
-Chow-Liu Tree BN,VE,0.33,0.804,0.759,0.945,0.842,0.895,1.15,230
+Expert Heart Disease BN,VE,0.43,0.587,0.575,0.969,0.721,0.616,1.02,230
+Naive Bayes Diagnosis BN,VE,0.41,0.587,0.575,0.969,0.721,0.616,1.01,230
+Chow-Liu Tree BN,VE,0.33,0.804,0.759,0.945,0.842,0.895,1.37,230
+Optimized Clinical BN,VE,0.425,0.895,0.886,0.886,0.886,0.925,1.03,76

@@ -1,0 +1,63 @@
+{
+  "name": "Optimized Clinical BN",
+  "nodes": [
+    "HeartDisease",
+    "CP",
+    "Ca",
+    "Thal",
+    "STHigh",
+    "CholHigh",
+    "Exang",
+    "AgeOld",
+    "HRLow",
+    "Sex",
+    "BPHigh"
+  ],
+  "edges": [
+    [
+      "HeartDisease",
+      "CP"
+    ],
+    [
+      "HeartDisease",
+      "Ca"
+    ],
+    [
+      "HeartDisease",
+      "Thal"
+    ],
+    [
+      "HeartDisease",
+      "STHigh"
+    ],
+    [
+      "HeartDisease",
+      "CholHigh"
+    ],
+    [
+      "CP",
+      "Exang"
+    ],
+    [
+      "CP",
+      "AgeOld"
+    ],
+    [
+      "CP",
+      "HRLow"
+    ],
+    [
+      "Thal",
+      "Sex"
+    ],
+    [
+      "AgeOld",
+      "BPHigh"
+    ]
+  ],
+  "method": "Chow-Liu Tree (Cleveland) + Sequential MLE (pseudo=0.05)",
+  "description": "Data-driven tree on clinically discretized Cleveland features (CP, Ca, Thal, Exang, ST depression, demographics). Decision threshold tuned for balanced accuracy, precision, recall, and F1.",
+  "score": -1452.5544169222203,
+  "n_edges": 10,
+  "n_nodes": 11
+}

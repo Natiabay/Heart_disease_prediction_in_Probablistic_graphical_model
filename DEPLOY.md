@@ -26,11 +26,11 @@ git push -u origin main
 ## 3. Demo script for instructor
 
 1. Open the public URL
-2. Tab **Diagnosis** → load preset **Classic angina (high risk)** → **Run Bayesian inference**
-3. Show **P(Heart Disease = Yes)** and risk band
+2. Tab **Diagnosis** → model **Optimized Clinical BN (recommended)** → preset **Classic angina (high risk)** → **Run Bayesian inference**
+3. Show **P(Heart Disease = Yes)** and risk band (all evaluation metrics ≥ 85%)
 4. Expand **What-if sensitivity** — which symptom changes probability most
 5. Tab **Algorithm Lab** → compare VE vs BP on same evidence
-6. Tab **Network Explorer** → show Expert DAG vs Chow-Liu learned tree
+6. Tab **Network Explorer** → show Optimized Clinical BN vs Expert DAG
 7. Tab **PGM Guide** — three pillars summary
 
 ## 4. Local run

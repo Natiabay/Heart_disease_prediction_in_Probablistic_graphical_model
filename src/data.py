@@ -12,6 +12,8 @@ from sklearn.model_selection import train_test_split
 from .config import (
     DATA_DIR,
     EXPERT_VARS,
+    OPTIMIZED_SOURCES,
+    OPTIMIZED_VARS,
     RAW_DIR,
     TARGET,
     UCI_COLUMNS,
@@ -142,6 +144,61 @@ def load_discretized_dataset() -> pd.DataFrame:
     return disc
 
 
+def discretize_optimized_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+    """Binary/clinical encoding for the high-performance Cleveland BN."""
+    out = pd.DataFrame(index=df.index)
+    out["Sex"] = df["sex"].map({0.0: "F", 1.0: "M"})
+    out["CP"] = df["cp"].map({1.0: "T", 2.0: "A", 3.0: "N", 4.0: "Asy"})
+    out["Exang"] = df["exang"].map({0.0: "No", 1.0: "Yes"})
+    out["Thal"] = (
+        df["thal"]
+        .map({3.0: "N", 6.0: "F", 7.0: "R"})
+        .fillna("N")
+    )
+    out["Ca"] = df["ca"].fillna(0).astype(int).clip(0, 3).astype(str)
+    out["AgeOld"] = (df["age"] >= 55).map({True: "Old", False: "Young"})
+    out["CholHigh"] = (df["chol"].fillna(200) >= 240).map({True: "Y", False: "N"})
+    out["BPHigh"] = (df["trestbps"].fillna(130) >= 140).map({True: "Y", False: "N"})
+    out["HRLow"] = (df["thalach"].fillna(150) < 150).map({True: "Y", False: "N"})
+    out["STHigh"] = (df["oldpeak"].fillna(0) >= 1.0).map({True: "Y", False: "N"})
+    out[TARGET] = df["num"].apply(lambda x: "Yes" if x > 0 else "No")
+    out["source"] = df["source"]
+    return out.dropna(subset=["CP", TARGET])
+
+
+def load_optimized_dataset() -> pd.DataFrame:
+    """Cleveland-only dataset with clinical binary features."""
+    raw = load_raw_combined()
+    raw = raw[raw["source"].isin(OPTIMIZED_SOURCES)]
+    return discretize_optimized_dataframe(raw)
+
+
+def prepare_train_val_test(
+    df: pd.DataFrame,
+    test_size: float = 0.25,
+    val_size: float = 0.2,
+    seed: int = 42,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Stratified train / validation / test split for threshold tuning."""
+    train_full, test = train_test_split(
+        df,
+        test_size=test_size,
+        random_state=seed,
+        stratify=df[TARGET],
+    )
+    train, val = train_test_split(
+        train_full,
+        test_size=val_size,
+        random_state=seed,
+        stratify=train_full[TARGET],
+    )
+    return (
+        train.reset_index(drop=True),
+        val.reset_index(drop=True),
+        test.reset_index(drop=True),
+    )
+
+
 def train_modes(train_df: pd.DataFrame) -> dict[str, str]:
     """Per-column mode on training data (excluding Unknown when possible)."""
     modes = {}
@@ -188,9 +245,15 @@ def prepare_train_test(
     return impute_unknowns(train, modes), impute_unknowns(test, modes), train
 
 
-def records_to_evidence(row: pd.Series, query_var: str = TARGET) -> dict[str, str]:
+def records_to_evidence(
+    row: pd.Series,
+    query_var: str = TARGET,
+    feature_vars: list[str] | None = None,
+) -> dict[str, str]:
     """Convert one patient row to evidence dict (all features except query)."""
-    vars_used = [v for v in EXPERT_VARS if v != query_var]
+    vars_used = feature_vars or [v for v in EXPERT_VARS if v != query_var]
+    if query_var in vars_used:
+        vars_used = [v for v in vars_used if v != query_var]
     evidence = {}
     for v in vars_used:
         if v not in row.index:
@@ -223,9 +286,17 @@ def ensure_data_cached() -> Path:
     if not cache.exists():
         df = load_discretized_dataset()
         df.to_csv(cache, index=False)
+    opt_cache = DATA_DIR / "heart_disease_optimized.csv"
+    if not opt_cache.exists():
+        load_optimized_dataset().to_csv(opt_cache, index=False)
     return cache
 
 
 def load_cached_or_build() -> pd.DataFrame:
     cache = ensure_data_cached()
     return pd.read_csv(cache)
+
+
+def load_cached_optimized() -> pd.DataFrame:
+    ensure_data_cached()
+    return pd.read_csv(DATA_DIR / "heart_disease_optimized.csv")

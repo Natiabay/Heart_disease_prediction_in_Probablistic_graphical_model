@@ -17,5 +17,6 @@ env/
 data/raw/
 .streamlit/secrets.toml
 
-# Bundled processed dataset for Streamlit Cloud (no download needed)
+# Bundled processed datasets for Streamlit Cloud (no download needed)
 !data/heart_disease_discretized.csv
+!data/heart_disease_optimized.csv

@@ -10,14 +10,25 @@ import json
 import os
 from pathlib import Path
 
+import pandas as pd
+
 os.environ.setdefault("MPLBACKEND", "Agg")
 
 from src.artifacts import save_model
-from src.config import OUTPUT_DIR, STATE_LABELS, TARGET, ProjectConfig
+from src.config import (
+    OPTIMIZED_SEED,
+    OPTIMIZED_VARS,
+    OUTPUT_DIR,
+    STATE_LABELS,
+    TARGET,
+    ProjectConfig,
+)
 from src.data import (
     dataset_summary,
     load_discretized_dataset,
+    load_optimized_dataset,
     prepare_train_test,
+    prepare_train_val_test,
     records_to_evidence,
 )
 from src.evaluation import benchmark_inference_methods, evaluate_model, results_to_dataframe
@@ -26,9 +37,10 @@ from src.learning import (
     get_learning_summary,
     learn_expert_bn,
     learn_naive_bayes_bn,
+    learn_optimized_clinical_bn,
     learn_structure_and_parameters,
 )
-from src.model import build_expert_structure, representation_summary
+from src.model import build_expert_structure
 from src.visualization import (
     plot_confusion_matrix,
     plot_dag,
@@ -55,18 +67,32 @@ def run_pipeline(output_dir: Path, quick: bool = False, use_hillclimb: bool = Fa
     train_df, test_df, _ = prepare_train_test(df, test_size=config.test_size, seed=config.seed)
     print(f"  Train: {len(train_df)}  |  Test: {len(test_df)} (Unknown imputed from train modes)")
 
-    print("\n[Phase 1] Representation — three Bayesian Network structures")
+    print("\n[Data] Loading optimized Cleveland clinical subset")
+    opt_df = load_optimized_dataset()
+    opt_summary = dataset_summary(opt_df)
+    opt_train, opt_val, opt_test = prepare_train_val_test(
+        opt_df, test_size=config.test_size, seed=OPTIMIZED_SEED
+    )
+    opt_tune = opt_train if quick else pd.concat([opt_train, opt_val])
+    print(
+        f"  Cleveland samples: {opt_summary['n_samples']}  |  "
+        f"Train/Val/Test: {len(opt_train)}/{len(opt_val)}/{len(opt_test)}"
+    )
+
+    print("\n[Phase 1] Representation — Bayesian Network structures")
     expert_meta = build_expert_structure()
     print(f"  1. Expert BN — {len(expert_meta['edges'])} edges (clinical intuition)")
-    print(f"  2. Naive Bayes BN — {len([v for v in expert_meta['variables'] if v != TARGET])} edges (symptoms → disease)")
-    print(f"  3. Chow-Liu Tree BN — learned from data (mutual information)")
+    print(f"  2. Naive Bayes BN — symptoms → disease")
+    print(f"  3. Chow-Liu Tree BN — learned from multi-source data")
+    print(f"  4. Optimized Clinical BN — Cleveland binary features (primary)")
 
     print("\n[Phase 2] Learning — parameter learning on all structures")
     expert_learned = learn_expert_bn(train_df, use_bayesian=True)
     naive_learned = learn_naive_bayes_bn(train_df)
     tree_learned = learn_structure_and_parameters(train_df, config, use_hillclimb=use_hillclimb)
+    optimized_learned = learn_optimized_clinical_bn(opt_train)
 
-    models = [expert_learned, naive_learned, tree_learned]
+    models = [expert_learned, naive_learned, tree_learned, optimized_learned]
     for res in models:
         s = get_learning_summary(res)
         print(f"  {s['name']}: {s['method']}")
@@ -78,12 +104,20 @@ def run_pipeline(output_dir: Path, quick: bool = False, use_hillclimb: bool = Fa
     plot_dag(expert_learned.model, output_dir / "fig0_expert_dag.png", "Expert Bayesian Network")
     plot_dag(naive_learned.model, output_dir / "fig1_naive_bayes_dag.png", "Naive Bayes Diagnosis BN")
     plot_dag(tree_learned.model, output_dir / "fig1b_chowliu_dag.png", "Chow-Liu Tree BN")
+    plot_dag(
+        optimized_learned.model,
+        output_dir / "fig1c_optimized_dag.png",
+        "Optimized Clinical BN (Cleveland)",
+    )
 
-    print("\n[Phase 3] Inference — VE with tuned decision threshold (trained on train set)")
+    opt_features = [v for v in OPTIMIZED_VARS if v != TARGET]
+
+    print("\n[Phase 3] Inference — VE with tuned decision thresholds")
     results = []
     eval_df = test_df.head(100) if quick else test_df
+    opt_eval_df = opt_test.head(50) if quick else opt_test
 
-    for lr in models:
+    for lr in [expert_learned, naive_learned, tree_learned]:
         ev = evaluate_model(
             lr.model,
             eval_df,
@@ -100,24 +134,51 @@ def run_pipeline(output_dir: Path, quick: bool = False, use_hillclimb: bool = Fa
             flush=True,
         )
 
+    opt_ev = evaluate_model(
+        optimized_learned.model,
+        opt_eval_df,
+        optimized_learned.name,
+        method="ve",
+        tune_threshold_df=opt_tune,
+        feature_vars=opt_features,
+        balanced_threshold=True,
+    )
+    results.append(opt_ev)
+    print(
+        f"  {opt_ev.model_name} [VE, t={opt_ev.threshold:.2f}] ★ PRIMARY: "
+        f"acc={opt_ev.accuracy:.3f} prec={opt_ev.precision:.3f} "
+        f"rec={opt_ev.recall:.3f} f1={opt_ev.f1:.3f} auc={opt_ev.roc_auc:.3f} "
+        f"({opt_ev.mean_inference_ms:.1f} ms/query)",
+        flush=True,
+    )
+
     print("\n[Phase 3] Saving figures …", flush=True)
     metrics_df = results_to_dataframe(results)
     metrics_df.to_csv(output_dir / "metrics.csv", index=False)
     plot_metrics_comparison(metrics_df, output_dir / "fig2_metrics.png")
 
-    best = max(results, key=lambda r: r.f1)
-    print(f"\n  Best model by F1: {best.model_name} (F1={best.f1:.3f}, acc={best.accuracy:.3f})")
+    best = max(results, key=lambda r: min(r.accuracy, r.precision, r.recall, r.f1, r.roc_auc))
+    print(
+        f"\n  Best model (max min-metric): {best.model_name} "
+        f"(acc={best.accuracy:.3f}, prec={best.precision:.3f}, rec={best.recall:.3f}, "
+        f"f1={best.f1:.3f}, auc={best.roc_auc:.3f})"
+    )
     plot_confusion_matrix(best, output_dir / "fig3_confusion_best.png")
     plot_roc_curve(best, output_dir / "fig4_roc_best.png")
 
-    bench = benchmark_inference_methods(naive_learned.model, test_df.head(15), naive_learned.name)
+    bench = benchmark_inference_methods(
+        optimized_learned.model,
+        opt_eval_df.head(15),
+        optimized_learned.name,
+        feature_vars=opt_features,
+    )
     bench.to_csv(output_dir / "inference_benchmark.csv", index=False)
     plot_inference_benchmark(bench, output_dir / "fig5_inference_benchmark.png")
 
-    example = test_df.iloc[0]
-    evidence = records_to_evidence(example)
-    trace = predict_disease(naive_learned.model, evidence, method="ve")
-    print("\n[Demo query — Naive Bayes BN]")
+    example = opt_test.iloc[0]
+    evidence = records_to_evidence(example, feature_vars=opt_features)
+    trace = predict_disease(optimized_learned.model, evidence, method="ve")
+    print("\n[Demo query — Optimized Clinical BN]")
     print(f"  P(HeartDisease=Yes | evidence) = {trace.posterior.get('Yes', 0):.3f}")
     print(f"  True label: {example[TARGET]}")
 
@@ -128,8 +189,10 @@ def run_pipeline(output_dir: Path, quick: bool = False, use_hillclimb: bool = Fa
 
     report = {
         "dataset": summary,
+        "optimized_dataset": opt_summary,
         "expert_structure": expert_meta,
         "best_model": best.model_name,
+        "optimized_threshold": opt_ev.threshold,
         "metrics": metrics_df.to_dict(orient="records"),
         "state_labels": STATE_LABELS,
     }

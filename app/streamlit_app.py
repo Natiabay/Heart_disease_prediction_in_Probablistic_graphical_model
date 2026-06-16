@@ -21,9 +21,25 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from app.presets import PRESETS
-from src.config import FEATURE_LABELS, OUTPUT_DIR, STATE_LABELS, TARGET, ProjectConfig
-from src.data import load_cached_or_build, prepare_train_test, records_to_evidence, train_test_split_data
+from app.presets import OPTIMIZED_PRESETS, PRESETS
+from src.config import (
+    FEATURE_LABELS,
+    OPTIMIZED_FEATURE_LABELS,
+    OPTIMIZED_SEED,
+    OPTIMIZED_STATE_LABELS,
+    OPTIMIZED_VARS,
+    OUTPUT_DIR,
+    STATE_LABELS,
+    TARGET,
+    ProjectConfig,
+)
+from src.data import (
+    load_cached_or_build,
+    load_cached_optimized,
+    prepare_train_test,
+    prepare_train_val_test,
+    records_to_evidence,
+)
 from src.inference import (
     compare_inference,
     disease_probability,
@@ -34,6 +50,7 @@ from src.inference import (
 from src.learning import (
     learn_expert_bn,
     learn_naive_bayes_bn,
+    learn_optimized_clinical_bn,
     learn_structure_and_parameters,
 )
 
@@ -54,7 +71,11 @@ def load_models():
     expert = learn_expert_bn(train)
     naive = learn_naive_bayes_bn(train)
     tree = learn_structure_and_parameters(train, ProjectConfig(structure_learning_iters=40))
-    return expert.model, naive.model, tree.model
+
+    opt_df = load_cached_optimized()
+    opt_train, _, _ = prepare_train_val_test(opt_df, seed=OPTIMIZED_SEED)
+    optimized = learn_optimized_clinical_bn(opt_train)
+    return expert.model, naive.model, tree.model, optimized.model
 
 
 @st.cache_data
@@ -65,10 +86,53 @@ def load_report():
 
 
 @st.cache_data
-def load_test_sample():
-    df = load_cached_or_build()
-    _, test, _ = prepare_train_test(df)
+def load_test_sample(optimized: bool = False):
+    if optimized:
+        df = load_cached_optimized()
+        _, _, test = prepare_train_val_test(df, seed=OPTIMIZED_SEED)
+    else:
+        df = load_cached_or_build()
+        _, test, _ = prepare_train_test(df)
     return test
+
+
+def model_ui_config(model, network_name: str) -> tuple[dict, dict, dict]:
+    """Return state labels, feature labels, and presets for the selected model."""
+    if "Optimized" in network_name:
+        return OPTIMIZED_STATE_LABELS, OPTIMIZED_FEATURE_LABELS, OPTIMIZED_PRESETS
+    return STATE_LABELS, FEATURE_LABELS, PRESETS
+
+
+def collect_evidence_for_model(
+    model,
+    network_name: str,
+    key_prefix: str = "",
+    preset_evidence: dict | None = None,
+) -> dict[str, str]:
+    """Build evidence from widgets; options match trained model states."""
+    state_labels, feature_labels, _ = model_ui_config(model, network_name)
+    feature_vars = [v for v in state_labels if v != TARGET]
+    evidence = {}
+    cols = st.columns(2)
+    preset_evidence = preset_evidence or {}
+    for i, var in enumerate(feature_vars):
+        model_states = []
+        for cpd in model.get_cpds():
+            if cpd.variable == var:
+                model_states = [str(s) for s in cpd.state_names[var]]
+                break
+        options = model_states or state_labels[var]
+        default_idx = 0
+        if var in preset_evidence and preset_evidence[var] in options:
+            default_idx = options.index(preset_evidence[var])
+        with cols[i % 2]:
+            evidence[var] = st.selectbox(
+                feature_labels.get(var, var),
+                options,
+                index=default_idx,
+                key=f"{key_prefix}sel_{var}",
+            )
+    return evidence
 
 
 def render_dag_figure(model, title: str) -> bytes:
@@ -145,7 +209,7 @@ def collect_evidence(model, key_prefix: str = "") -> dict[str, str]:
     return evidence
 
 
-def tab_diagnosis(expert_model, naive_model, tree_model, report):
+def tab_diagnosis(expert_model, naive_model, tree_model, optimized_model, report):
     st.header("Interactive diagnosis")
     st.markdown(
         "Enter patient symptoms and risk factors. The BN computes "
@@ -156,23 +220,33 @@ def tab_diagnosis(expert_model, naive_model, tree_model, report):
     with c1:
         network = st.selectbox(
             "Bayesian Network model",
-            ["Naive Bayes BN (recommended)", "Chow-Liu Tree BN", "Expert BN"],
+            [
+                "Optimized Clinical BN (recommended)",
+                "Chow-Liu Tree BN",
+                "Naive Bayes BN",
+                "Expert BN",
+            ],
         )
         model_map = {
-            "Naive Bayes BN (recommended)": naive_model,
+            "Optimized Clinical BN (recommended)": optimized_model,
             "Chow-Liu Tree BN": tree_model,
+            "Naive Bayes BN": naive_model,
             "Expert BN": expert_model,
         }
         model = model_map[network]
+        _, _, presets = model_ui_config(model, network)
 
-        preset = st.selectbox("Load preset profile", ["— Custom —"] + list(PRESETS.keys()))
+        preset = st.selectbox("Load preset profile", ["— Custom —"] + list(presets.keys()))
         if preset != "— Custom —":
-            st.session_state["preset_evidence"] = PRESETS[preset]
+            st.session_state["preset_evidence"] = presets[preset]
 
         if st.button("Load random test patient", use_container_width=True):
-            test = load_test_sample()
+            test = load_test_sample(optimized="Optimized" in network)
             row = test.sample(1, random_state=int(st.session_state.get("rand_seed", 0))).iloc[0]
-            st.session_state["preset_evidence"] = records_to_evidence(row)
+            st.session_state["preset_evidence"] = records_to_evidence(
+                row,
+                feature_vars=[v for v in model.nodes() if v != TARGET],
+            )
             st.session_state["rand_seed"] = st.session_state.get("rand_seed", 0) + 1
             st.session_state["true_label"] = row[TARGET]
 
@@ -181,28 +255,10 @@ def tab_diagnosis(expert_model, naive_model, tree_model, report):
 
     with c2:
         st.subheader("Patient evidence")
-        # Apply preset via session state defaults
         preset_ev = st.session_state.get("preset_evidence", {})
-        feature_vars = [v for v in STATE_LABELS if v != TARGET]
-        evidence = {}
-        cols = st.columns(2)
-        for i, var in enumerate(feature_vars):
-            model_states = []
-            for cpd in model.get_cpds():
-                if cpd.variable == var:
-                    model_states = [str(s) for s in cpd.state_names[var]]
-                    break
-            options = model_states or STATE_LABELS[var]
-            default_idx = 0
-            if var in preset_ev and preset_ev[var] in options:
-                default_idx = options.index(preset_ev[var])
-            with cols[i % 2]:
-                evidence[var] = st.selectbox(
-                    FEATURE_LABELS.get(var, var),
-                    options,
-                    index=default_idx,
-                    key=f"diag_{var}",
-                )
+        evidence = collect_evidence_for_model(
+            model, network, key_prefix="diag_", preset_evidence=preset_ev
+        )
 
     with c3:
         st.subheader("Inference settings")
@@ -263,7 +319,7 @@ def tab_diagnosis(expert_model, naive_model, tree_model, report):
         st.info("Configure patient evidence and click **Run Bayesian inference**.")
 
 
-def tab_algorithm_lab(expert_model, naive_model, tree_model):
+def tab_algorithm_lab(expert_model, naive_model, tree_model, optimized_model):
     st.header("Algorithm laboratory")
     st.markdown(
         "Compare **Variable Elimination** and **Belief Propagation** on identical evidence. "
@@ -272,16 +328,17 @@ def tab_algorithm_lab(expert_model, naive_model, tree_model):
 
     model_choice = st.radio(
         "Model",
-        ["Naive Bayes BN", "Chow-Liu Tree BN", "Expert BN"],
+        ["Optimized Clinical BN", "Chow-Liu Tree BN", "Naive Bayes BN", "Expert BN"],
         horizontal=True,
     )
     model_map = {
-        "Naive Bayes BN": naive_model,
+        "Optimized Clinical BN": optimized_model,
         "Chow-Liu Tree BN": tree_model,
+        "Naive Bayes BN": naive_model,
         "Expert BN": expert_model,
     }
     model = model_map[model_choice]
-    evidence = collect_evidence(model, key_prefix="lab_")
+    evidence = collect_evidence_for_model(model, model_choice, key_prefix="lab_")
 
     if st.button("Compare algorithms", type="primary"):
         ve, bp = compare_inference(model, evidence)
@@ -307,18 +364,19 @@ def tab_algorithm_lab(expert_model, naive_model, tree_model):
             st.warning(f"Posterior difference |Δ| = {diff:.4f} (may occur on approximate BP).")
 
 
-def tab_network_explorer(expert_model, naive_model, tree_model, report):
+def tab_network_explorer(expert_model, naive_model, tree_model, optimized_model, report):
     st.header("Network explorer")
     st.markdown("Visualize the **Representation** pillar: DAG structure learned vs expert-defined.")
 
     choice = st.radio(
         "View network",
-        ["Naive Bayes BN", "Chow-Liu Tree BN", "Expert BN"],
+        ["Optimized Clinical BN", "Chow-Liu Tree BN", "Naive Bayes BN", "Expert BN"],
         horizontal=True,
     )
     model_map = {
-        "Naive Bayes BN": naive_model,
+        "Optimized Clinical BN": optimized_model,
         "Chow-Liu Tree BN": tree_model,
+        "Naive Bayes BN": naive_model,
         "Expert BN": expert_model,
     }
     model = model_map[choice]
@@ -395,7 +453,7 @@ streamlit run app/streamlit_app.py
 def main():
     report = load_report()
     sidebar(report)
-    expert_model, naive_model, tree_model = load_models()
+    expert_model, naive_model, tree_model, optimized_model = load_models()
 
     tab1, tab2, tab3, tab4 = st.tabs([
         "Diagnosis",
@@ -405,11 +463,11 @@ def main():
     ])
 
     with tab1:
-        tab_diagnosis(expert_model, naive_model, tree_model, report)
+        tab_diagnosis(expert_model, naive_model, tree_model, optimized_model, report)
     with tab2:
-        tab_algorithm_lab(expert_model, naive_model, tree_model)
+        tab_algorithm_lab(expert_model, naive_model, tree_model, optimized_model)
     with tab3:
-        tab_network_explorer(expert_model, naive_model, tree_model, report)
+        tab_network_explorer(expert_model, naive_model, tree_model, optimized_model, report)
     with tab4:
         tab_pgm_concepts()
 

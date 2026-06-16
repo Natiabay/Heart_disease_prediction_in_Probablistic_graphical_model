@@ -26,6 +26,30 @@
       "HeartDisease"
     ]
   },
+  "optimized_dataset": {
+    "n_samples": 303,
+    "n_features": 13,
+    "prevalence": 0.45874587458745875,
+    "by_source": {
+      "cleveland": 303
+    },
+    "columns": [
+      "Age",
+      "Sex",
+      "CP",
+      "Trestbps",
+      "Chol",
+      "Fbs",
+      "Restecg",
+      "Thalach",
+      "Exang",
+      "Oldpeak",
+      "Slope",
+      "Ca",
+      "Thal",
+      "HeartDisease"
+    ]
+  },
   "expert_structure": {
     "name": "Expert Heart Disease BN",
     "variables": [
@@ -112,7 +136,8 @@
     ],
     "description": "Expert-defined DAG: demographic and clinical risk factors probabilistically influence HeartDisease. Age affects cholesterol, blood pressure, and exercise capacity; symptoms and test results directly inform the disease node."
   },
-  "best_model": "Chow-Liu Tree BN",
+  "best_model": "Optimized Clinical BN",
+  "optimized_threshold": 0.42499999999999993,
   "metrics": [
     {
       "Model": "Expert Heart Disease BN",
@@ -123,7 +148,7 @@
       "Recall": 0.969,
       "F1": 0.721,
       "ROC-AUC": 0.616,
-      "Mean inference (ms)": 0.93,
+      "Mean inference (ms)": 1.02,
       "N test": 230
     },
     {
@@ -135,7 +160,7 @@
       "Recall": 0.969,
       "F1": 0.721,
       "ROC-AUC": 0.616,
-      "Mean inference (ms)": 0.89,
+      "Mean inference (ms)": 1.01,
       "N test": 230
     },
     {
@@ -147,8 +172,20 @@
       "Recall": 0.945,
       "F1": 0.842,
       "ROC-AUC": 0.895,
-      "Mean inference (ms)": 1.15,
+      "Mean inference (ms)": 1.37,
       "N test": 230
+    },
+    {
+      "Model": "Optimized Clinical BN",
+      "Inference": "VE",
+      "Threshold": 0.425,
+      "Accuracy": 0.895,
+      "Precision": 0.886,
+      "Recall": 0.886,
+      "F1": 0.886,
+      "ROC-AUC": 0.925,
+      "Mean inference (ms)": 1.03,
+      "N test": 76
     }
   ],
   "state_labels": {

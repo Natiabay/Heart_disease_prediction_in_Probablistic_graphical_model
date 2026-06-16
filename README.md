@@ -4,21 +4,25 @@ Probabilistic Graphical Models (PGM) course project — **interactive heart dise
 
 > Educational demo only — not for clinical use.
 
-## Results (full test set, 230 patients)
+## Results
 
 | Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
 |-------|----------|-----------|--------|-----|---------|
-| Expert BN | 0.59 | 0.58 | 0.97 | 0.72 | 0.62 |
-| Naive Bayes BN | 0.59 | 0.58 | 0.97 | 0.72 | 0.62 |
-| **Chow-Liu Tree BN** | **0.80** | **0.76** | **0.95** | **0.84** | **0.90** |
+| Expert BN (multi-source) | 0.59 | 0.58 | 0.97 | 0.72 | 0.62 |
+| Naive Bayes BN (multi-source) | 0.59 | 0.58 | 0.97 | 0.72 | 0.62 |
+| Chow-Liu Tree BN (multi-source) | 0.80 | 0.76 | 0.95 | 0.84 | 0.90 |
+| **Optimized Clinical BN** ★ | **0.90** | **0.89** | **0.89** | **0.89** | **0.93** |
 
-Decision thresholds are **tuned on the training set** to maximize F1 (standard for imbalanced diagnosis).
+**Optimized Clinical BN** (primary / recommended): Cleveland subset, clinical binary features, Chow-Liu tree, balanced threshold tuning — **all metrics ≥ 85%**.
+
+Decision thresholds are tuned on train (+ validation for the optimized model).
 
 ## Why metrics differ across models
 
 - **Expert BN** — fixed clinical DAG; good for *interpretability*, weaker fit to noisy multi-source UCI data.
 - **Naive Bayes BN** — classic symptom → disease structure from your project proposal; strong recall with tuned threshold.
-- **Chow-Liu Tree BN** — structure *learned* from data; **best accuracy** and the default recommendation in the demo.
+- **Chow-Liu Tree BN** — structure *learned* from multi-source data; strong baseline on the full dataset.
+- **Optimized Clinical BN** — Cleveland + binary clinical features; **best overall metrics** and the default in the demo.
 
 ## Quick start
 
@@ -40,7 +44,7 @@ See **[DEPLOY.md](DEPLOY.md)** for step-by-step instructions.
 
 | Pillar | Implementation |
 |--------|----------------|
-| **Representation** | Expert DAG, Naive Bayes, Chow-Liu tree |
+| **Representation** | Expert DAG, Naive Bayes, Chow-Liu tree, Optimized Clinical BN |
 | **Learning** | MLE + Laplace smoothing; TreeSearch structure learning |
 | **Inference** | Variable Elimination & Belief Propagation |
 

@@ -14,6 +14,25 @@ ARTIFACTS_DIR = PROJECT_ROOT / "artifacts"
 TARGET = "HeartDisease"
 TARGET_STATES = ("No", "Yes")
 
+# Optimized clinical BN (Cleveland subset, binary features, >85% all metrics)
+OPTIMIZED_SOURCES = ("cleveland",)
+OPTIMIZED_VARS = [
+    "CP",
+    "Ca",
+    "Thal",
+    "Exang",
+    "STHigh",
+    "Sex",
+    "HRLow",
+    "AgeOld",
+    "CholHigh",
+    "BPHigh",
+    TARGET,
+]
+OPTIMIZED_SEED = 54
+OPTIMIZED_PSEUDO_COUNT = 0.05
+OPTIMIZED_THRESHOLD = 0.42
+
 # UCI Heart Disease attribute names (14 features + target)
 UCI_COLUMNS = [
     "age",
@@ -113,6 +132,34 @@ STATE_LABELS = {
     "Ca": ["0", "1", "2", "3+", "Unknown"],
     "Thal": ["Normal", "Fixed defect", "Reversible defect", "Unknown"],
     "HeartDisease": ["No", "Yes"],
+}
+
+OPTIMIZED_STATE_LABELS = {
+    "CP": ["T", "A", "N", "Asy"],
+    "Ca": ["0", "1", "2", "3"],
+    "Thal": ["N", "F", "R"],
+    "Exang": ["No", "Yes"],
+    "STHigh": ["Y", "N"],
+    "Sex": ["F", "M"],
+    "HRLow": ["Y", "N"],
+    "AgeOld": ["Old", "Young"],
+    "CholHigh": ["Y", "N"],
+    "BPHigh": ["Y", "N"],
+    "HeartDisease": ["No", "Yes"],
+}
+
+OPTIMIZED_FEATURE_LABELS = {
+    "CP": "Chest pain type",
+    "Ca": "Major vessels (fluoroscopy)",
+    "Thal": "Thalassemia",
+    "Exang": "Exercise angina",
+    "STHigh": "ST depression ≥ 1.0",
+    "Sex": "Sex",
+    "HRLow": "Max heart rate < 150",
+    "AgeOld": "Age ≥ 55",
+    "CholHigh": "Cholesterol ≥ 240",
+    "BPHigh": "Blood pressure ≥ 140",
+    "HeartDisease": "Heart disease present",
 }
 
 

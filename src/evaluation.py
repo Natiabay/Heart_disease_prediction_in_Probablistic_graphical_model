@@ -50,12 +50,13 @@ def collect_scores(
     model: DiscreteBayesianNetwork,
     df: pd.DataFrame,
     method: str = "ve",
+    feature_vars: list[str] | None = None,
 ) -> tuple[list[str], list[float], float]:
     """Run inference on all rows; return labels, P(Yes) scores, mean latency."""
     y_true, y_score = [], []
     timings = []
     for _, row in df.iterrows():
-        evidence = records_to_evidence(row)
+        evidence = records_to_evidence(row, feature_vars=feature_vars)
         t0 = time.perf_counter()
         trace = predict_disease(model, evidence, method=method)
         timings.append((time.perf_counter() - t0) * 1000.0)
@@ -75,6 +76,26 @@ def find_optimal_threshold(y_true: list[str], y_score: list[float]) -> float:
         f1 = f1_score(y_bin, preds, zero_division=0)
         if f1 > best_f1:
             best_f1, best_t = f1, float(t)
+    return best_t
+
+
+def find_optimal_threshold_balanced(y_true: list[str], y_score: list[float]) -> float:
+    """Pick threshold that maximizes the minimum of accuracy, precision, recall, and F1."""
+    y_bin = [1 if y == "Yes" else 0 for y in y_true]
+    if len(set(y_bin)) < 2:
+        return 0.5
+    best_t, best_min = 0.5, -1.0
+    for t in np.linspace(0.05, 0.95, 181):
+        preds = [1 if s >= t else 0 for s in y_score]
+        vals = [
+            accuracy_score(y_bin, preds),
+            precision_score(y_bin, preds, zero_division=0),
+            recall_score(y_bin, preds, zero_division=0),
+            f1_score(y_bin, preds, zero_division=0),
+        ]
+        mn = min(vals)
+        if mn > best_min:
+            best_min, best_t = mn, float(t)
     return best_t
 
 
@@ -103,6 +124,8 @@ def evaluate_model(
     method: str = "ve",
     threshold: float | None = None,
     tune_threshold_df: pd.DataFrame | None = None,
+    feature_vars: list[str] | None = None,
+    balanced_threshold: bool = False,
 ) -> EvalResult:
     """
     Evaluate BN on held-out patients.
@@ -111,12 +134,19 @@ def evaluate_model(
     then applied to test_df — avoids optimistic bias and improves recall.
     """
     if threshold is None and tune_threshold_df is not None:
-        ty, ts, _ = collect_scores(model, tune_threshold_df, method=method)
-        threshold = find_optimal_threshold(ty, ts)
+        ty, ts, _ = collect_scores(
+            model, tune_threshold_df, method=method, feature_vars=feature_vars
+        )
+        if balanced_threshold:
+            threshold = find_optimal_threshold_balanced(ty, ts)
+        else:
+            threshold = find_optimal_threshold(ty, ts)
     elif threshold is None:
         threshold = 0.5
 
-    y_true, y_score, mean_ms = collect_scores(model, test_df, method=method)
+    y_true, y_score, mean_ms = collect_scores(
+        model, test_df, method=method, feature_vars=feature_vars
+    )
     acc, prec, rec, f1, auc = _metrics_from_scores(y_true, y_score, threshold)
     y_pred = [_predict_label(s, threshold) for s in y_score]
 
@@ -142,6 +172,7 @@ def benchmark_inference_methods(
     test_df: pd.DataFrame,
     model_name: str,
     n_repeats: int = 1,
+    feature_vars: list[str] | None = None,
 ) -> pd.DataFrame:
     """Compare VE vs BP mean latency on test evidence."""
     rows = []
@@ -150,7 +181,7 @@ def benchmark_inference_methods(
         times = []
         for _ in range(n_repeats):
             for _, row in sample.iterrows():
-                evidence = records_to_evidence(row)
+                evidence = records_to_evidence(row, feature_vars=feature_vars)
                 t0 = time.perf_counter()
                 predict_disease(model, evidence, method=method)
                 times.append((time.perf_counter() - t0) * 1000.0)
