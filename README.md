@@ -42,13 +42,15 @@ streamlit run app/streamlit_app.py
 ### Streamlit Cloud (recommended)
 
 1. Open **[share.streamlit.io](https://share.streamlit.io)** and sign in with **GitHub**
-2. Click **Create app** (or **New app**)
+2. Click **Create app**
 3. Fill in:
    - **Repository:** `Natiabay/micro_research-`
    - **Branch:** `main`
-   - **Main file path:** `app/streamlit_app.py`
-4. Click **Deploy** — first build takes ~2–5 minutes (trains BNs on load)
-5. When status is **Running**, open the public URL and demo the **Diagnosis** tab
+   - **Main file path:** `streamlit_app.py` *(or `app/streamlit_app.py` — both work)*
+4. Click **Deploy** — first build takes ~2–5 minutes
+5. Open the public URL when status is **Running**
+
+If deploy fails, open **Manage app → Logs** and check for red errors.
 
 No secrets or API keys are required. Datasets are bundled in `data/`.
 

@@ -64,18 +64,36 @@ st.set_page_config(
 REPORT_PATH = OUTPUT_DIR / "report.json"
 
 
-@st.cache_resource(show_spinner="Training Bayesian Networks on UCI data …")
-def load_models():
+@st.cache_resource(show_spinner="Training Optimized Clinical BN …")
+def load_optimized_model():
+    opt_df = load_cached_optimized()
+    opt_train, _, _ = prepare_train_val_test(opt_df, seed=OPTIMIZED_SEED)
+    return learn_optimized_clinical_bn(opt_train).model
+
+
+@st.cache_resource(show_spinner="Training multi-source Bayesian Networks …")
+def load_legacy_models():
     df = load_cached_or_build()
     train, _, _ = prepare_train_test(df)
     expert = learn_expert_bn(train)
     naive = learn_naive_bayes_bn(train)
     tree = learn_structure_and_parameters(train, ProjectConfig(structure_learning_iters=40))
+    return expert.model, naive.model, tree.model
 
-    opt_df = load_cached_optimized()
-    opt_train, _, _ = prepare_train_val_test(opt_df, seed=OPTIMIZED_SEED)
-    optimized = learn_optimized_clinical_bn(opt_train)
-    return expert.model, naive.model, tree.model, optimized.model
+
+def get_models():
+    """Load optimized BN first; legacy models only when needed (faster Cloud boot)."""
+    optimized = load_optimized_model()
+    if st.session_state.get("legacy_models_loaded"):
+        expert, naive, tree = load_legacy_models()
+        return expert, naive, tree, optimized
+    return optimized, optimized, optimized, optimized
+
+
+def ensure_legacy_models():
+    if not st.session_state.get("legacy_models_loaded"):
+        st.session_state["legacy_models_loaded"] = True
+        load_legacy_models()
 
 
 @st.cache_data
@@ -233,6 +251,15 @@ def tab_diagnosis(expert_model, naive_model, tree_model, optimized_model, report
             "Naive Bayes BN": naive_model,
             "Expert BN": expert_model,
         }
+        if "Optimized" not in network:
+            ensure_legacy_models()
+            expert_model, naive_model, tree_model, optimized_model = get_models()
+            model_map = {
+                "Optimized Clinical BN (recommended)": optimized_model,
+                "Chow-Liu Tree BN": tree_model,
+                "Naive Bayes BN": naive_model,
+                "Expert BN": expert_model,
+            }
         model = model_map[network]
         _, _, presets = model_ui_config(model, network)
 
@@ -320,6 +347,8 @@ def tab_diagnosis(expert_model, naive_model, tree_model, optimized_model, report
 
 
 def tab_algorithm_lab(expert_model, naive_model, tree_model, optimized_model):
+    ensure_legacy_models()
+    expert_model, naive_model, tree_model, optimized_model = get_models()
     st.header("Algorithm laboratory")
     st.markdown(
         "Compare **Variable Elimination** and **Belief Propagation** on identical evidence. "
@@ -365,6 +394,8 @@ def tab_algorithm_lab(expert_model, naive_model, tree_model, optimized_model):
 
 
 def tab_network_explorer(expert_model, naive_model, tree_model, optimized_model, report):
+    ensure_legacy_models()
+    expert_model, naive_model, tree_model, optimized_model = get_models()
     st.header("Network explorer")
     st.markdown("Visualize the **Representation** pillar: DAG structure learned vs expert-defined.")
 
@@ -453,7 +484,7 @@ streamlit run app/streamlit_app.py
 def main():
     report = load_report()
     sidebar(report)
-    expert_model, naive_model, tree_model, optimized_model = load_models()
+    expert_model, naive_model, tree_model, optimized_model = get_models()
 
     tab1, tab2, tab3, tab4 = st.tabs([
         "Diagnosis",
@@ -472,5 +503,4 @@ def main():
         tab_pgm_concepts()
 
 
-if __name__ == "__main__":
-    main()
+main()
