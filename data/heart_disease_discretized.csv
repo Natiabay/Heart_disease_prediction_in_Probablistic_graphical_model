@@ -1,0 +1,921 @@
+Age,Sex,CP,Trestbps,Chol,Fbs,Restecg,Thalach,Exang,Oldpeak,Slope,Ca,Thal,HeartDisease,source
+Senior,Male,Typical angina,High,Borderline,High,LV hypertrophy,Medium,No,Severe,Downsloping,0,Fixed defect,No,cleveland
+Elderly,Male,Asymptomatic,High,High,Normal,LV hypertrophy,Low,Yes,Mild,Flat,3+,Normal,Yes,cleveland
+Elderly,Male,Asymptomatic,Normal,Borderline,Normal,LV hypertrophy,Medium,Yes,Severe,Flat,2,Reversible defect,Yes,cleveland
+Young,Male,Non-anginal pain,Normal,High,Normal,Normal,High,No,Severe,Downsloping,0,Normal,No,cleveland
+Young,Female,Atypical angina,Normal,Borderline,Normal,LV hypertrophy,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Senior,Male,Atypical angina,Normal,Borderline,Normal,Normal,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Senior,Female,Asymptomatic,Normal,High,Normal,LV hypertrophy,High,No,Severe,Downsloping,2,Normal,Yes,cleveland
+Senior,Female,Asymptomatic,Normal,High,Normal,Normal,High,Yes,Mild,Upsloping,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,Medium,No,Mild,Flat,1,Reversible defect,Yes,cleveland
+Middle,Male,Asymptomatic,Normal,Borderline,High,LV hypertrophy,High,Yes,Severe,Downsloping,0,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,Low,Normal,Normal,Medium,No,Mild,Flat,0,Fixed defect,No,cleveland
+Senior,Female,Atypical angina,Normal,High,Normal,LV hypertrophy,High,No,Mild,Flat,0,Normal,No,cleveland
+Senior,Male,Non-anginal pain,Normal,High,High,LV hypertrophy,Medium,Yes,Mild,Flat,1,Fixed defect,Yes,cleveland
+Young,Male,Atypical angina,Normal,High,Normal,Normal,High,No,None,Upsloping,0,Reversible defect,No,cleveland
+Middle,Male,Non-anginal pain,High,Low,High,Normal,High,No,Mild,Upsloping,0,Reversible defect,No,cleveland
+Senior,Male,Non-anginal pain,High,Low,Normal,Normal,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Middle,Male,Atypical angina,Low,Borderline,Normal,Normal,High,No,Mild,Downsloping,0,Reversible defect,Yes,cleveland
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Middle,Female,Non-anginal pain,Normal,High,Normal,Normal,Medium,No,Mild,Upsloping,0,Normal,No,cleveland
+Middle,Male,Atypical angina,Normal,High,Normal,Normal,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Senior,Male,Typical angina,Low,Borderline,Normal,LV hypertrophy,Medium,Yes,Mild,Flat,0,Normal,No,cleveland
+Senior,Female,Typical angina,High,High,High,LV hypertrophy,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Senior,Male,Atypical angina,Normal,High,Normal,LV hypertrophy,High,No,Mild,Flat,0,Normal,Yes,cleveland
+Senior,Male,Non-anginal pain,Normal,Borderline,Normal,LV hypertrophy,High,No,Severe,Upsloping,2,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,LV hypertrophy,Medium,Yes,Severe,Flat,2,Reversible defect,Yes,cleveland
+Middle,Female,Non-anginal pain,Normal,Borderline,Normal,Normal,High,No,Mild,Flat,0,Normal,No,cleveland
+Senior,Female,Non-anginal pain,Normal,High,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Elderly,Female,Typical angina,High,Borderline,Normal,Normal,Low,No,Severe,Downsloping,0,Normal,No,cleveland
+Young,Male,Asymptomatic,High,High,Normal,Normal,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Young,Male,Asymptomatic,Low,Low,Normal,LV hypertrophy,Low,Yes,Mild,Flat,0,Reversible defect,Yes,cleveland
+Elderly,Female,Typical angina,Normal,Borderline,Normal,Normal,High,No,Mild,Upsloping,2,Normal,No,cleveland
+Senior,Male,Asymptomatic,Low,Borderline,High,Normal,High,Yes,Mild,Upsloping,2,Reversible defect,Yes,cleveland
+Senior,Male,Non-anginal pain,Normal,High,Normal,Normal,High,No,None,Upsloping,0,Normal,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,Normal,High,No,Mild,Flat,0,Reversible defect,No,cleveland
+Young,Male,Non-anginal pain,Normal,Borderline,Normal,Normal,High,Yes,Mild,Upsloping,0,Normal,No,cleveland
+Young,Male,Asymptomatic,Normal,Borderline,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Young,Male,Asymptomatic,Normal,Low,Normal,LV hypertrophy,Low,Yes,Severe,Flat,0,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,High,High,Normal,LV hypertrophy,Low,Yes,Mild,Flat,1,Fixed defect,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,Yes,Mild,Flat,1,Reversible defect,Yes,cleveland
+Senior,Male,Non-anginal pain,High,High,High,Normal,Medium,Yes,Mild,Flat,0,Normal,No,cleveland
+Elderly,Female,Asymptomatic,High,Borderline,Normal,LV hypertrophy,Low,No,Mild,Flat,3+,Reversible defect,Yes,cleveland
+Young,Male,Typical angina,Normal,Low,Normal,Normal,High,Yes,Mild,Upsloping,0,Reversible defect,No,cleveland
+Elderly,Female,Atypical angina,High,High,Normal,Normal,High,No,Mild,Upsloping,2,Normal,No,cleveland
+Senior,Male,Non-anginal pain,High,Borderline,High,Normal,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Senior,Female,Asymptomatic,Normal,High,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,Yes,cleveland
+Senior,Male,Non-anginal pain,Low,Borderline,Normal,LV hypertrophy,High,No,Severe,Flat,1,Reversible defect,Yes,cleveland
+Middle,Male,Non-anginal pain,Low,Low,Normal,Normal,Low,No,Mild,Upsloping,0,Normal,No,cleveland
+Middle,Male,Asymptomatic,High,High,Normal,LV hypertrophy,Medium,No,Severe,Flat,0,Reversible defect,Yes,cleveland
+Elderly,Female,Non-anginal pain,Normal,High,High,LV hypertrophy,High,No,Mild,Upsloping,1,Normal,No,cleveland
+Middle,Male,Non-anginal pain,Normal,Low,High,LV hypertrophy,High,No,Mild,Downsloping,0,Normal,No,cleveland
+Young,Female,Atypical angina,Low,Low,Normal,Normal,High,No,None,Upsloping,1,Normal,No,cleveland
+Elderly,Male,Asymptomatic,Normal,Low,Normal,Normal,Medium,No,Mild,Upsloping,0,Reversible defect,No,cleveland
+Young,Male,Asymptomatic,Low,High,Normal,LV hypertrophy,High,No,None,Upsloping,1,Normal,Yes,cleveland
+Young,Male,Atypical angina,Normal,Borderline,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,Yes,Mild,Upsloping,1,Reversible defect,Yes,cleveland
+Middle,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,Low,Yes,Severe,Flat,1,Reversible defect,Yes,cleveland
+Middle,Male,Non-anginal pain,Normal,Borderline,Normal,Normal,High,No,Mild,Flat,1,Reversible defect,Yes,cleveland
+Young,Male,Asymptomatic,Low,Low,Normal,LV hypertrophy,High,No,None,Upsloping,0,Reversible defect,Yes,cleveland
+Middle,Male,Non-anginal pain,Normal,High,Normal,LV hypertrophy,High,No,Mild,Downsloping,1,Normal,No,cleveland
+Middle,Male,Typical angina,Normal,Borderline,Normal,LV hypertrophy,Low,Yes,Mild,Upsloping,1,Normal,No,cleveland
+Middle,Female,Asymptomatic,Normal,High,Normal,Normal,Medium,Yes,Mild,Flat,0,Reversible defect,Yes,cleveland
+Middle,Female,Non-anginal pain,High,Low,Normal,LV hypertrophy,High,Yes,Mild,Downsloping,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,LV hypertrophy,Medium,Yes,Severe,Flat,3+,Reversible defect,Yes,cleveland
+Middle,Female,Non-anginal pain,Normal,High,High,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Middle,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,No,Mild,Flat,1,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,High,High,Normal,LV hypertrophy,Medium,Yes,Severe,Flat,2,Reversible defect,Yes,cleveland
+Senior,Male,Non-anginal pain,Normal,Low,Normal,LV hypertrophy,High,No,Severe,Flat,0,Normal,Yes,cleveland
+Middle,Male,Non-anginal pain,High,Borderline,Normal,LV hypertrophy,High,No,Mild,Upsloping,0,Reversible defect,No,cleveland
+Senior,Male,Asymptomatic,High,High,Normal,LV hypertrophy,Medium,Yes,Severe,Downsloping,0,Reversible defect,Yes,cleveland
+Middle,Male,Non-anginal pain,High,Borderline,Normal,Normal,Medium,No,Severe,Flat,0,Normal,Yes,cleveland
+Elderly,Female,Non-anginal pain,High,High,Normal,Normal,Medium,No,Mild,Upsloping,0,Normal,No,cleveland
+Elderly,Male,Asymptomatic,Normal,High,High,Normal,High,No,Mild,Flat,2,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,2,Reversible defect,Yes,cleveland
+Elderly,Male,Asymptomatic,Low,High,Normal,LV hypertrophy,High,No,Mild,Upsloping,2,Fixed defect,Yes,cleveland
+Young,Male,Asymptomatic,Low,Low,Normal,LV hypertrophy,High,No,None,Upsloping,1,Normal,Yes,cleveland
+Elderly,Female,Non-anginal pain,High,High,Normal,LV hypertrophy,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,Medium,Yes,Severe,Flat,1,Reversible defect,Yes,cleveland
+Middle,Female,Non-anginal pain,Normal,High,Normal,LV hypertrophy,Medium,No,Mild,Upsloping,1,Normal,No,cleveland
+Middle,Male,Atypical angina,Normal,High,Normal,LV hypertrophy,High,No,Mild,Flat,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,High,High,Normal,LV hypertrophy,Low,Yes,Mild,Upsloping,0,Reversible defect,Yes,cleveland
+Middle,Male,Asymptomatic,Low,Borderline,Normal,LV hypertrophy,Medium,Yes,Severe,Flat,0,Normal,No,cleveland
+Middle,Female,Asymptomatic,Normal,High,Normal,LV hypertrophy,Medium,No,Mild,Flat,0,Normal,No,cleveland
+Young,Male,Non-anginal pain,Normal,High,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Elderly,Male,Non-anginal pain,High,High,High,LV hypertrophy,Medium,Yes,Mild,Flat,0,Reversible defect,Yes,cleveland
+Middle,Male,Atypical angina,Normal,High,Normal,Normal,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Young,Male,Non-anginal pain,Normal,Borderline,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Middle,Male,Non-anginal pain,Normal,High,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Middle,Female,Non-anginal pain,Normal,Borderline,Normal,LV hypertrophy,Low,No,None,Upsloping,0,Unknown,No,cleveland
+Middle,Female,Asymptomatic,Normal,Borderline,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Middle,Female,Non-anginal pain,Normal,High,Normal,LV hypertrophy,Medium,No,Mild,Upsloping,0,Normal,No,cleveland
+Elderly,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,High,No,Mild,Flat,0,Normal,No,cleveland
+Senior,Female,Asymptomatic,High,Low,Normal,LV hypertrophy,Medium,No,Severe,Downsloping,3+,Reversible defect,Yes,cleveland
+Senior,Male,Non-anginal pain,Normal,Borderline,Normal,Normal,Medium,No,Mild,Flat,3+,Reversible defect,No,cleveland
+Young,Female,Non-anginal pain,Low,Low,Normal,Normal,High,No,Mild,Flat,0,Normal,No,cleveland
+Senior,Female,Non-anginal pain,Normal,High,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,High,Yes,None,Upsloping,1,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,Low,Borderline,Normal,LV hypertrophy,Medium,Yes,Mild,Flat,1,Reversible defect,Yes,cleveland
+Senior,Female,Asymptomatic,High,High,Normal,LV hypertrophy,High,No,Severe,Flat,2,Reversible defect,Yes,cleveland
+Middle,Male,Atypical angina,Normal,Borderline,Normal,Normal,High,No,Mild,Upsloping,1,Normal,No,cleveland
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Middle,Male,Asymptomatic,Low,High,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Young,Male,Typical angina,Low,Low,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Female,Asymptomatic,Normal,High,Normal,LV hypertrophy,High,No,None,Upsloping,1,Normal,No,cleveland
+Elderly,Female,Non-anginal pain,Low,High,High,LV hypertrophy,Medium,No,None,Upsloping,1,Normal,No,cleveland
+Middle,Male,Non-anginal pain,Normal,Low,Normal,Normal,Medium,No,Mild,Flat,3+,Reversible defect,Yes,cleveland
+Middle,Male,Atypical angina,Low,High,Normal,Normal,High,No,None,Upsloping,0,Reversible defect,No,cleveland
+Senior,Male,Asymptomatic,Normal,Low,Normal,Normal,High,Yes,None,Upsloping,1,Reversible defect,Yes,cleveland
+Senior,Male,Non-anginal pain,Normal,Borderline,Normal,LV hypertrophy,Medium,No,Mild,Flat,1,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,Yes,Severe,Flat,1,Reversible defect,Yes,cleveland
+Young,Male,Asymptomatic,Low,Borderline,Normal,Normal,Medium,No,Mild,Flat,0,Reversible defect,Yes,cleveland
+Senior,Female,Asymptomatic,High,High,Normal,LV hypertrophy,Medium,Yes,Mild,Flat,0,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,High,High,LV hypertrophy,Medium,Yes,Mild,Flat,1,Normal,Yes,cleveland
+Middle,Male,Typical angina,Low,Low,Normal,LV hypertrophy,High,No,None,Flat,0,Fixed defect,No,cleveland
+Young,Female,Asymptomatic,Normal,High,High,LV hypertrophy,Medium,Yes,Severe,Flat,0,Reversible defect,Yes,cleveland
+Senior,Female,Non-anginal pain,Normal,High,Normal,Normal,Low,No,Mild,Flat,1,Reversible defect,Yes,cleveland
+Young,Male,Atypical angina,Normal,Borderline,Normal,Normal,Medium,No,None,Flat,0,Fixed defect,No,cleveland
+Senior,Male,Non-anginal pain,Normal,Borderline,High,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Young,Female,Asymptomatic,Normal,Low,Normal,Normal,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,Normal,High,High,LV hypertrophy,Medium,Yes,Mild,Upsloping,3+,Reversible defect,Yes,cleveland
+Elderly,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,Medium,No,Severe,Flat,1,Reversible defect,Yes,cleveland
+Middle,Male,Asymptomatic,Normal,High,High,LV hypertrophy,Medium,Yes,None,Upsloping,2,Reversible defect,Yes,cleveland
+Senior,Female,Asymptomatic,High,High,Normal,LV hypertrophy,High,No,Severe,Flat,3+,Reversible defect,Yes,cleveland
+Middle,Male,Non-anginal pain,Low,Borderline,Normal,Normal,Medium,Yes,Mild,Flat,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Low,Yes,Severe,Downsloping,0,Reversible defect,Yes,cleveland
+Elderly,Male,Typical angina,Normal,High,High,LV hypertrophy,High,No,Mild,Flat,1,Normal,Yes,cleveland
+Middle,Female,Atypical angina,Normal,Borderline,Normal,LV hypertrophy,High,No,Mild,Flat,0,Normal,No,cleveland
+Senior,Female,Asymptomatic,High,High,High,LV hypertrophy,Medium,Yes,Severe,Downsloping,2,Reversible defect,Yes,cleveland
+Middle,Male,Asymptomatic,Low,Borderline,Normal,Normal,Medium,Yes,Severe,Flat,1,Reversible defect,Yes,cleveland
+Young,Male,Atypical angina,Normal,Borderline,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Female,Asymptomatic,Normal,Borderline,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Middle,Male,Non-anginal pain,Normal,High,Normal,LV hypertrophy,Medium,No,Mild,Flat,0,Reversible defect,No,cleveland
+Middle,Male,Non-anginal pain,Low,Borderline,Normal,Normal,High,Yes,None,Upsloping,1,Reversible defect,No,cleveland
+Young,Male,Atypical angina,Normal,Borderline,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Middle,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,High,Yes,None,Upsloping,0,Normal,No,cleveland
+Young,Female,Non-anginal pain,Normal,Borderline,Normal,Normal,High,No,Mild,Flat,0,Normal,No,cleveland
+Senior,Female,Atypical angina,Normal,High,Normal,LV hypertrophy,High,No,Mild,Flat,0,Normal,No,cleveland
+Elderly,Male,Asymptomatic,High,Low,Normal,Normal,Low,Yes,Severe,Downsloping,0,Reversible defect,Yes,cleveland
+Senior,Male,Atypical angina,Normal,High,Normal,LV hypertrophy,Low,No,Mild,Flat,1,Reversible defect,Yes,cleveland
+Young,Male,Asymptomatic,Normal,Low,Normal,Normal,Medium,Yes,Mild,Flat,0,Reversible defect,Yes,cleveland
+Middle,Male,Non-anginal pain,Normal,High,High,LV hypertrophy,High,No,Severe,Flat,0,Normal,No,cleveland
+Senior,Male,Atypical angina,Normal,Borderline,Normal,Normal,High,Yes,None,Upsloping,0,Normal,No,cleveland
+Senior,Male,Typical angina,High,High,Normal,LV hypertrophy,High,No,Mild,Flat,0,Reversible defect,Yes,cleveland
+Middle,Male,Atypical angina,Normal,Borderline,High,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Male,Non-anginal pain,Normal,High,Normal,Normal,Medium,Yes,Mild,Flat,0,Reversible defect,Yes,cleveland
+Senior,Male,Non-anginal pain,Low,Borderline,Normal,LV hypertrophy,High,Yes,Mild,Flat,0,Reversible defect,No,cleveland
+Middle,Male,Non-anginal pain,Low,High,Normal,Normal,High,No,None,Upsloping,0,Normal,Yes,cleveland
+Senior,Male,Asymptomatic,High,High,High,LV hypertrophy,Low,No,Mild,Flat,3+,Reversible defect,Yes,cleveland
+Young,Male,Non-anginal pain,Low,High,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Middle,Male,Atypical angina,Normal,High,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Female,Non-anginal pain,Low,High,Normal,Normal,High,No,None,Upsloping,1,Normal,No,cleveland
+Middle,Male,Typical angina,High,High,High,Normal,High,No,Mild,Flat,0,Reversible defect,No,cleveland
+Young,Female,Asymptomatic,Low,High,Normal,LV hypertrophy,Low,No,Mild,Flat,0,Normal,No,cleveland
+Elderly,Female,Non-anginal pain,Low,High,Normal,LV hypertrophy,High,No,Mild,Flat,0,Reversible defect,No,cleveland
+Senior,Male,Asymptomatic,High,High,Normal,LV hypertrophy,Medium,Yes,Mild,Flat,1,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,Low,Yes,Severe,Downsloping,1,Normal,Yes,cleveland
+Elderly,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,Low,No,Severe,Flat,3+,Normal,Yes,cleveland
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,High,Yes,Mild,Upsloping,0,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,High,No,None,Upsloping,2,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,High,No,Mild,Flat,2,Reversible defect,Yes,cleveland
+Elderly,Male,Non-anginal pain,Low,High,Normal,Normal,High,No,Mild,Upsloping,1,Reversible defect,No,cleveland
+Middle,Male,Atypical angina,Low,Low,High,Normal,High,No,None,Upsloping,0,Reversible defect,No,cleveland
+Elderly,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,High,Yes,None,Upsloping,3+,Normal,Yes,cleveland
+Middle,Female,Non-anginal pain,Low,Borderline,Normal,Normal,High,No,Mild,Flat,0,Normal,No,cleveland
+Senior,Female,Asymptomatic,Low,High,Normal,LV hypertrophy,Low,No,Mild,Flat,0,Normal,No,cleveland
+Middle,Male,Non-anginal pain,Normal,High,High,Normal,High,No,None,Upsloping,2,Normal,No,cleveland
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,Normal,High,Yes,None,Upsloping,0,Reversible defect,No,cleveland
+Middle,Male,Non-anginal pain,Normal,Borderline,Normal,Normal,High,No,None,Upsloping,Unknown,Normal,No,cleveland
+Middle,Female,Atypical angina,Normal,High,High,LV hypertrophy,High,Yes,None,Upsloping,1,Normal,No,cleveland
+Young,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,High,Yes,None,Upsloping,0,Reversible defect,Yes,cleveland
+Middle,Female,Atypical angina,Low,Low,Normal,Normal,Medium,No,None,Flat,0,Normal,No,cleveland
+Elderly,Male,Non-anginal pain,High,High,Normal,Normal,Low,Yes,Severe,Flat,1,Reversible defect,Yes,cleveland
+Middle,Male,Asymptomatic,High,Borderline,Normal,LV hypertrophy,Low,Yes,None,Upsloping,0,Reversible defect,No,cleveland
+Senior,Female,Asymptomatic,High,High,Normal,Normal,Medium,Yes,None,Flat,0,Normal,Yes,cleveland
+Senior,Female,Asymptomatic,Normal,High,Normal,LV hypertrophy,High,No,Mild,Flat,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,High,Borderline,Normal,LV hypertrophy,Medium,No,Mild,Flat,2,Fixed defect,Yes,cleveland
+Senior,Male,Asymptomatic,High,High,Normal,Normal,Low,Yes,Mild,Flat,1,Reversible defect,Yes,cleveland
+Middle,Male,Asymptomatic,Low,Borderline,High,Normal,Medium,No,Mild,Upsloping,3+,Reversible defect,No,cleveland
+Senior,Male,Asymptomatic,Normal,Low,Normal,LV hypertrophy,Low,Yes,Severe,Flat,1,Fixed defect,Yes,cleveland
+Young,Male,Non-anginal pain,Normal,High,Normal,Normal,High,No,Mild,Upsloping,1,Normal,No,cleveland
+Middle,Male,Non-anginal pain,Normal,High,High,LV hypertrophy,High,No,None,Upsloping,3+,Normal,No,cleveland
+Middle,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,High,No,Mild,Flat,0,Reversible defect,Yes,cleveland
+Senior,Female,Asymptomatic,Normal,High,Normal,LV hypertrophy,Medium,Yes,Mild,Flat,2,Reversible defect,Yes,cleveland
+Young,Male,Typical angina,High,High,Normal,LV hypertrophy,High,No,Mild,Upsloping,2,Normal,No,cleveland
+Senior,Male,Typical angina,High,High,Normal,LV hypertrophy,Medium,No,Severe,Downsloping,0,Reversible defect,No,cleveland
+Senior,Female,Asymptomatic,High,High,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,Yes,cleveland
+Senior,Female,Atypical angina,Normal,Low,Normal,Normal,High,No,None,Upsloping,2,Normal,No,cleveland
+Young,Male,Non-anginal pain,Normal,Borderline,High,Normal,High,No,Mild,Downsloping,0,Reversible defect,No,cleveland
+Elderly,Male,Atypical angina,High,High,Normal,Normal,Low,Yes,None,Flat,3+,Fixed defect,Yes,cleveland
+Middle,Male,Atypical angina,High,High,Normal,LV hypertrophy,High,No,None,Upsloping,1,Reversible defect,Yes,cleveland
+Elderly,Male,Non-anginal pain,Normal,High,Normal,LV hypertrophy,Medium,No,Mild,Flat,3+,Reversible defect,Yes,cleveland
+Middle,Male,Non-anginal pain,Normal,Low,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Severe,Flat,3+,Reversible defect,Yes,cleveland
+Young,Male,Asymptomatic,Normal,High,High,LV hypertrophy,Medium,Yes,Mild,Flat,Unknown,Reversible defect,Yes,cleveland
+Senior,Female,Asymptomatic,Normal,High,High,Normal,Low,No,Mild,Flat,3+,Normal,Yes,cleveland
+Elderly,Female,Non-anginal pain,Normal,Borderline,Normal,LV hypertrophy,Low,No,Mild,Flat,0,Normal,No,cleveland
+Elderly,Male,Asymptomatic,Low,High,Normal,LV hypertrophy,Low,Yes,Mild,Flat,2,Normal,Yes,cleveland
+Elderly,Male,Typical angina,High,Borderline,High,LV hypertrophy,Medium,No,Mild,Flat,1,Normal,No,cleveland
+Middle,Female,Asymptomatic,Normal,Borderline,Normal,LV hypertrophy,High,Yes,Mild,Flat,0,Normal,No,cleveland
+Middle,Female,Atypical angina,Normal,High,Normal,Normal,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Senior,Male,Typical angina,High,High,Normal,LV hypertrophy,Low,No,None,Upsloping,0,Normal,Yes,cleveland
+Middle,Female,Asymptomatic,Low,High,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Female,Asymptomatic,High,High,Normal,Normal,High,Yes,None,Upsloping,0,Normal,No,cleveland
+Senior,Male,Non-anginal pain,High,Low,High,Normal,High,No,Mild,Upsloping,1,Reversible defect,No,cleveland
+Senior,Female,Non-anginal pain,Normal,High,Normal,Normal,Medium,No,Mild,Upsloping,0,Reversible defect,No,cleveland
+Young,Male,Asymptomatic,Low,Borderline,Normal,Normal,High,No,None,Upsloping,0,Reversible defect,No,cleveland
+Middle,Male,Asymptomatic,High,High,Normal,LV hypertrophy,Medium,Yes,None,Flat,3+,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,Medium,Yes,Severe,Flat,2,Reversible defect,Yes,cleveland
+Middle,Male,Asymptomatic,High,Borderline,Normal,LV hypertrophy,Medium,Yes,Mild,Flat,0,Reversible defect,Yes,cleveland
+Senior,Male,Atypical angina,Normal,High,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Female,Asymptomatic,High,High,Normal,Normal,High,Yes,Mild,Flat,0,Normal,Yes,cleveland
+Young,Female,Non-anginal pain,Normal,Borderline,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Young,Male,Typical angina,Normal,Borderline,Normal,Normal,High,Yes,Severe,Flat,0,Reversible defect,Yes,cleveland
+Young,Male,Non-anginal pain,Normal,Borderline,Normal,LV hypertrophy,High,No,Mild,Flat,0,Normal,No,cleveland
+Elderly,Female,Asymptomatic,High,Borderline,High,Normal,High,Yes,Mild,Flat,2,Reversible defect,Yes,cleveland
+Middle,Male,Asymptomatic,Low,Borderline,Normal,Normal,High,No,None,Upsloping,1,Normal,Yes,cleveland
+Senior,Male,Typical angina,Normal,Low,Normal,LV hypertrophy,High,No,Mild,Flat,0,Reversible defect,No,cleveland
+Middle,Female,Atypical angina,Low,Borderline,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Middle,Female,Asymptomatic,Normal,High,Normal,LV hypertrophy,High,Yes,None,Flat,0,Normal,No,cleveland
+Senior,Female,Asymptomatic,Normal,High,Normal,Normal,Low,No,Mild,Flat,2,Normal,No,cleveland
+Senior,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Young,Female,Non-anginal pain,Low,High,Normal,LV hypertrophy,High,Yes,None,Upsloping,0,Normal,No,cleveland
+Middle,Female,Non-anginal pain,Low,High,Normal,LV hypertrophy,High,No,None,Upsloping,0,Normal,No,cleveland
+Young,Female,Non-anginal pain,Low,Low,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,2,Reversible defect,Yes,cleveland
+Senior,Female,Asymptomatic,Low,High,Normal,Normal,High,Yes,Mild,Flat,2,Normal,Yes,cleveland
+Young,Female,Atypical angina,Low,Borderline,Normal,Normal,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Middle,Male,Asymptomatic,Low,Borderline,Normal,Normal,Medium,No,Mild,Upsloping,0,Normal,No,cleveland
+Elderly,Female,Non-anginal pain,High,High,Normal,Normal,High,No,None,Upsloping,1,Normal,No,cleveland
+Middle,Male,Asymptomatic,Low,Borderline,Normal,LV hypertrophy,Low,Yes,None,Flat,1,Normal,Yes,cleveland
+Elderly,Male,Asymptomatic,Low,Borderline,Normal,LV hypertrophy,Medium,Yes,Mild,Upsloping,1,Normal,Yes,cleveland
+Middle,Female,Non-anginal pain,Normal,Low,Normal,LV hypertrophy,High,No,Mild,Flat,0,Normal,No,cleveland
+Senior,Female,Asymptomatic,High,High,Normal,ST-T abnormality,Low,Yes,Severe,Flat,0,Normal,Yes,cleveland
+Middle,Male,Non-anginal pain,Low,Low,Normal,LV hypertrophy,Medium,No,Mild,Upsloping,3+,Normal,Yes,cleveland
+Elderly,Female,Atypical angina,Normal,High,Normal,LV hypertrophy,Low,Yes,Mild,Upsloping,1,Normal,No,cleveland
+Middle,Female,Non-anginal pain,High,Borderline,Normal,Normal,High,No,None,Upsloping,1,Normal,No,cleveland
+Middle,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,Low,Yes,Severe,Flat,2,Normal,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,High,High,LV hypertrophy,Low,Yes,Mild,Downsloping,0,Reversible defect,Yes,cleveland
+Middle,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,Medium,No,Mild,Upsloping,0,Reversible defect,Yes,cleveland
+Middle,Female,Atypical angina,Normal,High,Normal,Normal,High,No,None,Flat,0,Normal,No,cleveland
+Young,Male,Atypical angina,Normal,High,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Young,Male,Atypical angina,Low,Borderline,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Young,Female,Atypical angina,Normal,High,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Middle,Female,Asymptomatic,Normal,High,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Male,Typical angina,Normal,Borderline,Normal,Normal,Medium,No,Severe,Flat,2,Normal,Yes,cleveland
+Senior,Female,Non-anginal pain,Normal,Low,High,Normal,Low,No,None,Upsloping,0,Normal,No,cleveland
+Elderly,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Low,No,Mild,Flat,0,Normal,Yes,cleveland
+Senior,Male,Asymptomatic,Low,Borderline,Normal,Normal,High,No,Mild,Upsloping,1,Reversible defect,Yes,cleveland
+Middle,Male,Asymptomatic,Low,High,Normal,LV hypertrophy,Low,Yes,Mild,Flat,1,Normal,Yes,cleveland
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,High,No,Mild,Upsloping,2,Reversible defect,Yes,cleveland
+Senior,Male,Atypical angina,Normal,Borderline,High,LV hypertrophy,Medium,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,Low,Borderline,Normal,Normal,Medium,Yes,Mild,Flat,0,Fixed defect,No,cleveland
+Senior,Male,Asymptomatic,High,Borderline,Normal,Normal,Low,No,Mild,Flat,1,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,1,Reversible defect,No,cleveland
+Middle,Female,Non-anginal pain,Normal,High,Normal,LV hypertrophy,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Young,Male,Asymptomatic,Low,High,Normal,Normal,High,No,Mild,Flat,0,Normal,No,cleveland
+Young,Female,Non-anginal pain,Normal,Borderline,Normal,Normal,High,No,None,Flat,0,Normal,No,cleveland
+Elderly,Female,Asymptomatic,Low,Borderline,Normal,Normal,Medium,No,Mild,Upsloping,2,Normal,No,cleveland
+Elderly,Female,Non-anginal pain,Normal,Low,Normal,ST-T abnormality,Low,No,Mild,Flat,0,Normal,No,cleveland
+Elderly,Male,Atypical angina,High,High,Normal,LV hypertrophy,Medium,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Male,Atypical angina,Normal,High,Normal,Normal,Medium,No,Mild,Upsloping,0,Reversible defect,Yes,cleveland
+Young,Female,Non-anginal pain,Low,High,Normal,Normal,Medium,No,Mild,Flat,1,Normal,No,cleveland
+Senior,Female,Atypical angina,Normal,High,High,LV hypertrophy,High,No,None,Upsloping,2,Normal,Yes,cleveland
+Senior,Female,Typical angina,High,Borderline,Normal,Normal,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Young,Male,Non-anginal pain,Normal,Borderline,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,Normal,Low,Normal,LV hypertrophy,Low,Yes,Severe,Flat,1,Normal,Yes,cleveland
+Young,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,0,Fixed defect,Yes,cleveland
+Middle,Male,Asymptomatic,Normal,Borderline,High,Normal,High,Yes,Mild,Flat,0,Unknown,Yes,cleveland
+Senior,Male,Non-anginal pain,Normal,Borderline,High,Normal,Medium,No,Severe,Flat,1,Fixed defect,Yes,cleveland
+Young,Male,Asymptomatic,High,Borderline,Normal,Normal,High,No,None,Upsloping,0,Reversible defect,Yes,cleveland
+Young,Male,Non-anginal pain,Normal,Low,Normal,Normal,Medium,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,LV hypertrophy,Medium,Yes,Mild,Upsloping,1,Reversible defect,Yes,cleveland
+Elderly,Male,Asymptomatic,High,Borderline,Normal,LV hypertrophy,Medium,No,Severe,Upsloping,0,Fixed defect,No,cleveland
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,2,Reversible defect,Yes,cleveland
+Elderly,Female,Asymptomatic,Low,Low,Normal,Normal,Low,No,Mild,Flat,0,Normal,No,cleveland
+Senior,Male,Typical angina,Normal,Borderline,Normal,Normal,High,No,Mild,Upsloping,2,Normal,Yes,cleveland
+Senior,Male,Typical angina,High,Borderline,Normal,LV hypertrophy,High,No,Mild,Flat,0,Reversible defect,No,cleveland
+Elderly,Female,Non-anginal pain,High,High,Normal,LV hypertrophy,High,No,None,Flat,1,Normal,No,cleveland
+Young,Female,Non-anginal pain,Normal,Borderline,Normal,Normal,High,No,None,Flat,0,Normal,No,cleveland
+Senior,Male,Atypical angina,High,Borderline,Normal,LV hypertrophy,High,No,None,Upsloping,1,Normal,Yes,cleveland
+Senior,Female,Asymptomatic,Normal,Low,Normal,Normal,Medium,No,Mild,Flat,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,Low,High,Normal,Normal,Medium,Yes,Severe,Flat,1,Reversible defect,Yes,cleveland
+Middle,Male,Non-anginal pain,Normal,High,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Female,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Medium,Yes,Mild,Flat,1,Reversible defect,Yes,cleveland
+Young,Male,Atypical angina,Normal,Low,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,High,Borderline,Normal,Normal,High,No,None,Upsloping,1,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,Low,High,Normal,ST-T abnormality,Medium,No,Severe,Downsloping,3+,Fixed defect,Yes,cleveland
+Senior,Female,Asymptomatic,High,Borderline,High,LV hypertrophy,Medium,Yes,Severe,Flat,2,Fixed defect,Yes,cleveland
+Senior,Male,Atypical angina,Normal,Borderline,Normal,Normal,Medium,No,Mild,Flat,Unknown,Reversible defect,No,cleveland
+Senior,Male,Atypical angina,Normal,Borderline,Normal,LV hypertrophy,High,No,None,Upsloping,0,Reversible defect,No,cleveland
+Senior,Male,Atypical angina,Normal,Borderline,Normal,Normal,High,No,None,Downsloping,0,Normal,No,cleveland
+Elderly,Male,Non-anginal pain,High,Borderline,Normal,LV hypertrophy,Medium,No,Mild,Flat,0,Reversible defect,Yes,cleveland
+Senior,Female,Atypical angina,Normal,High,Normal,Normal,High,No,Mild,Upsloping,0,Normal,No,cleveland
+Young,Male,Asymptomatic,Normal,Low,Normal,Normal,Medium,Yes,Severe,Downsloping,0,Fixed defect,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,Low,Normal,LV hypertrophy,Medium,Yes,Severe,Upsloping,2,Reversible defect,Yes,cleveland
+Senior,Female,Asymptomatic,Normal,Low,Normal,Normal,Medium,Yes,None,Flat,0,Normal,Yes,cleveland
+Young,Male,Atypical angina,Normal,Low,Normal,Normal,High,No,None,Upsloping,0,Normal,No,cleveland
+Senior,Male,Asymptomatic,High,Low,High,LV hypertrophy,Low,No,Mild,Flat,2,Fixed defect,Yes,cleveland
+Senior,Female,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,0,Reversible defect,Yes,cleveland
+Middle,Male,Typical angina,Low,High,Normal,Normal,Medium,No,Mild,Flat,0,Reversible defect,Yes,cleveland
+Elderly,Male,Asymptomatic,High,Low,High,Normal,Medium,No,Severe,Flat,2,Reversible defect,Yes,cleveland
+Senior,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,Yes,Mild,Flat,1,Reversible defect,Yes,cleveland
+Senior,Female,Atypical angina,Normal,Borderline,Normal,LV hypertrophy,High,No,None,Flat,1,Normal,Yes,cleveland
+Young,Male,Non-anginal pain,Normal,Low,Normal,Normal,High,No,None,Upsloping,Unknown,Normal,No,cleveland
+Young,Male,Atypical angina,Normal,Low,Normal,LV hypertrophy,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,Unknown,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Typical angina,High,Borderline,Normal,ST-T abnormality,High,No,None,Unknown,Unknown,Fixed defect,No,hungarian
+Young,Female,Atypical angina,Low,Borderline,Normal,ST-T abnormality,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Atypical angina,Low,Low,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Low,Borderline,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Non-anginal pain,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Atypical angina,Normal,Low,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,High,Borderline,Normal,ST-T abnormality,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Low,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Typical angina,Normal,Low,Normal,ST-T abnormality,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Asymptomatic,Normal,Low,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,High,Normal,LV hypertrophy,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,High,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,Low,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Non-anginal pain,Low,High,Normal,Normal,High,No,Mild,Flat,Unknown,Normal,No,hungarian
+Young,Male,Non-anginal pain,Normal,Borderline,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Non-anginal pain,High,Low,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Atypical angina,Normal,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Non-anginal pain,Normal,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Asymptomatic,Normal,Low,Normal,ST-T abnormality,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,High,Normal,ST-T abnormality,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Non-anginal pain,Normal,Low,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Asymptomatic,Normal,Borderline,Normal,Normal,High,No,None,Unknown,Unknown,Normal,No,hungarian
+Young,Male,Asymptomatic,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Atypical angina,Normal,High,Unknown,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Non-anginal pain,High,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Non-anginal pain,Low,Low,Normal,ST-T abnormality,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,Unknown,Normal,ST-T abnormality,Medium,No,Mild,Upsloping,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,Borderline,Normal,Normal,High,Yes,Mild,Flat,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,Unknown,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,High,High,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Non-anginal pain,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Non-anginal pain,High,Low,High,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Asymptomatic,Low,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Non-anginal pain,Normal,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Non-anginal pain,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Non-anginal pain,Normal,Unknown,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Atypical angina,Low,High,Normal,ST-T abnormality,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Atypical angina,Normal,Low,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Atypical angina,Normal,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,High,Normal,ST-T abnormality,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Asymptomatic,Low,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Non-anginal pain,Low,Borderline,Normal,ST-T abnormality,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,Low,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,Low,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,High,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Non-anginal pain,Normal,Borderline,Normal,Normal,High,Yes,Mild,Flat,Unknown,Unknown,No,hungarian
+Young,Male,Non-anginal pain,High,Low,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Asymptomatic,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Typical angina,Low,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Atypical angina,Normal,Borderline,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Atypical angina,Normal,Borderline,Normal,ST-T abnormality,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Atypical angina,Normal,High,Normal,ST-T abnormality,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Atypical angina,Normal,High,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Atypical angina,High,Low,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Non-anginal pain,High,Unknown,Normal,Normal,High,No,None,Unknown,Unknown,Normal,No,hungarian
+Young,Male,Atypical angina,High,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Female,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,Low,Normal,Normal,Medium,No,Mild,Flat,Unknown,Unknown,No,hungarian
+Young,Male,Atypical angina,Normal,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Young,Male,Asymptomatic,High,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Normal,Borderline,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,High,Unknown,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Asymptomatic,Normal,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,Borderline,High,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Non-anginal pain,Normal,Unknown,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Asymptomatic,Normal,Borderline,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,High,Normal,Normal,High,Yes,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Non-anginal pain,Normal,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Non-anginal pain,High,Low,Unknown,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Asymptomatic,Low,Borderline,Normal,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Normal,No,hungarian
+Middle,Male,Asymptomatic,Low,Borderline,Normal,ST-T abnormality,Medium,No,None,Unknown,Unknown,Normal,No,hungarian
+Middle,Male,Asymptomatic,High,High,Normal,ST-T abnormality,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Normal,High,Normal,Normal,Medium,No,Mild,Upsloping,Unknown,Unknown,No,hungarian
+Middle,Female,Non-anginal pain,Normal,Unknown,Normal,Normal,Medium,No,Mild,Flat,Unknown,Unknown,No,hungarian
+Middle,Male,Typical angina,Low,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,High,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Asymptomatic,Normal,High,High,Normal,Low,Yes,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Unknown,High,Normal,ST-T abnormality,Unknown,Unknown,Mild,Upsloping,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Normal,Unknown,High,ST-T abnormality,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Normal,High,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Non-anginal pain,Normal,Low,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Asymptomatic,Low,Low,Normal,Normal,High,No,Mild,Upsloping,Unknown,Unknown,No,hungarian
+Middle,Female,Asymptomatic,Normal,High,Normal,ST-T abnormality,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Asymptomatic,High,Borderline,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Low,Unknown,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,Borderline,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Non-anginal pain,Low,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Fixed defect,No,hungarian
+Middle,Female,Atypical angina,Low,Unknown,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Low,Unknown,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Normal,Borderline,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Non-anginal pain,Normal,Borderline,Normal,ST-T abnormality,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Low,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Non-anginal pain,Normal,Low,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Asymptomatic,Normal,High,Unknown,Normal,Medium,No,Mild,Flat,Unknown,Unknown,No,hungarian
+Middle,Male,Asymptomatic,Normal,Unknown,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Low,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,Low,Normal,Normal,High,No,None,Unknown,0,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,Borderline,Normal,Normal,High,No,None,Unknown,Unknown,Normal,No,hungarian
+Middle,Male,Atypical angina,High,Borderline,Normal,ST-T abnormality,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Asymptomatic,Normal,Low,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Asymptomatic,High,Borderline,Normal,Normal,Medium,Yes,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,High,Low,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Non-anginal pain,Low,Low,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Non-anginal pain,Normal,Borderline,Normal,Normal,High,Yes,Mild,Upsloping,Unknown,Unknown,No,hungarian
+Middle,Female,Non-anginal pain,High,Borderline,Normal,Normal,Low,No,Mild,Upsloping,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,Low,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,No,None,Unknown,Unknown,Reversible defect,No,hungarian
+Middle,Female,Atypical angina,Normal,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Normal,Unknown,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Non-anginal pain,Normal,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Asymptomatic,Normal,Low,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,High,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,Low,Normal,Normal,Medium,Yes,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,High,Low,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Non-anginal pain,Normal,High,Normal,ST-T abnormality,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Low,High,Unknown,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Normal,Borderline,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,No,hungarian
+Middle,Female,Non-anginal pain,Normal,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,Unknown,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Non-anginal pain,Normal,Low,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Asymptomatic,Normal,High,Normal,ST-T abnormality,Low,Yes,Severe,Flat,Unknown,Unknown,No,hungarian
+Middle,Male,Asymptomatic,Normal,Low,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Normal,Borderline,Normal,Normal,Medium,No,Mild,Upsloping,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Normal,Borderline,High,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Normal,High,Normal,Normal,Medium,No,Mild,Flat,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Normal,High,Normal,ST-T abnormality,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,Normal,High,Unknown,ST-T abnormality,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,High,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Female,Atypical angina,High,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Typical angina,Normal,Low,Normal,Normal,Medium,No,Mild,Upsloping,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Low,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,Borderline,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,Normal,High,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,High,Low,Normal,ST-T abnormality,Medium,No,Mild,Upsloping,Unknown,Unknown,No,hungarian
+Middle,Male,Atypical angina,High,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Non-anginal pain,Normal,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Non-anginal pain,High,Unknown,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Middle,Male,Asymptomatic,High,High,Normal,ST-T abnormality,Medium,No,Mild,Upsloping,Unknown,Unknown,No,hungarian
+Senior,Female,Atypical angina,Low,High,Normal,ST-T abnormality,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Female,Atypical angina,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Female,Atypical angina,Normal,High,Normal,LV hypertrophy,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Male,Atypical angina,Normal,High,High,Normal,Medium,No,None,Unknown,Unknown,Reversible defect,No,hungarian
+Senior,Male,Atypical angina,Normal,Low,Normal,Normal,Medium,No,None,Unknown,Unknown,Reversible defect,No,hungarian
+Senior,Male,Atypical angina,High,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Male,Non-anginal pain,Low,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Male,Non-anginal pain,Normal,Borderline,Normal,LV hypertrophy,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,No,hungarian
+Senior,Female,Non-anginal pain,Normal,Borderline,Unknown,ST-T abnormality,High,No,None,Unknown,Unknown,Reversible defect,No,hungarian
+Senior,Male,Atypical angina,Normal,Low,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Male,Non-anginal pain,Normal,Unknown,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Male,Non-anginal pain,Normal,High,Normal,Normal,Medium,Yes,Mild,Upsloping,Unknown,Fixed defect,No,hungarian
+Senior,Male,Asymptomatic,Normal,Low,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Female,Typical angina,Normal,High,Normal,Normal,Low,No,Mild,Flat,Unknown,Unknown,No,hungarian
+Senior,Female,Asymptomatic,High,High,Normal,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Unknown,No,hungarian
+Senior,Male,Atypical angina,Normal,High,High,Normal,Medium,No,None,Unknown,Unknown,Fixed defect,No,hungarian
+Senior,Male,Atypical angina,Normal,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Male,Atypical angina,Normal,High,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Male,Non-anginal pain,Normal,Low,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Female,Atypical angina,Normal,Low,Normal,Normal,Low,No,Mild,Flat,Unknown,Unknown,No,hungarian
+Senior,Male,Atypical angina,Normal,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Male,Non-anginal pain,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Normal,No,hungarian
+Senior,Male,Non-anginal pain,High,Borderline,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Male,Asymptomatic,Normal,Unknown,Normal,Normal,Medium,No,None,Unknown,0,Unknown,No,hungarian
+Senior,Male,Non-anginal pain,Normal,High,Normal,LV hypertrophy,Medium,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Female,Asymptomatic,Normal,High,Normal,ST-T abnormality,Low,Yes,Mild,Flat,Unknown,Unknown,No,hungarian
+Senior,Male,Asymptomatic,Normal,High,Normal,ST-T abnormality,Low,Yes,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Female,Typical angina,High,Low,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,hungarian
+Senior,Male,Atypical angina,Normal,High,Normal,Normal,High,No,Mild,Upsloping,Unknown,Unknown,No,hungarian
+Young,Male,Asymptomatic,Normal,High,Normal,Normal,High,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Young,Female,Asymptomatic,Low,High,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Typical angina,Normal,Low,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Young,Male,Atypical angina,Low,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Young,Male,Atypical angina,Normal,High,Normal,Normal,High,No,Severe,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Low,Low,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Normal,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Low,Low,Normal,Normal,Medium,Yes,Severe,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Normal,High,Unknown,Normal,High,Yes,Mild,Flat,Unknown,Fixed defect,Yes,hungarian
+Young,Male,Asymptomatic,Low,High,Normal,Normal,High,No,None,Unknown,Unknown,Fixed defect,Yes,hungarian
+Young,Male,Asymptomatic,Normal,Borderline,Unknown,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,High,High,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Low,Borderline,Normal,Normal,Medium,Yes,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Low,Low,Normal,Normal,Low,No,None,Unknown,Unknown,Reversible defect,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Non-anginal pain,Normal,Low,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,High,Borderline,Normal,Normal,Low,Yes,Mild,Flat,0,Reversible defect,Yes,hungarian
+Middle,Male,Asymptomatic,Low,High,High,Normal,Low,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,Low,No,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,High,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Female,Non-anginal pain,High,Low,Normal,Normal,High,No,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Non-anginal pain,Low,High,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,High,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Female,Non-anginal pain,Normal,High,Normal,Normal,Medium,Yes,None,Unknown,Unknown,Reversible defect,Yes,hungarian
+Middle,Male,Asymptomatic,High,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Female,Asymptomatic,High,High,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Low,No,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Medium,Yes,Severe,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Atypical angina,Normal,High,Normal,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Non-anginal pain,Normal,Borderline,Normal,ST-T abnormality,Medium,No,None,Unknown,Unknown,Fixed defect,Yes,hungarian
+Senior,Female,Asymptomatic,Normal,High,High,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Asymptomatic,Low,High,Normal,Normal,Low,No,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Asymptomatic,High,Borderline,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Elderly,Male,Asymptomatic,Normal,High,High,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Low,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Low,Unknown,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Low,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Fixed defect,Yes,hungarian
+Young,Female,Asymptomatic,High,High,Normal,Normal,Medium,No,Mild,Flat,Unknown,Fixed defect,Yes,hungarian
+Young,Male,Typical angina,Normal,High,Normal,ST-T abnormality,High,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Low,Yes,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,High,High,ST-T abnormality,Medium,Yes,Mild,Downsloping,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,High,Low,Normal,Normal,Low,Yes,Severe,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,High,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,High,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Reversible defect,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Low,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,High,Unknown,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Male,Non-anginal pain,Normal,Borderline,Normal,Normal,Medium,Yes,Mild,Unknown,Unknown,Reversible defect,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,High,High,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Unknown,Normal,Normal,Low,Yes,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,High,Low,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Asymptomatic,High,Borderline,High,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Asymptomatic,High,High,Normal,Normal,Low,Yes,Severe,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Non-anginal pain,High,Borderline,High,ST-T abnormality,Low,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Senior,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Normal,Low,Normal,ST-T abnormality,Medium,No,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Reversible defect,Yes,hungarian
+Young,Male,Atypical angina,High,High,Normal,Normal,Medium,Yes,Severe,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Typical angina,Normal,High,High,Normal,High,No,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Female,Non-anginal pain,Normal,High,High,Normal,High,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Female,Asymptomatic,Normal,Borderline,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Non-anginal pain,Normal,Low,Normal,Normal,Medium,No,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Low,High,Normal,ST-T abnormality,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,High,High,Normal,ST-T abnormality,Low,Yes,Severe,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Non-anginal pain,High,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,High,High,Normal,ST-T abnormality,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Low,No,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Typical angina,Normal,High,Normal,Unknown,Medium,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Senior,Male,Atypical angina,High,High,High,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Asymptomatic,High,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Female,Atypical angina,Normal,High,Normal,Normal,Medium,No,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Asymptomatic,High,Borderline,Normal,ST-T abnormality,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Asymptomatic,High,High,Normal,ST-T abnormality,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Atypical angina,Normal,Low,Normal,ST-T abnormality,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Asymptomatic,Normal,Unknown,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Senior,Male,Asymptomatic,Normal,High,High,LV hypertrophy,Low,Yes,None,Unknown,Unknown,Unknown,Yes,hungarian
+Elderly,Male,Asymptomatic,High,High,High,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Elderly,Male,Asymptomatic,Normal,Unknown,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Severe,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Female,Asymptomatic,Normal,Borderline,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Fixed defect,Yes,hungarian
+Middle,Male,Asymptomatic,High,High,Normal,ST-T abnormality,High,Yes,Severe,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Low,Yes,None,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,High,Borderline,Normal,Normal,Low,No,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Medium,Yes,Severe,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,High,Normal,ST-T abnormality,Low,Yes,Severe,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Middle,Male,Asymptomatic,High,High,Normal,Normal,Low,Yes,Severe,Unknown,Unknown,Unknown,Yes,hungarian
+Middle,Female,Non-anginal pain,Normal,High,Normal,ST-T abnormality,Low,Yes,None,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Male,Asymptomatic,High,High,High,Normal,Medium,Yes,Severe,Flat,Unknown,Unknown,Yes,hungarian
+Senior,Female,Atypical angina,High,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Reversible defect,Yes,hungarian
+Elderly,Male,Asymptomatic,Normal,High,Normal,ST-T abnormality,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,hungarian
+Young,Male,Typical angina,Low,Low,Unknown,Normal,Medium,No,Mild,Upsloping,Unknown,Unknown,Yes,switzerland
+Young,Male,Asymptomatic,Low,Low,Unknown,Unknown,High,No,Mild,Upsloping,Unknown,Unknown,Yes,switzerland
+Young,Male,Asymptomatic,Unknown,Low,Unknown,Normal,Medium,Yes,Unknown,Unknown,Unknown,Reversible defect,Yes,switzerland
+Young,Male,Asymptomatic,Low,Low,Unknown,Normal,Low,Yes,Mild,Flat,Unknown,Fixed defect,Yes,switzerland
+Young,Female,Asymptomatic,Low,Low,Unknown,Normal,High,No,Severe,Upsloping,Unknown,Unknown,Yes,switzerland
+Young,Female,Asymptomatic,Low,Low,Normal,Normal,High,No,None,Flat,Unknown,Normal,Yes,switzerland
+Young,Male,Non-anginal pain,Low,Low,Unknown,Normal,High,No,None,Upsloping,Unknown,Unknown,No,switzerland
+Young,Male,Non-anginal pain,Low,Low,Normal,Normal,Medium,Yes,None,Flat,Unknown,Reversible defect,Yes,switzerland
+Young,Male,Asymptomatic,Normal,Low,Unknown,Normal,Medium,No,None,Unknown,Unknown,Normal,Yes,switzerland
+Young,Male,Asymptomatic,High,Low,Unknown,Normal,Low,Yes,Unknown,Unknown,Unknown,Normal,Yes,switzerland
+Young,Male,Asymptomatic,Low,Low,Unknown,ST-T abnormality,Medium,No,None,Upsloping,Unknown,Unknown,Yes,switzerland
+Young,Male,Asymptomatic,Normal,Low,Unknown,Normal,High,No,Mild,Upsloping,Unknown,Unknown,Yes,switzerland
+Young,Male,Asymptomatic,Low,Low,Unknown,Normal,Medium,Yes,None,Downsloping,Unknown,Unknown,Yes,switzerland
+Young,Male,Asymptomatic,High,Low,Normal,Normal,Low,Yes,None,Flat,Unknown,Unknown,Yes,switzerland
+Young,Male,Asymptomatic,Low,Low,Unknown,Normal,Low,No,Mild,Downsloping,Unknown,Unknown,Yes,switzerland
+Young,Male,Asymptomatic,Low,Low,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Young,Male,Asymptomatic,Normal,Low,Normal,ST-T abnormality,Medium,Yes,Mild,Upsloping,Unknown,Reversible defect,Yes,switzerland
+Middle,Male,Non-anginal pain,Low,Low,Unknown,Normal,Medium,No,None,Upsloping,Unknown,Unknown,No,switzerland
+Middle,Male,Asymptomatic,Low,Low,Unknown,ST-T abnormality,Medium,No,None,Flat,Unknown,Unknown,Yes,switzerland
+Middle,Male,Asymptomatic,Low,Low,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Middle,Male,Non-anginal pain,Low,Low,Unknown,Normal,Low,Yes,None,Unknown,Unknown,Normal,Yes,switzerland
+Middle,Male,Non-anginal pain,High,Low,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Normal,Yes,switzerland
+Middle,Male,Asymptomatic,Low,Low,Unknown,ST-T abnormality,Medium,No,Severe,Upsloping,Unknown,Unknown,Yes,switzerland
+Middle,Male,Asymptomatic,High,Low,Normal,Normal,Low,Yes,None,Flat,Unknown,Reversible defect,Yes,switzerland
+Middle,Male,Asymptomatic,Low,Low,Unknown,Normal,Medium,No,None,Flat,Unknown,Fixed defect,Yes,switzerland
+Middle,Female,Asymptomatic,High,Low,Unknown,Normal,Low,No,None,Unknown,Unknown,Normal,Yes,switzerland
+Middle,Male,Asymptomatic,Low,Low,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Fixed defect,Yes,switzerland
+Middle,Male,Asymptomatic,Normal,Low,Normal,ST-T abnormality,High,Yes,None,Upsloping,Unknown,Fixed defect,Yes,switzerland
+Middle,Male,Asymptomatic,High,Low,Unknown,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,switzerland
+Middle,Female,Asymptomatic,Normal,Low,Unknown,Normal,Medium,Yes,Mild,Upsloping,Unknown,Unknown,Yes,switzerland
+Middle,Male,Asymptomatic,Low,Low,Unknown,Normal,Low,No,None,Flat,Unknown,Unknown,Yes,switzerland
+Middle,Male,Asymptomatic,Normal,Low,High,Normal,Low,No,None,Flat,Unknown,Normal,Yes,switzerland
+Middle,Male,Asymptomatic,Normal,Low,Unknown,Normal,High,No,None,Upsloping,Unknown,Unknown,Yes,switzerland
+Middle,Male,Asymptomatic,Normal,Low,Unknown,ST-T abnormality,High,No,None,Unknown,Unknown,Reversible defect,Yes,switzerland
+Middle,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,No,None,Flat,Unknown,Normal,Yes,switzerland
+Middle,Male,Asymptomatic,Low,Low,Unknown,Normal,Medium,No,Severe,Flat,Unknown,Unknown,Yes,switzerland
+Middle,Male,Asymptomatic,Normal,Low,Unknown,Normal,Low,No,None,Flat,Unknown,Reversible defect,Yes,switzerland
+Middle,Male,Asymptomatic,Normal,Low,Unknown,Normal,Medium,Yes,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Middle,Male,Asymptomatic,High,Low,Unknown,Normal,Low,Yes,Mild,Upsloping,Unknown,Reversible defect,Yes,switzerland
+Middle,Male,Asymptomatic,Low,Low,Unknown,Normal,Low,Yes,Unknown,Unknown,Unknown,Unknown,Yes,switzerland
+Middle,Male,Atypical angina,Normal,Low,Normal,Normal,Low,No,None,Flat,Unknown,Normal,Yes,switzerland
+Middle,Male,Atypical angina,Normal,Low,Unknown,ST-T abnormality,Low,No,Mild,Downsloping,Unknown,Unknown,No,switzerland
+Middle,Male,Non-anginal pain,Low,Low,Normal,Normal,Low,No,None,Flat,Unknown,Reversible defect,Yes,switzerland
+Middle,Male,Non-anginal pain,High,Low,Unknown,LV hypertrophy,Low,Yes,None,Unknown,Unknown,Reversible defect,Yes,switzerland
+Middle,Male,Asymptomatic,Normal,Low,Unknown,Normal,Low,No,None,Flat,Unknown,Reversible defect,Yes,switzerland
+Middle,Male,Asymptomatic,Normal,Low,Unknown,Normal,Low,No,Mild,Upsloping,Unknown,Unknown,Yes,switzerland
+Middle,Male,Asymptomatic,Normal,Low,Normal,LV hypertrophy,Medium,Yes,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Middle,Male,Asymptomatic,Low,Low,Unknown,Normal,Medium,Yes,Mild,Downsloping,Unknown,Unknown,No,switzerland
+Middle,Male,Asymptomatic,Normal,Low,Normal,Normal,High,No,None,Flat,Unknown,Reversible defect,Yes,switzerland
+Middle,Male,Asymptomatic,Normal,Low,Unknown,Normal,Low,Yes,Severe,Flat,Unknown,Reversible defect,Yes,switzerland
+Middle,Male,Asymptomatic,High,Low,Unknown,Normal,Medium,No,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Atypical angina,Normal,Low,Unknown,ST-T abnormality,Medium,No,Mild,Upsloping,Unknown,Unknown,No,switzerland
+Senior,Male,Asymptomatic,Low,Low,Unknown,Normal,High,No,Mild,Flat,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Normal,ST-T abnormality,Low,No,Mild,Upsloping,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,No,None,Flat,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Non-anginal pain,Normal,Low,Normal,Normal,Low,No,None,Flat,Unknown,Reversible defect,No,switzerland
+Senior,Male,Non-anginal pain,Normal,Low,Unknown,Normal,Low,No,None,Flat,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Non-anginal pain,High,Low,Normal,ST-T abnormality,Low,No,None,Flat,Unknown,Normal,Yes,switzerland
+Senior,Male,Asymptomatic,Low,Low,Unknown,ST-T abnormality,Low,No,None,Upsloping,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Normal,ST-T abnormality,Low,Yes,None,Downsloping,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Normal,ST-T abnormality,Medium,No,None,Flat,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,High,Normal,Low,Yes,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Unknown,Normal,Low,Yes,Mild,Upsloping,Unknown,Unknown,Yes,switzerland
+Senior,Male,Non-anginal pain,Low,Low,Unknown,Normal,Medium,No,Mild,Flat,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Low,Low,Unknown,ST-T abnormality,Medium,Yes,Mild,Upsloping,1,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Fixed defect,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Unknown,Normal,Low,Yes,None,Unknown,Unknown,Fixed defect,Yes,switzerland
+Senior,Male,Asymptomatic,High,Low,Unknown,Normal,Low,Yes,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Asymptomatic,Low,Low,Unknown,Normal,High,No,Mild,Downsloping,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Low,Low,Unknown,Normal,Medium,No,Mild,Upsloping,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Normal,ST-T abnormality,Low,Yes,Mild,Flat,Unknown,Fixed defect,Yes,switzerland
+Senior,Male,Asymptomatic,High,Low,Unknown,ST-T abnormality,Low,Yes,None,Unknown,Unknown,Normal,Yes,switzerland
+Senior,Male,Non-anginal pain,Normal,Low,Unknown,Normal,High,No,Severe,Flat,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Low,Low,Unknown,Normal,Low,No,None,Unknown,Unknown,Fixed defect,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,No,None,Flat,Unknown,Normal,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Unknown,Normal,Low,Yes,Mild,Upsloping,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Non-anginal pain,Low,Low,Unknown,Normal,Medium,No,Severe,Upsloping,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Unknown,Normal,Low,No,Mild,Upsloping,2,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Unknown,ST-T abnormality,Medium,Yes,Mild,Downsloping,1,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,Yes,Mild,Upsloping,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Asymptomatic,High,Low,Normal,ST-T abnormality,Low,Yes,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Asymptomatic,High,Low,Unknown,Normal,Medium,No,Mild,Flat,Unknown,Unknown,Yes,switzerland
+Senior,Male,Non-anginal pain,High,Low,Unknown,ST-T abnormality,Low,No,None,Unknown,Unknown,Normal,Yes,switzerland
+Senior,Male,Asymptomatic,Low,Low,Unknown,Normal,Low,Yes,Mild,Upsloping,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Low,Low,Unknown,Normal,Low,No,Mild,Flat,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,Yes,None,Downsloping,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Normal,LV hypertrophy,Low,No,None,Flat,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Unknown,Normal,Low,No,Severe,Flat,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,High,Low,Normal,Normal,Low,Yes,None,Flat,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Asymptomatic,High,Low,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Asymptomatic,High,Low,High,ST-T abnormality,Medium,No,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Senior,Female,Typical angina,Normal,Low,Unknown,Normal,Medium,No,None,Unknown,Unknown,Normal,Yes,switzerland
+Senior,Female,Asymptomatic,Normal,Low,Unknown,ST-T abnormality,Low,Yes,Mild,Downsloping,Unknown,Unknown,Yes,switzerland
+Senior,Male,Typical angina,Normal,Low,Unknown,LV hypertrophy,Medium,No,None,Flat,2,Unknown,Yes,switzerland
+Senior,Male,Non-anginal pain,High,Low,Normal,Normal,Low,Yes,None,Flat,Unknown,Normal,Yes,switzerland
+Senior,Male,Asymptomatic,Low,Low,Unknown,Normal,Medium,Yes,Severe,Downsloping,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Low,Low,Unknown,Normal,Low,Yes,None,Flat,Unknown,Normal,Yes,switzerland
+Senior,Male,Asymptomatic,High,Low,Unknown,ST-T abnormality,Low,No,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Senior,Male,Asymptomatic,Low,Low,Unknown,Normal,Low,No,None,Flat,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,Low,Unknown,LV hypertrophy,Medium,No,Mild,Upsloping,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,High,Low,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,High,Low,Unknown,ST-T abnormality,High,No,Severe,Upsloping,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,High,Low,Normal,Normal,Low,Yes,None,Upsloping,Unknown,Reversible defect,Yes,switzerland
+Senior,Female,Asymptomatic,High,Low,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Normal,Yes,switzerland
+Senior,Female,Asymptomatic,Low,Low,Unknown,Normal,Medium,No,Mild,Downsloping,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Low,Low,Unknown,Normal,Low,Yes,Mild,Downsloping,Unknown,Unknown,Yes,switzerland
+Elderly,Male,Asymptomatic,Low,Low,Normal,Normal,Low,Yes,None,Flat,Unknown,Reversible defect,Yes,switzerland
+Elderly,Male,Asymptomatic,High,Low,Unknown,ST-T abnormality,Low,No,Unknown,Unknown,Unknown,Fixed defect,Yes,switzerland
+Elderly,Male,Asymptomatic,High,Low,Unknown,Normal,High,No,Mild,Upsloping,Unknown,Unknown,No,switzerland
+Elderly,Male,Asymptomatic,High,Low,High,ST-T abnormality,Low,No,Unknown,Unknown,Unknown,Reversible defect,Yes,switzerland
+Elderly,Female,Asymptomatic,High,Low,Unknown,Normal,Low,No,None,Unknown,Unknown,Reversible defect,Yes,switzerland
+Elderly,Male,Asymptomatic,High,Low,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Elderly,Male,Typical angina,High,Low,Normal,LV hypertrophy,Low,No,None,Flat,Unknown,Normal,Yes,switzerland
+Elderly,Male,Asymptomatic,Normal,Low,Normal,ST-T abnormality,Low,Yes,None,Upsloping,Unknown,Reversible defect,Yes,switzerland
+Elderly,Male,Asymptomatic,High,Low,Unknown,Normal,Medium,No,Mild,Upsloping,Unknown,Unknown,Yes,switzerland
+Elderly,Male,Asymptomatic,Normal,Low,Normal,Normal,Medium,No,None,Flat,Unknown,Fixed defect,Yes,switzerland
+Elderly,Male,Asymptomatic,Unknown,Low,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Reversible defect,Yes,switzerland
+Elderly,Male,Asymptomatic,Low,Low,Normal,ST-T abnormality,Low,Yes,None,Flat,Unknown,Reversible defect,Yes,switzerland
+Elderly,Male,Asymptomatic,Normal,Low,High,Normal,High,Yes,Mild,Flat,Unknown,Reversible defect,Yes,switzerland
+Elderly,Male,Non-anginal pain,High,Low,Unknown,LV hypertrophy,Low,No,Mild,Flat,2,Unknown,No,switzerland
+Elderly,Female,Non-anginal pain,High,Low,Normal,ST-T abnormality,Low,No,None,Upsloping,Unknown,Normal,Yes,switzerland
+Elderly,Male,Atypical angina,High,Low,Unknown,ST-T abnormality,Low,No,Mild,Upsloping,Unknown,Unknown,Yes,switzerland
+Senior,Male,Asymptomatic,Normal,High,Normal,ST-T abnormality,Low,Yes,Severe,Flat,Unknown,Unknown,Yes,va
+Young,Male,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Medium,No,None,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Medium,Yes,Mild,Downsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,High,Borderline,Normal,ST-T abnormality,Medium,Yes,Severe,Upsloping,Unknown,Unknown,Yes,va
+Elderly,Male,Non-anginal pain,Low,Borderline,High,LV hypertrophy,Low,Yes,Mild,Flat,Unknown,Unknown,No,va
+Elderly,Male,Non-anginal pain,Normal,Low,Normal,ST-T abnormality,Low,No,None,Upsloping,Unknown,Unknown,No,va
+Elderly,Male,Asymptomatic,High,Borderline,High,ST-T abnormality,Low,Yes,None,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Non-anginal pain,High,Low,Normal,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Unknown,No,va
+Senior,Male,Non-anginal pain,Normal,Low,Unknown,Normal,Medium,Yes,Mild,Upsloping,Unknown,Unknown,Yes,va
+Senior,Male,Atypical angina,High,High,High,ST-T abnormality,High,No,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Atypical angina,Normal,Low,Normal,ST-T abnormality,Medium,No,None,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,Normal,Low,Normal,ST-T abnormality,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Low,Low,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Normal,Yes,va
+Senior,Male,Non-anginal pain,Unknown,Low,Normal,LV hypertrophy,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,Low,High,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Low,No,None,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,High,Low,Normal,Normal,Low,Yes,Severe,Downsloping,Unknown,Unknown,Yes,va
+Middle,Male,Asymptomatic,Low,Borderline,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,Low,Normal,ST-T abnormality,Low,No,Mild,Downsloping,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,High,Low,Normal,ST-T abnormality,Low,Yes,None,Unknown,Unknown,Reversible defect,No,va
+Senior,Male,Asymptomatic,Low,Low,Normal,Normal,Low,No,Mild,Upsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,Low,High,ST-T abnormality,Low,No,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Non-anginal pain,Normal,Low,Normal,ST-T abnormality,Low,Yes,None,Unknown,Unknown,Unknown,Yes,va
+Elderly,Male,Non-anginal pain,Unknown,Low,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Middle,Male,Non-anginal pain,Normal,Low,Normal,ST-T abnormality,High,No,Severe,Upsloping,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,Normal,Low,High,ST-T abnormality,Medium,No,Mild,Flat,Unknown,Fixed defect,Yes,va
+Middle,Male,Asymptomatic,Unknown,Low,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,Low,High,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,Yes,Mild,Flat,0,Reversible defect,Yes,va
+Senior,Male,Non-anginal pain,Unknown,Borderline,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Middle,Male,Asymptomatic,Unknown,Low,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,Normal,Low,Normal,ST-T abnormality,Low,Yes,Mild,Upsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,High,Borderline,High,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Non-anginal pain,Low,Low,Normal,Normal,High,No,Mild,Flat,Unknown,Unknown,Yes,va
+Middle,Male,Non-anginal pain,Normal,Low,Normal,Normal,Low,Yes,Mild,Downsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,High,Low,Normal,ST-T abnormality,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Unknown,High,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,Low,Normal,Normal,Medium,Yes,Mild,Upsloping,Unknown,Reversible defect,No,va
+Senior,Male,Asymptomatic,Unknown,Borderline,High,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,High,Low,Normal,ST-T abnormality,Medium,Yes,Mild,Unknown,0,Unknown,No,va
+Senior,Male,Non-anginal pain,Normal,Low,Normal,Normal,Low,Yes,None,Flat,Unknown,Unknown,Yes,va
+Young,Male,Asymptomatic,Normal,Low,High,Normal,High,No,None,Unknown,Unknown,Reversible defect,Yes,va
+Senior,Male,Asymptomatic,Unknown,Low,High,ST-T abnormality,Low,No,Mild,Flat,Unknown,Reversible defect,Yes,va
+Young,Male,Asymptomatic,Low,Low,Normal,ST-T abnormality,Low,No,None,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,Unknown,High,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,Yes,None,Unknown,Unknown,Reversible defect,Yes,va
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Low,Yes,Mild,Downsloping,Unknown,Unknown,Yes,va
+Middle,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,No,va
+Senior,Male,Non-anginal pain,Unknown,Low,Normal,Normal,Medium,Yes,Mild,Downsloping,Unknown,Unknown,Yes,va
+Young,Male,Non-anginal pain,Normal,Borderline,Unknown,Normal,High,No,None,Unknown,Unknown,Unknown,No,va
+Senior,Male,Non-anginal pain,Normal,Low,Normal,ST-T abnormality,Low,Yes,Severe,Flat,Unknown,Reversible defect,Yes,va
+Senior,Female,Atypical angina,Unknown,Low,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,High,Low,Normal,ST-T abnormality,Low,Yes,Mild,Upsloping,Unknown,Reversible defect,Yes,va
+Senior,Male,Atypical angina,Normal,Borderline,High,Normal,High,No,Mild,Flat,Unknown,Unknown,No,va
+Middle,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,Normal,Low,Normal,Normal,Medium,Yes,Severe,Flat,Unknown,Unknown,Yes,va
+Middle,Male,Asymptomatic,High,Low,Unknown,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Non-anginal pain,Unknown,High,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Atypical angina,Unknown,Low,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,High,Low,High,LV hypertrophy,Low,Yes,None,Unknown,Unknown,Reversible defect,Yes,va
+Middle,Male,Asymptomatic,Unknown,Borderline,High,LV hypertrophy,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,Low,Low,Unknown,Normal,Low,Yes,Mild,Downsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,High,Unknown,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Non-anginal pain,High,Low,Normal,LV hypertrophy,Low,Yes,Severe,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Atypical angina,Normal,Low,High,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Elderly,Male,Non-anginal pain,Normal,Low,Unknown,ST-T abnormality,Low,No,Severe,Downsloping,Unknown,Unknown,Yes,va
+Elderly,Male,Typical angina,High,High,High,Normal,Low,No,Severe,Upsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,Low,Normal,LV hypertrophy,Low,Yes,Mild,Downsloping,Unknown,Reversible defect,Yes,va
+Elderly,Male,Asymptomatic,Unknown,Low,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Atypical angina,Unknown,Borderline,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Atypical angina,Low,Borderline,High,ST-T abnormality,High,No,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Fixed defect,Yes,va
+Elderly,Male,Typical angina,Unknown,High,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Middle,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Medium,Yes,Severe,Flat,Unknown,Unknown,Yes,va
+Elderly,Male,Non-anginal pain,Normal,Borderline,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,High,Borderline,High,ST-T abnormality,Low,No,None,Unknown,Unknown,Reversible defect,Yes,va
+Middle,Male,Typical angina,Normal,Low,Normal,ST-T abnormality,Medium,No,Severe,Flat,Unknown,Unknown,Yes,va
+Middle,Male,Non-anginal pain,Unknown,High,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,High,Borderline,Normal,Normal,Low,Yes,Severe,Flat,Unknown,Unknown,Yes,va
+Senior,Female,Asymptomatic,High,High,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Reversible defect,Yes,va
+Senior,Male,Asymptomatic,Normal,High,High,Normal,Low,No,Mild,Downsloping,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,High,High,Normal,Normal,Medium,Yes,Severe,Downsloping,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,High,High,High,ST-T abnormality,Medium,Yes,None,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,Yes,Severe,Downsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Medium,Yes,Mild,Unknown,Unknown,Unknown,Yes,va
+Middle,Male,Asymptomatic,Unknown,Borderline,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,High,Borderline,High,Normal,Low,Yes,Severe,Downsloping,Unknown,Unknown,Yes,va
+Senior,Male,Non-anginal pain,Unknown,High,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Low,Yes,Severe,Flat,Unknown,Unknown,Yes,va
+Young,Male,Non-anginal pain,Low,Borderline,Normal,Normal,Low,Yes,None,Unknown,Unknown,Reversible defect,No,va
+Elderly,Male,Asymptomatic,Normal,Low,High,Normal,Medium,No,Mild,Downsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Low,Low,Normal,Normal,Low,No,None,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Unknown,Low,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,High,High,High,ST-T abnormality,Low,Yes,Mild,Unknown,Unknown,Unknown,Yes,va
+Young,Male,Non-anginal pain,Unknown,Low,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Typical angina,Low,High,Normal,ST-T abnormality,Medium,Yes,Unknown,Unknown,Unknown,Unknown,Yes,va
+Young,Male,Asymptomatic,Normal,Low,Normal,Normal,Low,No,Mild,Upsloping,Unknown,Unknown,Yes,va
+Senior,Male,Non-anginal pain,Normal,Low,High,ST-T abnormality,High,No,Severe,Flat,Unknown,Unknown,No,va
+Elderly,Male,Non-anginal pain,High,Low,High,Normal,Medium,No,None,Unknown,Unknown,Fixed defect,Yes,va
+Elderly,Male,Asymptomatic,High,Borderline,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Middle,Male,Non-anginal pain,Low,Low,Unknown,ST-T abnormality,Low,Yes,Mild,Downsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Low,High,Normal,ST-T abnormality,Low,Yes,Mild,Upsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Medium,No,Mild,Flat,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,Normal,High,Normal,ST-T abnormality,Medium,Yes,Severe,Downsloping,Unknown,Fixed defect,Yes,va
+Middle,Male,Asymptomatic,High,High,Normal,LV hypertrophy,Low,Yes,Mild,Upsloping,Unknown,Reversible defect,Yes,va
+Senior,Male,Asymptomatic,Normal,Unknown,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,High,Low,Normal,ST-T abnormality,Medium,No,None,Unknown,Unknown,Unknown,No,va
+Middle,Male,Non-anginal pain,Unknown,Borderline,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Elderly,Male,Asymptomatic,Unknown,High,Normal,LV hypertrophy,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Atypical angina,Unknown,High,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Middle,Male,Non-anginal pain,Unknown,Low,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,Unknown,Borderline,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Middle,Male,Asymptomatic,Unknown,Borderline,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Unknown,High,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Low,Low,High,ST-T abnormality,Low,No,None,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Low,High,Normal,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,Normal,Medium,Yes,Severe,Downsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Unknown,Low,Normal,LV hypertrophy,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Non-anginal pain,Unknown,Low,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,High,High,High,ST-T abnormality,Medium,Yes,Severe,Downsloping,Unknown,Unknown,Yes,va
+Middle,Male,Asymptomatic,Normal,Borderline,High,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Low,Low,Normal,LV hypertrophy,Low,No,None,Unknown,Unknown,Unknown,No,va
+Senior,Male,Non-anginal pain,Unknown,Borderline,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Elderly,Male,Non-anginal pain,Low,Unknown,Normal,LV hypertrophy,Low,No,Severe,Downsloping,Unknown,Unknown,Yes,va
+Middle,Female,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,High,Low,Normal,ST-T abnormality,Medium,Yes,Severe,Downsloping,Unknown,Unknown,Yes,va
+Senior,Female,Atypical angina,Normal,High,High,Normal,Low,Yes,None,Unknown,Unknown,Reversible defect,No,va
+Middle,Male,Asymptomatic,Unknown,High,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Middle,Male,Non-anginal pain,Normal,Borderline,High,ST-T abnormality,High,No,None,Unknown,Unknown,Fixed defect,Yes,va
+Senior,Male,Typical angina,High,Borderline,High,ST-T abnormality,Low,No,Mild,Downsloping,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,Low,High,Normal,Normal,Medium,No,Mild,Upsloping,Unknown,Unknown,Yes,va
+Elderly,Male,Typical angina,Unknown,Low,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,High,High,Normal,Normal,Low,No,Mild,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Non-anginal pain,Normal,Borderline,Normal,LV hypertrophy,Low,No,None,Unknown,Unknown,Unknown,No,va
+Elderly,Male,Non-anginal pain,Unknown,Borderline,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Elderly,Male,Typical angina,Unknown,Borderline,High,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Middle,Male,Non-anginal pain,High,Low,High,ST-T abnormality,High,No,Unknown,Unknown,Unknown,Fixed defect,No,va
+Senior,Male,Non-anginal pain,High,Borderline,Normal,ST-T abnormality,Low,Yes,None,Unknown,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,High,High,High,Normal,Low,Yes,Mild,Downsloping,Unknown,Reversible defect,No,va
+Senior,Male,Non-anginal pain,Unknown,Borderline,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Non-anginal pain,Unknown,Borderline,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Severe,Downsloping,Unknown,Unknown,Yes,va
+Middle,Male,Non-anginal pain,Unknown,Borderline,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Middle,Male,Atypical angina,Unknown,Low,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,Normal,High,Normal,Normal,High,Yes,Mild,Flat,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,Unknown,Borderline,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,High,High,High,ST-T abnormality,High,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Unknown,High,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Young,Male,Asymptomatic,High,Low,Normal,Normal,Medium,Yes,Mild,Flat,Unknown,Unknown,No,va
+Elderly,Male,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Low,Yes,None,Unknown,Unknown,Unknown,Yes,va
+Young,Male,Asymptomatic,Low,High,Normal,Normal,Low,Yes,Mild,Downsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,High,Borderline,Normal,Normal,Low,Yes,Severe,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Low,Yes,Mild,Downsloping,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,Unknown,Unknown,High,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,High,Low,Normal,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,High,Unknown,High,LV hypertrophy,Medium,No,Mild,Unknown,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,Unknown,Borderline,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Unknown,High,High,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Unknown,Low,Normal,ST-T abnormality,Low,Yes,Severe,Unknown,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,Unknown,High,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,High,Low,Normal,LV hypertrophy,Low,Yes,Severe,Downsloping,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,Unknown,High,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Middle,Male,Asymptomatic,Unknown,Unknown,High,LV hypertrophy,Unknown,Unknown,Unknown,Unknown,Unknown,Reversible defect,Yes,va
+Middle,Male,Asymptomatic,Normal,Unknown,Normal,Normal,High,Yes,Mild,Upsloping,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,Normal,Borderline,High,LV hypertrophy,Low,Yes,None,Unknown,Unknown,Reversible defect,Yes,va
+Elderly,Male,Non-anginal pain,Unknown,High,Normal,LV hypertrophy,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,Unknown,High,High,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Atypical angina,High,High,High,ST-T abnormality,Low,No,Mild,Unknown,Unknown,Unknown,Yes,va
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,Low,Yes,Mild,Flat,Unknown,Reversible defect,Yes,va
+Young,Male,Non-anginal pain,Low,Borderline,Normal,LV hypertrophy,High,No,Mild,Flat,Unknown,Normal,No,va
+Elderly,Male,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Low,Yes,Mild,Flat,Unknown,Reversible defect,Yes,va
+Elderly,Male,Non-anginal pain,Normal,Borderline,High,Normal,Low,No,None,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Atypical angina,Unknown,Low,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,Low,Borderline,Normal,ST-T abnormality,Low,No,None,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,High,High,High,LV hypertrophy,Medium,Yes,Mild,Downsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,High,High,LV hypertrophy,Medium,No,None,Unknown,Unknown,Fixed defect,Yes,va
+Senior,Male,Asymptomatic,High,High,High,LV hypertrophy,Low,Yes,Mild,Upsloping,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,Low,High,LV hypertrophy,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,Normal,High,Normal,LV hypertrophy,Low,No,None,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Non-anginal pain,Unknown,Unknown,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,LV hypertrophy,Medium,Yes,Mild,Downsloping,Unknown,Reversible defect,Yes,va
+Senior,Male,Asymptomatic,Normal,Borderline,High,Normal,Low,No,Mild,Flat,Unknown,Reversible defect,Yes,va
+Senior,Male,Asymptomatic,Normal,Borderline,Normal,ST-T abnormality,Low,Yes,Mild,Flat,Unknown,Unknown,No,va
+Senior,Male,Non-anginal pain,Unknown,High,Normal,Normal,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Non-anginal pain,Normal,High,Normal,Normal,Low,Yes,None,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Non-anginal pain,High,Borderline,Normal,ST-T abnormality,Low,Yes,None,Unknown,Unknown,Unknown,Yes,va
+Elderly,Male,Asymptomatic,High,High,Normal,Normal,Low,Yes,Mild,Downsloping,Unknown,Unknown,Yes,va
+Elderly,Male,Non-anginal pain,Normal,High,High,Normal,High,Yes,None,Unknown,Unknown,Normal,No,va
+Middle,Female,Asymptomatic,Low,High,High,LV hypertrophy,Low,No,Mild,Upsloping,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,High,High,High,ST-T abnormality,Low,Yes,Severe,Flat,Unknown,Unknown,Yes,va
+Middle,Male,Asymptomatic,High,High,High,ST-T abnormality,Medium,Yes,Mild,Flat,Unknown,Unknown,Yes,va
+Senior,Male,Asymptomatic,High,Low,Normal,ST-T abnormality,Medium,Yes,None,Unknown,Unknown,Unknown,Yes,va
+Middle,Male,Asymptomatic,Normal,High,Normal,Normal,Medium,No,None,Unknown,Unknown,Normal,Yes,va
+Middle,Female,Asymptomatic,Normal,High,High,ST-T abnormality,High,No,None,Unknown,Unknown,Unknown,Yes,va
+Senior,Male,Typical angina,Unknown,Low,Normal,ST-T abnormality,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Asymptomatic,Normal,Borderline,High,ST-T abnormality,Low,No,None,Unknown,Unknown,Fixed defect,Yes,va
+Senior,Male,Asymptomatic,Unknown,High,High,LV hypertrophy,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,No,va
+Senior,Male,Atypical angina,Normal,High,Normal,LV hypertrophy,Low,Yes,None,Unknown,Unknown,Unknown,Yes,va
