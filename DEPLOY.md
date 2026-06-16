@@ -35,11 +35,20 @@ git push -u origin main
 ## 2. Create Streamlit app
 
 1. Open [share.streamlit.io](https://share.streamlit.io)
-2. Sign in with GitHub
-3. **New app** → Repository: `Natiabay/micro_research-`
-4. Branch: `main`
-5. **Main file path:** `app/streamlit_app.py`
-6. Click **Deploy**
+2. Sign in with **GitHub** (same account: `Natiabay`)
+3. Click **Create app**
+4. Set:
+   | Field | Value |
+   |-------|--------|
+   | Repository | `Natiabay/micro_research-` |
+   | Branch | `main` |
+   | Main file path | `app/streamlit_app.py` |
+5. Click **Deploy** — wait until status is **Running**
+6. Share the URL (e.g. `https://micro-research-xxxx.streamlit.app`)
+
+**Note:** First load trains 4 Bayesian Networks (~1–3 min). Later visits are cached.
+
+**Redeploy:** Any push to `main` on GitHub triggers an automatic rebuild.
 
 ## 3. Demo script for instructor
 

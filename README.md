@@ -36,9 +36,34 @@ streamlit run app/streamlit_app.py
 
 ## Deploy
 
-Push to [Natiabay/micro_research-](https://github.com/Natiabay/micro_research-.git) → [Streamlit Cloud](https://share.streamlit.io) → main file: `app/streamlit_app.py`
+**Live app:** after Streamlit Cloud setup, your URL will look like  
+`https://micro-research.streamlit.app` (name chosen at deploy time).
 
-See **[DEPLOY.md](DEPLOY.md)** for step-by-step instructions.
+### Streamlit Cloud (recommended)
+
+1. Open **[share.streamlit.io](https://share.streamlit.io)** and sign in with **GitHub**
+2. Click **Create app** (or **New app**)
+3. Fill in:
+   - **Repository:** `Natiabay/micro_research-`
+   - **Branch:** `main`
+   - **Main file path:** `app/streamlit_app.py`
+4. Click **Deploy** — first build takes ~2–5 minutes (trains BNs on load)
+5. When status is **Running**, open the public URL and demo the **Diagnosis** tab
+
+No secrets or API keys are required. Datasets are bundled in `data/`.
+
+### Push updates
+
+Use single quotes so zsh does not break on `!` in the folder name:
+
+```bash
+cd '/home/natnael/Desktop/PGM!!!!/heart-disease-bn'
+git push origin main
+```
+
+Streamlit Cloud redeploys automatically on each push to `main`.
+
+See **[DEPLOY.md](DEPLOY.md)** for the instructor demo script.
 
 ## PGM pillars
 
