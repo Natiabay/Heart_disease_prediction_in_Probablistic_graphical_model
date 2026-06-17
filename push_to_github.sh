@@ -1,5 +1,5 @@
 #!/bin/bash
-# Push heart-disease-bn to https://github.com/Natiabay/micro_research-
+# Push heart-disease-bn to https://github.com/Natiabay/Heart_disease_prediction_in_Probablistic_graphical_model
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
@@ -48,11 +48,11 @@ if ! git push -u origin main; then
   echo "  3. Retry:               ./push_to_github.sh"
   echo
   echo "Or use a Personal Access Token:"
-  echo "  git push https://YOUR_TOKEN@github.com/Natiabay/micro_research-.git main"
+  echo "  git push https://YOUR_TOKEN@github.com/Natiabay/Heart_disease_prediction_in_Probablistic_graphical_model.git main"
   exit 1
 fi
 
 echo
 echo "Success! Next: https://share.streamlit.io → New app"
-echo "  Repo: Natiabay/micro_research-"
+echo "  Repo: Natiabay/Heart_disease_prediction_in_Probablistic_graphical_model"
 echo "  Main file: app/streamlit_app.py"

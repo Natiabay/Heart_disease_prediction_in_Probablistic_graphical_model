@@ -50,8 +50,8 @@
       "HeartDisease"
     ]
   },
-  "expert_structure": {
-    "name": "Expert Heart Disease BN",
+  "manual_structure": {
+    "name": "Manual Structure BN",
     "variables": [
       "Age",
       "Sex",
@@ -134,60 +134,121 @@
         "HeartDisease"
       ]
     ],
-    "description": "Expert-defined DAG: demographic and clinical risk factors probabilistically influence HeartDisease. Age affects cholesterol, blood pressure, and exercise capacity; symptoms and test results directly inform the disease node."
+    "description": "Manually constructed DAG for heart-disease diagnosis: demographics and clinical variables are linked by directed edges to HeartDisease. Structure is fixed by domain knowledge; CPTs are learned from data (Learning pillar)."
   },
   "best_model": "Optimized Clinical BN",
-  "optimized_threshold": 0.42499999999999993,
+  "optimized_threshold": 0.4225,
   "metrics": [
-    {
-      "Model": "Expert Heart Disease BN",
-      "Inference": "VE",
-      "Threshold": 0.43,
-      "Accuracy": 0.587,
-      "Precision": 0.575,
-      "Recall": 0.969,
-      "F1": 0.721,
-      "ROC-AUC": 0.616,
-      "Mean inference (ms)": 1.02,
-      "N test": 230
-    },
-    {
-      "Model": "Naive Bayes Diagnosis BN",
-      "Inference": "VE",
-      "Threshold": 0.41,
-      "Accuracy": 0.587,
-      "Precision": 0.575,
-      "Recall": 0.969,
-      "F1": 0.721,
-      "ROC-AUC": 0.616,
-      "Mean inference (ms)": 1.01,
-      "N test": 230
-    },
-    {
-      "Model": "Chow-Liu Tree BN",
-      "Inference": "VE",
-      "Threshold": 0.33,
-      "Accuracy": 0.804,
-      "Precision": 0.759,
-      "Recall": 0.945,
-      "F1": 0.842,
-      "ROC-AUC": 0.895,
-      "Mean inference (ms)": 1.37,
-      "N test": 230
-    },
     {
       "Model": "Optimized Clinical BN",
       "Inference": "VE",
-      "Threshold": 0.425,
+      "Threshold": 0.422,
       "Accuracy": 0.895,
       "Precision": 0.886,
       "Recall": 0.886,
       "F1": 0.886,
       "ROC-AUC": 0.925,
-      "Mean inference (ms)": 1.03,
-      "N test": 76
+      "Mean inference (ms)": 1.15,
+      "N test": 76,
+      "Evaluation set": "Cleveland optimized (303)"
+    },
+    {
+      "Model": "Manual Structure BN",
+      "Inference": "VE",
+      "Threshold": 0.43,
+      "Accuracy": 0.596,
+      "Precision": 0.581,
+      "Recall": 0.961,
+      "F1": 0.724,
+      "ROC-AUC": 0.626,
+      "Mean inference (ms)": 1.0,
+      "N test": 230,
+      "Evaluation set": "Multi-source (920)"
+    },
+    {
+      "Model": "Naive Bayes Diagnosis BN",
+      "Inference": "VE",
+      "Threshold": 0.405,
+      "Accuracy": 0.596,
+      "Precision": 0.581,
+      "Recall": 0.961,
+      "F1": 0.724,
+      "ROC-AUC": 0.626,
+      "Mean inference (ms)": 1.07,
+      "N test": 230,
+      "Evaluation set": "Multi-source (920)"
+    },
+    {
+      "Model": "Chow-Liu Tree BN",
+      "Inference": "VE",
+      "Threshold": 0.345,
+      "Accuracy": 0.778,
+      "Precision": 0.732,
+      "Recall": 0.945,
+      "F1": 0.825,
+      "ROC-AUC": 0.888,
+      "Mean inference (ms)": 1.35,
+      "N test": 230,
+      "Evaluation set": "Multi-source (920)"
     }
   ],
+  "metrics_primary": [
+    {
+      "Model": "Optimized Clinical BN",
+      "Inference": "VE",
+      "Threshold": 0.422,
+      "Accuracy": 0.895,
+      "Precision": 0.886,
+      "Recall": 0.886,
+      "F1": 0.886,
+      "ROC-AUC": 0.925,
+      "Mean inference (ms)": 1.15,
+      "N test": 76,
+      "Evaluation set": "Cleveland optimized (303)"
+    }
+  ],
+  "metrics_legacy": [
+    {
+      "Model": "Manual Structure BN",
+      "Inference": "VE",
+      "Threshold": 0.43,
+      "Accuracy": 0.596,
+      "Precision": 0.581,
+      "Recall": 0.961,
+      "F1": 0.724,
+      "ROC-AUC": 0.626,
+      "Mean inference (ms)": 1.0,
+      "N test": 230,
+      "Evaluation set": "Multi-source (920)"
+    },
+    {
+      "Model": "Naive Bayes Diagnosis BN",
+      "Inference": "VE",
+      "Threshold": 0.405,
+      "Accuracy": 0.596,
+      "Precision": 0.581,
+      "Recall": 0.961,
+      "F1": 0.724,
+      "ROC-AUC": 0.626,
+      "Mean inference (ms)": 1.07,
+      "N test": 230,
+      "Evaluation set": "Multi-source (920)"
+    },
+    {
+      "Model": "Chow-Liu Tree BN",
+      "Inference": "VE",
+      "Threshold": 0.345,
+      "Accuracy": 0.778,
+      "Precision": 0.732,
+      "Recall": 0.945,
+      "F1": 0.825,
+      "ROC-AUC": 0.888,
+      "Mean inference (ms)": 1.35,
+      "N test": 230,
+      "Evaluation set": "Multi-source (920)"
+    }
+  ],
+  "metrics_note": "Primary model (Optimized Clinical BN) is evaluated on Cleveland hold-out with balanced threshold tuning on train+validation. Manual Structure and Naive Bayes use multi-source UCI data with wider discretization \u2014 lower accuracy but strong recall; they illustrate PGM representation, not peak ML performance.",
   "state_labels": {
     "Age": [
       "Young",

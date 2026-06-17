@@ -1,0 +1,2 @@
+Model,Inference,Threshold,Accuracy,Precision,Recall,F1,ROC-AUC,Mean inference (ms),N test,Evaluation set
+Optimized Clinical BN,VE,0.422,0.895,0.886,0.886,0.886,0.925,1.15,76,Cleveland optimized (303)

@@ -30,7 +30,7 @@ This notebook walks through all **three pillars** of Probabilistic Graphical Mod
 
 | Pillar | Implementation |
 |--------|----------------|
-| **Representation** | Expert + learned DAGs over symptoms and HeartDisease |
+| **Representation** | Manual Structure + learned DAGs over symptoms and HeartDisease |
 | **Learning** | MLE/Bayesian CPTs; Hill Climb structure learning |
 | **Inference** | Variable Elimination & Belief Propagation |
 
@@ -50,10 +50,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 %matplotlib inline
 
-from src.config import EXPERT_EDGES, TARGET, STATE_LABELS
+from src.config import MANUAL_STRUCTURE_EDGES, TARGET, STATE_LABELS
 from src.data import load_discretized_dataset, train_test_split_data, dataset_summary, records_to_evidence
-from src.model import build_expert_structure, representation_summary
-from src.learning import learn_expert_bn, learn_structure_and_parameters, get_learning_summary
+from src.model import build_manual_structure, representation_summary
+from src.learning import learn_manual_structure_bn, learn_structure_and_parameters, get_learning_summary
 from src.inference import predict_disease, disease_probability
 from src.evaluation import evaluate_model, results_to_dataframe, benchmark_inference_methods
 from src.config import ProjectConfig
@@ -75,10 +75,10 @@ print("Prevalence:", f"{summary['prevalence']:.1%}")
 df.head()
 """))
 
-C.append(md("## PART 2 — Representation (expert Bayesian Network)"))
+C.append(md("## PART 2 — Representation (manual structure Bayesian Network)"))
 
 C.append(code("""
-meta = build_expert_structure()
+meta = build_manual_structure()
 print(meta["description"])
 print("Edges:", meta["edges"])
 """))
@@ -88,11 +88,11 @@ C.append(md("## PART 3 — Learning (CPTs + structure)"))
 C.append(code("""
 train_df, test_df = train_test_split_data(df)
 config = ProjectConfig()
-expert_lr = learn_expert_bn(train_df)
+manual_lr = learn_manual_structure_bn(train_df)
 learned_lr = learn_structure_and_parameters(train_df, config)
-print(get_learning_summary(expert_lr))
+print(get_learning_summary(manual_lr))
 print(get_learning_summary(learned_lr))
-plot_dag(expert_lr.model, OUT / "expert_dag.png", "Expert BN")
+plot_dag(manual_lr.model, OUT / "manual_structure_dag.png", "Manual Structure BN")
 plot_dag(learned_lr.model, OUT / "learned_dag.png", "Learned BN")
 """))
 
@@ -102,7 +102,7 @@ C.append(code("""
 row = test_df.iloc[0]
 evidence = records_to_evidence(row)
 for method in ("ve", "bp"):
-    trace = predict_disease(expert_lr.model, evidence, method=method)
+    trace = predict_disease(manual_lr.model, evidence, method=method)
     print(method.upper(), "P(Yes)=", f"{disease_probability(trace):.3f}", f"({trace.elapsed_ms:.1f} ms)")
     print("  Notes:", trace.notes[0])
 """))
@@ -111,7 +111,7 @@ C.append(md("## PART 5 — Evaluation"))
 
 C.append(code("""
 results = []
-for lr, name in [(expert_lr, "Expert"), (learned_lr, "Learned")]:
+for lr, name in [(manual_lr, "Manual Structure"), (learned_lr, "Learned")]:
     for method in ("ve", "bp"):
         results.append(evaluate_model(lr.model, test_df, name, method=method))
 metrics = results_to_dataframe(results)
@@ -124,7 +124,7 @@ C.append(md("""
 | Part | PGM pillar | Deliverable |
 |------|------------|-------------|
 | 1 | Data | UCI heart disease merged & discretized |
-| 2 | Representation | Expert DAG |
+| 2 | Representation | Manual Structure DAG |
 | 3 | Learning | CPTs + Hill Climb structure |
 | 4 | Inference | VE & BP queries |
 | 5 | Evaluation | Accuracy, precision, recall, F1, ROC-AUC |

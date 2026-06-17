@@ -31,7 +31,7 @@ OPTIMIZED_VARS = [
 ]
 OPTIMIZED_SEED = 54
 OPTIMIZED_PSEUDO_COUNT = 0.05
-OPTIMIZED_THRESHOLD = 0.42
+OPTIMIZED_THRESHOLD = 0.425
 
 # UCI Heart Disease attribute names (14 features + target)
 UCI_COLUMNS = [
@@ -58,8 +58,8 @@ UCI_SOURCES = {
     "va": "https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.va.data",
 }
 
-# Variables used in the expert BN (discretized names)
-EXPERT_VARS = [
+# Variables in the manually built representation DAG (PGM Representation pillar)
+MANUAL_STRUCTURE_VARS = [
     "Age",
     "Sex",
     "CP",
@@ -76,8 +76,8 @@ EXPERT_VARS = [
     TARGET,
 ]
 
-# Expert DAG edges (medical / causal intuition for heart-disease risk)
-EXPERT_EDGES = [
+# Hand-built DAG edges (clinical / causal structure — fixed before learning)
+MANUAL_STRUCTURE_EDGES = [
     ("Age", "Chol"),
     ("Age", "Trestbps"),
     ("Age", "Thalach"),
@@ -98,7 +98,7 @@ EXPERT_EDGES = [
 
 # Naive Bayes: classic medical diagnosis structure (each symptom → disease)
 NAIVE_BAYES_EDGES = [
-    (var, TARGET) for var in EXPERT_VARS if var != TARGET
+    (var, TARGET) for var in MANUAL_STRUCTURE_VARS if var != TARGET
 ]
 FEATURE_LABELS = {
     "Age": "Age group",
@@ -162,6 +162,38 @@ OPTIMIZED_FEATURE_LABELS = {
     "HeartDisease": "Heart disease present",
 }
 
+# Human-readable labels for optimized (short) state codes in Streamlit
+OPTIMIZED_STATE_DISPLAY: dict[str, dict[str, str]] = {
+    "CP": {
+        "T": "Typical angina",
+        "A": "Atypical angina",
+        "N": "Non-anginal pain",
+        "Asy": "Asymptomatic",
+    },
+    "Sex": {"F": "Female", "M": "Male"},
+    "Exang": {"No": "No", "Yes": "Yes"},
+    "Thal": {"N": "Normal", "F": "Fixed defect", "R": "Reversible defect"},
+    "Ca": {"0": "0 vessels", "1": "1 vessel", "2": "2 vessels", "3": "3 vessels"},
+    "STHigh": {"Y": "Yes (≥ 1.0)", "N": "No (< 1.0)"},
+    "HRLow": {"Y": "Yes (< 150 bpm)", "N": "No (≥ 150 bpm)"},
+    "AgeOld": {"Old": "Age ≥ 55", "Young": "Age < 55"},
+    "CholHigh": {"Y": "Yes (≥ 240 mg/dl)", "N": "No (< 240 mg/dl)"},
+    "BPHigh": {"Y": "Yes (≥ 140 mmHg)", "N": "No (< 140 mmHg)"},
+}
+
+OPTIMIZED_INPUT_GROUPS: dict[str, list[str]] = {
+    "Demographics": ["Sex", "AgeOld"],
+    "Symptoms & exercise": ["CP", "Exang", "HRLow"],
+    "Clinical test results": ["Ca", "Thal", "STHigh", "CholHigh", "BPHigh"],
+}
+
+LEGACY_INPUT_GROUPS: dict[str, list[str]] = {
+    "Demographics": ["Age", "Sex"],
+    "Symptoms": ["CP", "Exang", "Thalach"],
+    "Vitals & labs": ["Trestbps", "Chol", "Fbs", "Restecg"],
+    "Clinical findings": ["Oldpeak", "Slope", "Ca", "Thal"],
+}
+
 
 @dataclass
 class ProjectConfig:
@@ -173,4 +205,4 @@ class ProjectConfig:
     structure_sample_size: int = 400
     ve_elimination_heuristic: str = "min_neighbors"
     quick: bool = False
-    feature_vars: list[str] = field(default_factory=lambda: [v for v in EXPERT_VARS if v != TARGET])
+    feature_vars: list[str] = field(default_factory=lambda: [v for v in MANUAL_STRUCTURE_VARS if v != TARGET])

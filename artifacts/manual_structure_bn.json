@@ -1,5 +1,5 @@
 {
-  "name": "Expert Heart Disease BN",
+  "name": "Manual Structure BN",
   "nodes": [
     "Age",
     "Chol",
@@ -83,7 +83,7 @@
     ]
   ],
   "method": "Sequential MLE + Laplace smoothing (ESS\u22481)",
-  "description": "Parameters learned on the expert DAG using Sequential MLE + Laplace smoothing (ESS\u22481). Structure is fixed by medical/clinical intuition.",
+  "description": "Parameters learned on the manually built DAG using Sequential MLE + Laplace smoothing (ESS\u22481). DAG structure is fixed (Representation); only CPTs are estimated.",
   "score": null,
   "n_edges": 16,
   "n_nodes": 14

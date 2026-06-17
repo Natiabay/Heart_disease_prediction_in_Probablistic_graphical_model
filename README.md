@@ -1,28 +1,21 @@
 # Medical Diagnosis System Using Bayesian Networks for Heart Disease Prediction
 
-Probabilistic Graphical Models (PGM) course project — **interactive heart disease diagnosis** with a **deployable Streamlit demo**.
+Probabilistic Graphical Models (PGM) course project — **interactive heart disease diagnosis** with Streamlit.
 
 > Educational demo only — not for clinical use.
 
-## Results
+**Authors:** Abiy Alemu & Natnael Abayneh — Addis Ababa University, M.Sc. in AI
+
+## Results (hold-out test)
 
 | Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
 |-------|----------|-----------|--------|-----|---------|
-| Expert BN (multi-source) | 0.59 | 0.58 | 0.97 | 0.72 | 0.62 |
-| Naive Bayes BN (multi-source) | 0.59 | 0.58 | 0.97 | 0.72 | 0.62 |
-| Chow-Liu Tree BN (multi-source) | 0.80 | 0.76 | 0.95 | 0.84 | 0.90 |
-| **Optimized Clinical BN** ★ | **0.90** | **0.89** | **0.89** | **0.89** | **0.93** |
+| Manual Structure BN (920 pts) | 0.60 | 0.58 | 0.96 | 0.72 | 0.63 |
+| Naive Bayes BN (920 pts) | 0.60 | 0.58 | 0.96 | 0.72 | 0.63 |
+| Chow-Liu Tree BN (920 pts) | 0.78 | 0.73 | 0.95 | 0.83 | 0.89 |
+| **Optimized Clinical BN** ★ | **0.895** | **0.886** | **0.886** | **0.886** | **0.925** |
 
-**Optimized Clinical BN** (primary / recommended): Cleveland subset, clinical binary features, Chow-Liu tree, balanced threshold tuning — **all metrics ≥ 85%**.
-
-Decision thresholds are tuned on train (+ validation for the optimized model).
-
-## Why metrics differ across models
-
-- **Expert BN** — fixed clinical DAG; good for *interpretability*, weaker fit to noisy multi-source UCI data.
-- **Naive Bayes BN** — classic symptom → disease structure from your project proposal; strong recall with tuned threshold.
-- **Chow-Liu Tree BN** — structure *learned* from multi-source data; strong baseline on the full dataset.
-- **Optimized Clinical BN** — Cleveland + binary clinical features; **best overall metrics** and the default in the demo.
+**Optimized Clinical BN** (recommended): Cleveland subset, 10 binary clinical features, Chow-Liu tree — **all metrics ≥ 85%**.
 
 ## Quick start
 
@@ -34,45 +27,35 @@ python run.py
 streamlit run app/streamlit_app.py
 ```
 
-## Deploy
+Or from repo root: `streamlit run streamlit_app.py`
 
-**Live app:** after Streamlit Cloud setup, your URL will look like  
-`https://micro-research.streamlit.app` (name chosen at deploy time).
+## Streamlit interactive demo
 
-### Streamlit Cloud (recommended)
+Six tabs:
 
-1. Open **[share.streamlit.io](https://share.streamlit.io)** and sign in with **GitHub**
-2. Click **Create app**
-3. Fill in:
-   - **Repository:** `Natiabay/micro_research-`
-   - **Branch:** `main`
-   - **Main file path:** `streamlit_app.py` *(or `app/streamlit_app.py` — both work)*
-4. Click **Deploy** — first build takes ~2–5 minutes
-5. Open the public URL when status is **Running**
+| Tab | Purpose |
+|-----|---------|
+| **Diagnosis** | Enter evidence, run inference, **compare all 4 models** |
+| **Metrics** | Accuracy, precision, recall, F1, ROC-AUC |
+| **Analysis Gallery** | EDA, CPT, inference figures |
+| **Algorithm Lab** | Variable Elimination vs Belief Propagation |
+| **Network Explorer** | **Directed** DAG (parent → child arrows) |
+| **PGM Guide** | Three-pillar walkthrough |
 
-If deploy fails, open **Manage app → Logs** and check for red errors.
+**Demo tip:** Preset *Classic angina (high risk)* → **Compare all 4 models** — each BN returns a different P(Heart Disease).
 
-No secrets or API keys are required. Datasets are bundled in `data/`.
+## Why metrics differ across models
 
-### Push updates
-
-Use single quotes so zsh does not break on `!` in the folder name:
-
-```bash
-cd '/home/natnael/Desktop/PGM!!!!/heart-disease-bn'
-git push origin main
-```
-
-Streamlit Cloud redeploys automatically on each push to `main`.
-
-See **[DEPLOY.md](DEPLOY.md)** for the instructor demo script.
+- **Manual Structure / Naive Bayes** — PGM representation on multi-source UCI data (920 patients).
+- **Chow-Liu Tree** — learned structure on multi-source data.
+- **Optimized Clinical BN** — Cleveland-only, best ML performance (default in app).
 
 ## PGM pillars
 
 | Pillar | Implementation |
 |--------|----------------|
-| **Representation** | Expert DAG, Naive Bayes, Chow-Liu tree, Optimized Clinical BN |
-| **Learning** | MLE + Laplace smoothing; TreeSearch structure learning |
+| **Representation** | Manual Structure DAG, Naive Bayes, Chow-Liu tree, Optimized Clinical BN |
+| **Learning** | MLE + Laplace smoothing; Chow-Liu TreeSearch |
 | **Inference** | Variable Elimination & Belief Propagation |
 
 ## Layout
@@ -80,9 +63,16 @@ See **[DEPLOY.md](DEPLOY.md)** for the instructor demo script.
 ```
 heart-disease-bn/
 ├── run.py
+├── streamlit_app.py
 ├── app/streamlit_app.py
-├── notebooks/PGM_EndToEnd_Pipeline.ipynb
+├── presentation-overleaf/
 ├── src/
 ├── outputs/
-└── data/heart_disease_discretized.csv
+└── data/
 ```
+
+## Presentation
+
+Upload `presentation-overleaf.zip` to [Overleaf](https://www.overleaf.com), compile `main.tex`.
+
+GitHub: [Heart_disease_prediction_in_Probablistic_graphical_model](https://github.com/Natiabay/Heart_disease_prediction_in_Probablistic_graphical_model)

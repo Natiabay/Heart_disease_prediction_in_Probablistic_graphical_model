@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 
 from .config import (
     DATA_DIR,
-    EXPERT_VARS,
+    MANUAL_STRUCTURE_VARS,
     OPTIMIZED_SOURCES,
     OPTIMIZED_VARS,
     RAW_DIR,
@@ -202,7 +202,7 @@ def prepare_train_val_test(
 def train_modes(train_df: pd.DataFrame) -> dict[str, str]:
     """Per-column mode on training data (excluding Unknown when possible)."""
     modes = {}
-    feature_cols = [c for c in EXPERT_VARS if c in train_df.columns]
+    feature_cols = [c for c in MANUAL_STRUCTURE_VARS if c in train_df.columns]
     for col in feature_cols:
         series = train_df[col].astype(str)
         known = series[series != "Unknown"]
@@ -211,11 +211,16 @@ def train_modes(train_df: pd.DataFrame) -> dict[str, str]:
 
 
 def impute_unknowns(df: pd.DataFrame, modes: dict[str, str]) -> pd.DataFrame:
-    """Replace Unknown with training-set modes (reduces noise from missing UCI values)."""
+    """Replace Unknown / NaN with training-set modes (reduces noise from missing UCI values)."""
     out = df.copy()
     for col, mode in modes.items():
         if col in out.columns:
-            out[col] = out[col].astype(str).replace("Unknown", mode)
+            out[col] = (
+                out[col]
+                .fillna("Unknown")
+                .astype(str)
+                .replace({"Unknown": mode, "nan": mode, "None": mode, "": mode})
+            )
     return out
 
 
@@ -240,6 +245,7 @@ def prepare_train_test(
     seed: int = 42,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Split then impute Unknowns using train modes only (no leakage)."""
+    df = _sanitize_discretized(df)
     train, test = train_test_split_data(df, test_size=test_size, seed=seed)
     modes = train_modes(train)
     return impute_unknowns(train, modes), impute_unknowns(test, modes), train
@@ -251,7 +257,7 @@ def records_to_evidence(
     feature_vars: list[str] | None = None,
 ) -> dict[str, str]:
     """Convert one patient row to evidence dict (all features except query)."""
-    vars_used = feature_vars or [v for v in EXPERT_VARS if v != query_var]
+    vars_used = feature_vars or [v for v in MANUAL_STRUCTURE_VARS if v != query_var]
     if query_var in vars_used:
         vars_used = [v for v in vars_used if v != query_var]
     evidence = {}
@@ -272,11 +278,26 @@ def dataset_summary(df: pd.DataFrame) -> dict:
     prevalence = (df[TARGET] == "Yes").mean()
     return {
         "n_samples": len(df),
-        "n_features": len(EXPERT_VARS) - 1,
+        "n_features": len(MANUAL_STRUCTURE_VARS) - 1,
         "prevalence": float(prevalence),
         "by_source": by_source,
-        "columns": list(EXPERT_VARS),
+        "columns": list(MANUAL_STRUCTURE_VARS),
     }
+
+
+def _sanitize_discretized(df: pd.DataFrame) -> pd.DataFrame:
+    """Ensure categorical columns have no NaN (required for TreeSearch / pgmpy)."""
+    out = df.copy()
+    for col in out.columns:
+        if col == "source":
+            continue
+        out[col] = (
+            out[col]
+            .fillna("Unknown")
+            .astype(str)
+            .replace({"nan": "Unknown", "None": "Unknown", "": "Unknown"})
+        )
+    return out
 
 
 def ensure_data_cached() -> Path:
@@ -285,7 +306,12 @@ def ensure_data_cached() -> Path:
     cache = DATA_DIR / "heart_disease_discretized.csv"
     if not cache.exists():
         df = load_discretized_dataset()
-        df.to_csv(cache, index=False)
+        _sanitize_discretized(df).to_csv(cache, index=False)
+    else:
+        probe = pd.read_csv(cache)
+        if probe.isna().any().any():
+            df = load_discretized_dataset()
+            _sanitize_discretized(df).to_csv(cache, index=False)
     opt_cache = DATA_DIR / "heart_disease_optimized.csv"
     if not opt_cache.exists():
         load_optimized_dataset().to_csv(opt_cache, index=False)
@@ -294,9 +320,10 @@ def ensure_data_cached() -> Path:
 
 def load_cached_or_build() -> pd.DataFrame:
     cache = ensure_data_cached()
-    return pd.read_csv(cache)
+    return _sanitize_discretized(pd.read_csv(cache))
 
 
 def load_cached_optimized() -> pd.DataFrame:
     ensure_data_cached()
-    return pd.read_csv(DATA_DIR / "heart_disease_optimized.csv")
+    df = pd.read_csv(DATA_DIR / "heart_disease_optimized.csv")
+    return _sanitize_discretized(df)

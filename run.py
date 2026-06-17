@@ -35,17 +35,22 @@ from src.evaluation import benchmark_inference_methods, evaluate_model, results_
 from src.inference import predict_disease
 from src.learning import (
     get_learning_summary,
-    learn_expert_bn,
+    learn_manual_structure_bn,
     learn_naive_bayes_bn,
     learn_optimized_clinical_bn,
     learn_structure_and_parameters,
 )
-from src.model import build_expert_structure
+from src.model import build_manual_structure
+from src.eda import plot_eda_dashboard
 from src.visualization import (
     plot_confusion_matrix,
+    plot_cpt_analysis,
     plot_dag,
     plot_inference_benchmark,
+    plot_inference_scenarios,
+    plot_layered_dag,
     plot_metrics_comparison,
+    plot_mle_vs_bayesian_evaluation,
     plot_roc_curve,
 )
 
@@ -80,19 +85,19 @@ def run_pipeline(output_dir: Path, quick: bool = False, use_hillclimb: bool = Fa
     )
 
     print("\n[Phase 1] Representation — Bayesian Network structures")
-    expert_meta = build_expert_structure()
-    print(f"  1. Expert BN — {len(expert_meta['edges'])} edges (clinical intuition)")
+    manual_meta = build_manual_structure()
+    print(f"  1. Manual Structure BN — {len(manual_meta['edges'])} edges (hand-built DAG)")
     print(f"  2. Naive Bayes BN — symptoms → disease")
     print(f"  3. Chow-Liu Tree BN — learned from multi-source data")
     print(f"  4. Optimized Clinical BN — Cleveland binary features (primary)")
 
     print("\n[Phase 2] Learning — parameter learning on all structures")
-    expert_learned = learn_expert_bn(train_df, use_bayesian=True)
+    manual_learned = learn_manual_structure_bn(train_df, use_bayesian=True)
     naive_learned = learn_naive_bayes_bn(train_df)
     tree_learned = learn_structure_and_parameters(train_df, config, use_hillclimb=use_hillclimb)
     optimized_learned = learn_optimized_clinical_bn(opt_train)
 
-    models = [expert_learned, naive_learned, tree_learned, optimized_learned]
+    models = [manual_learned, naive_learned, tree_learned, optimized_learned]
     for res in models:
         s = get_learning_summary(res)
         print(f"  {s['name']}: {s['method']}")
@@ -101,7 +106,7 @@ def run_pipeline(output_dir: Path, quick: bool = False, use_hillclimb: bool = Fa
             print(f", BIC={s['score']:.1f}", end="")
         print()
 
-    plot_dag(expert_learned.model, output_dir / "fig0_expert_dag.png", "Expert Bayesian Network")
+    plot_dag(manual_learned.model, output_dir / "fig0_manual_structure_dag.png", "Manual Structure BN")
     plot_dag(naive_learned.model, output_dir / "fig1_naive_bayes_dag.png", "Naive Bayes Diagnosis BN")
     plot_dag(tree_learned.model, output_dir / "fig1b_chowliu_dag.png", "Chow-Liu Tree BN")
     plot_dag(
@@ -109,15 +114,34 @@ def run_pipeline(output_dir: Path, quick: bool = False, use_hillclimb: bool = Fa
         output_dir / "fig1c_optimized_dag.png",
         "Optimized Clinical BN (Cleveland)",
     )
+    plot_layered_dag(manual_learned.model, output_dir / "fig0b_manual_layered_dag.png")
 
     opt_features = [v for v in OPTIMIZED_VARS if v != TARGET]
-
-    print("\n[Phase 3] Inference — VE with tuned decision thresholds")
-    results = []
     eval_df = test_df.head(100) if quick else test_df
     opt_eval_df = opt_test.head(50) if quick else opt_test
 
-    for lr in [expert_learned, naive_learned, tree_learned]:
+    print("\n[Analysis] EDA, CPT, inference scenarios, MLE vs Bayesian …")
+    plot_eda_dashboard(output_dir / "fig_eda_dashboard.png")
+    plot_cpt_analysis(manual_learned.model, output_dir / "fig_cpt_analysis.png")
+    plot_inference_scenarios(
+        manual_learned.model,
+        output_dir / "fig_inference_scenarios.png",
+        threshold=0.5,
+    )
+
+    manual_mle = learn_manual_structure_bn(train_df, use_bayesian=False)
+    mle_ev = evaluate_model(manual_mle.model, eval_df, "Manual Structure BN (MLE)", tune_threshold_df=train_df)
+    bayes_ev = evaluate_model(
+        manual_learned.model, eval_df, "Manual Structure BN (Bayesian)", tune_threshold_df=train_df
+    )
+    plot_mle_vs_bayesian_evaluation(mle_ev, bayes_ev, output_dir / "fig_mle_vs_bayesian.png")
+
+    print("\n[Phase 3] Inference — VE with tuned decision thresholds")
+    legacy_results: list = []
+    primary_results: list = []
+
+    print("  Multi-source models (920 patients, full discretized features):")
+    for lr in [manual_learned, naive_learned, tree_learned]:
         ev = evaluate_model(
             lr.model,
             eval_df,
@@ -125,15 +149,16 @@ def run_pipeline(output_dir: Path, quick: bool = False, use_hillclimb: bool = Fa
             method="ve",
             tune_threshold_df=train_df,
         )
-        results.append(ev)
+        legacy_results.append(ev)
         print(
-            f"  {ev.model_name} [VE, t={ev.threshold:.2f}]: "
+            f"    {ev.model_name} [VE, t={ev.threshold:.2f}]: "
             f"acc={ev.accuracy:.3f} prec={ev.precision:.3f} "
             f"rec={ev.recall:.3f} f1={ev.f1:.3f} auc={ev.roc_auc:.3f} "
             f"({ev.mean_inference_ms:.1f} ms/query)",
             flush=True,
         )
 
+    print("  Cleveland optimized model (303 patients, clinical binary features):")
     opt_ev = evaluate_model(
         optimized_learned.model,
         opt_eval_df,
@@ -143,9 +168,9 @@ def run_pipeline(output_dir: Path, quick: bool = False, use_hillclimb: bool = Fa
         feature_vars=opt_features,
         balanced_threshold=True,
     )
-    results.append(opt_ev)
+    primary_results.append(opt_ev)
     print(
-        f"  {opt_ev.model_name} [VE, t={opt_ev.threshold:.2f}] ★ PRIMARY: "
+        f"    {opt_ev.model_name} [VE, t={opt_ev.threshold:.2f}] ★ PRIMARY: "
         f"acc={opt_ev.accuracy:.3f} prec={opt_ev.precision:.3f} "
         f"rec={opt_ev.recall:.3f} f1={opt_ev.f1:.3f} auc={opt_ev.roc_auc:.3f} "
         f"({opt_ev.mean_inference_ms:.1f} ms/query)",
@@ -153,11 +178,14 @@ def run_pipeline(output_dir: Path, quick: bool = False, use_hillclimb: bool = Fa
     )
 
     print("\n[Phase 3] Saving figures …", flush=True)
-    metrics_df = results_to_dataframe(results)
+    legacy_df = results_to_dataframe(legacy_results, evaluation_set="Multi-source (920)")
+    primary_df = results_to_dataframe(primary_results, evaluation_set="Cleveland optimized (303)")
+    metrics_df = pd.concat([primary_df, legacy_df], ignore_index=True)
     metrics_df.to_csv(output_dir / "metrics.csv", index=False)
-    plot_metrics_comparison(metrics_df, output_dir / "fig2_metrics.png")
+    primary_df.to_csv(output_dir / "metrics_primary.csv", index=False)
+    plot_metrics_comparison(primary_df, output_dir / "fig2_metrics.png")
 
-    best = max(results, key=lambda r: min(r.accuracy, r.precision, r.recall, r.f1, r.roc_auc))
+    best = max(primary_results, key=lambda r: min(r.accuracy, r.precision, r.recall, r.f1, r.roc_auc))
     print(
         f"\n  Best model (max min-metric): {best.model_name} "
         f"(acc={best.accuracy:.3f}, prec={best.precision:.3f}, rec={best.recall:.3f}, "
@@ -190,10 +218,18 @@ def run_pipeline(output_dir: Path, quick: bool = False, use_hillclimb: bool = Fa
     report = {
         "dataset": summary,
         "optimized_dataset": opt_summary,
-        "expert_structure": expert_meta,
+        "manual_structure": manual_meta,
         "best_model": best.model_name,
         "optimized_threshold": opt_ev.threshold,
         "metrics": metrics_df.to_dict(orient="records"),
+        "metrics_primary": primary_df.to_dict(orient="records"),
+        "metrics_legacy": legacy_df.to_dict(orient="records"),
+        "metrics_note": (
+            "Primary model (Optimized Clinical BN) is evaluated on Cleveland hold-out "
+            "with balanced threshold tuning on train+validation. Manual Structure and Naive Bayes "
+            "use multi-source UCI data with wider discretization — lower accuracy but "
+            "strong recall; they illustrate PGM representation, not peak ML performance."
+        ),
         "state_labels": STATE_LABELS,
     }
     (output_dir / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")

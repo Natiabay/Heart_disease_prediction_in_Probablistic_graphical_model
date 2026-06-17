@@ -71,7 +71,7 @@ def find_optimal_threshold(y_true: list[str], y_score: list[float]) -> float:
     if len(set(y_bin)) < 2:
         return 0.5
     best_t, best_f1 = 0.5, -1.0
-    for t in np.linspace(0.15, 0.85, 71):
+    for t in np.linspace(0.15, 0.50, 71):
         preds = [1 if s >= t else 0 for s in y_score]
         f1 = f1_score(y_bin, preds, zero_division=0)
         if f1 > best_f1:
@@ -85,7 +85,7 @@ def find_optimal_threshold_balanced(y_true: list[str], y_score: list[float]) -> 
     if len(set(y_bin)) < 2:
         return 0.5
     best_t, best_min = 0.5, -1.0
-    for t in np.linspace(0.05, 0.95, 181):
+    for t in np.linspace(0.05, 0.50, 181):
         preds = [1 if s >= t else 0 for s in y_score]
         vals = [
             accuracy_score(y_bin, preds),
@@ -195,9 +195,13 @@ def benchmark_inference_methods(
     return pd.DataFrame(rows)
 
 
-def results_to_dataframe(results: list[EvalResult]) -> pd.DataFrame:
-    return pd.DataFrame([
-        {
+def results_to_dataframe(
+    results: list[EvalResult],
+    evaluation_set: str | None = None,
+) -> pd.DataFrame:
+    rows = []
+    for r in results:
+        row = {
             "Model": r.model_name,
             "Inference": r.method,
             "Threshold": round(r.threshold, 3),
@@ -209,8 +213,10 @@ def results_to_dataframe(results: list[EvalResult]) -> pd.DataFrame:
             "Mean inference (ms)": round(r.mean_inference_ms, 2),
             "N test": r.n_test,
         }
-        for r in results
-    ])
+        if evaluation_set is not None:
+            row["Evaluation set"] = evaluation_set
+        rows.append(row)
+    return pd.DataFrame(rows)
 
 
 def confusion_matrix_labels(result: EvalResult) -> tuple[np.ndarray, list[str]]:

@@ -40,4 +40,4 @@ def rebuild_model_from_spec(spec: dict) -> DiscreteBayesianNetwork:
 
 
 def artifacts_exist() -> bool:
-    return (ARTIFACTS_DIR / "expert_heart_disease_bn.json").exists()
+    return (ARTIFACTS_DIR / "manual_structure_bn.json").exists()

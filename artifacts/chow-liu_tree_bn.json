@@ -3,9 +3,9 @@
   "nodes": [
     "HeartDisease",
     "CP",
-    "Oldpeak",
     "Thalach",
     "Sex",
+    "Oldpeak",
     "Exang",
     "Thal",
     "Age",
@@ -23,15 +23,15 @@
     ],
     [
       "HeartDisease",
-      "Oldpeak"
-    ],
-    [
-      "HeartDisease",
       "Thalach"
     ],
     [
       "HeartDisease",
       "Sex"
+    ],
+    [
+      "HeartDisease",
+      "Oldpeak"
     ],
     [
       "CP",
@@ -72,7 +72,7 @@
   ],
   "method": "TreeSearch (Chow-Liu) + Sequential MLE",
   "description": "Tree-structured BN from Chow-Liu algorithm (mutual information MST), with CPTs fit via sequential MLE.",
-  "score": -7758.67059338299,
+  "score": -7357.4614844728385,
   "n_edges": 13,
   "n_nodes": 14
 }

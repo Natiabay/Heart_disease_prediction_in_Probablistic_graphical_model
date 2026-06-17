@@ -24,7 +24,8 @@ def fit_cpds_sequential(
     state_names: dict[str, list] = {}
     for col in data.columns:
         if col in model.nodes():
-            state_names[col] = sorted(data[col].astype(str).unique().tolist())
+            vals = {str(x) for x in data[col].tolist() if pd.notna(x) and str(x) not in ("nan", "None")}
+            state_names[col] = sorted(vals)
 
     cpds = []
     for node in model.nodes():

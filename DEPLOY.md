@@ -2,7 +2,7 @@
 
 ## 1. Push to GitHub
 
-Repository: [https://github.com/Natiabay/micro_research-](https://github.com/Natiabay/micro_research-.git)
+Repository: [Heart_disease_prediction_in_Probablistic_graphical_model](https://github.com/Natiabay/Heart_disease_prediction_in_Probablistic_graphical_model)
 
 **Important:** Push from the `heart-disease-bn` folder only — not from the parent `PGM!!!!` folder.
 
@@ -15,10 +15,7 @@ chmod +x push_to_github.sh
 If you see `src refspec main does not match any`, you are in the **wrong folder** or the parent folder has an empty git repo. Fix:
 
 ```bash
-# Remove accidental empty git repo in parent (safe)
 rm -rf ~/Desktop/PGM\!!!!/.git
-
-# Then push from heart-disease-bn
 cd ~/Desktop/PGM\!!!!/heart-disease-bn
 git push -u origin main
 ```
@@ -40,24 +37,24 @@ git push -u origin main
 4. Set:
    | Field | Value |
    |-------|--------|
-   | Repository | `Natiabay/micro_research-` |
+   | Repository | `Natiabay/Heart_disease_prediction_in_Probablistic_graphical_model` |
    | Branch | `main` |
-   | Main file path | `app/streamlit_app.py` |
+   | Main file path | `streamlit_app.py` or `app/streamlit_app.py` |
 5. Click **Deploy** — wait until status is **Running**
-6. Share the URL (e.g. `https://micro-research-xxxx.streamlit.app`)
+6. Share the public URL
 
 **Note:** First load trains 4 Bayesian Networks (~1–3 min). Later visits are cached.
 
-**Redeploy:** Any push to `main` on GitHub triggers an automatic rebuild.
+**Redeploy:** Any push to `main` triggers an automatic rebuild.
 
 ## 3. Demo script for instructor
 
 1. Open the public URL
-2. Tab **Diagnosis** → model **Optimized Clinical BN (recommended)** → preset **Classic angina (high risk)** → **Run Bayesian inference**
+2. Tab **Diagnosis** → **Optimized Clinical BN (recommended)** → preset **Classic angina (high risk)** → **Run inference**
 3. Show **P(Heart Disease = Yes)** and risk band (all evaluation metrics ≥ 85%)
-4. Expand **What-if sensitivity** — which symptom changes probability most
-5. Tab **Algorithm Lab** → compare VE vs BP on same evidence
-6. Tab **Network Explorer** → show Optimized Clinical BN vs Expert DAG
+4. Expand **What-if sensitivity**
+5. Tab **Algorithm Lab** → compare VE vs BP
+6. Tab **Network Explorer** → Optimized Clinical BN vs Manual Structure DAG
 7. Tab **PGM Guide** — three pillars summary
 
 ## 4. Local run
@@ -67,5 +64,3 @@ pip install -r requirements.txt
 python run.py --quick
 streamlit run app/streamlit_app.py
 ```
-
-Pre-trained models in `artifacts/` speed up cold start on Streamlit Cloud.

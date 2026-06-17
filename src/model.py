@@ -1,4 +1,4 @@
-"""Bayesian Network representation — expert DAG and pgmpy model builders."""
+"""Bayesian Network representation — manual structure DAG and pgmpy model builders."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ from pgmpy.factors.discrete import TabularCPD
 import networkx as nx
 from pgmpy.models import DiscreteBayesianNetwork
 
-from .config import EXPERT_EDGES, EXPERT_VARS, NAIVE_BAYES_EDGES, TARGET
+from .config import MANUAL_STRUCTURE_EDGES, MANUAL_STRUCTURE_VARS, NAIVE_BAYES_EDGES, TARGET
 
 
 @dataclass
@@ -23,17 +23,16 @@ class BNRepresentation:
     pillar: str = "Representation"
 
 
-def build_expert_structure() -> dict:
-    """Return expert DAG metadata (PGM Representation pillar)."""
+def build_manual_structure() -> dict:
+    """Return hand-built DAG metadata (PGM Representation pillar)."""
     return {
-        "name": "Expert Heart Disease BN",
-        "variables": list(EXPERT_VARS),
-        "edges": list(EXPERT_EDGES),
+        "name": "Manual Structure BN",
+        "variables": list(MANUAL_STRUCTURE_VARS),
+        "edges": list(MANUAL_STRUCTURE_EDGES),
         "description": (
-            "Expert-defined DAG: demographic and clinical risk factors "
-            f"probabilistically influence {TARGET}. Age affects cholesterol, "
-            "blood pressure, and exercise capacity; symptoms and test results "
-            "directly inform the disease node."
+            "Manually constructed DAG for heart-disease diagnosis: demographics and "
+            f"clinical variables are linked by directed edges to {TARGET}. Structure is "
+            "fixed by domain knowledge; CPTs are learned from data (Learning pillar)."
         ),
     }
 
@@ -41,14 +40,14 @@ def build_expert_structure() -> dict:
 def naive_bayes_skeleton() -> DiscreteBayesianNetwork:
     """Naive Bayes DAG: every symptom/risk factor is a direct parent of disease."""
     model = DiscreteBayesianNetwork(NAIVE_BAYES_EDGES)
-    model.add_nodes_from(EXPERT_VARS)
+    model.add_nodes_from(MANUAL_STRUCTURE_VARS)
     return model
 
 
-def expert_model_skeleton() -> DiscreteBayesianNetwork:
-    """Instantiate expert DAG without parameters (structure only)."""
-    model = DiscreteBayesianNetwork(EXPERT_EDGES)
-    model.add_nodes_from(EXPERT_VARS)
+def manual_structure_skeleton() -> DiscreteBayesianNetwork:
+    """Instantiate hand-built DAG without parameters (structure only)."""
+    model = DiscreteBayesianNetwork(MANUAL_STRUCTURE_EDGES)
+    model.add_nodes_from(MANUAL_STRUCTURE_VARS)
     return model
 
 
@@ -62,13 +61,10 @@ def uniform_cpds(model: DiscreteBayesianNetwork) -> list[TabularCPD]:
             card = 2
             cpd = TabularCPD(node, card, [[0.5], [0.5]])
         else:
-            parent_cards = [len({0, 1}) for _ in parents]
-            card = 2
-            n_cols = int(pd.np.prod(parent_cards)) if hasattr(pd, "np") else 2 ** n_parents
             import numpy as np
             n_cols = int(np.prod([2] * n_parents))
-            vals = np.full((card, n_cols), 0.5)
-            cpd = TabularCPD(node, card, vals, evidence=parents, evidence_card=[2] * n_parents)
+            vals = np.full((2, n_cols), 0.5)
+            cpd = TabularCPD(node, 2, vals, evidence=parents, evidence_card=[2] * n_parents)
         cpds.append(cpd)
     return cpds
 
