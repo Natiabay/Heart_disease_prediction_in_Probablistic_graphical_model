@@ -53,6 +53,6 @@ if ! git push -u origin main; then
 fi
 
 echo
-echo "Success! Next: https://share.streamlit.io → New app"
+echo "Success! Live app: https://heartdiseasepredictiondemo.streamlit.app/"
 echo "  Repo: Natiabay/Heart_disease_prediction_in_Probablistic_graphical_model"
-echo "  Main file: app/streamlit_app.py"
+echo "  Main file: streamlit_app.py"

@@ -129,7 +129,7 @@ C.append(md("""
 | 4 | Inference | VE & BP queries |
 | 5 | Evaluation | Accuracy, precision, recall, F1, ROC-AUC |
 
-**Live demo:** `streamlit run app/streamlit_app.py`
+**Live demo:** [heartdiseasepredictiondemo.streamlit.app](https://heartdiseasepredictiondemo.streamlit.app/) — or locally: `streamlit run app/streamlit_app.py`
 """))
 
 

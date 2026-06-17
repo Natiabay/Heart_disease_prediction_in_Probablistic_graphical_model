@@ -1,6 +1,6 @@
 """
 Heart Disease Bayesian Network — Interactive PGM Demo
-Deploy: streamlit run app/streamlit_app.py  |  Cloud entry: streamlit_app.py
+Deploy: streamlit run app/streamlit_app.py  |  Cloud: https://heartdiseasepredictiondemo.streamlit.app/
 """
 
 from __future__ import annotations
@@ -63,6 +63,7 @@ st.set_page_config(
 )
 
 REPORT_PATH = OUTPUT_DIR / "report.json"
+APP_VERSION = "2.1-manual-structure-dag"
 
 MODEL_CATALOG = [
     ("Optimized Clinical BN (recommended)", "optimized", True),
@@ -73,8 +74,9 @@ MODEL_CATALOG = [
 
 
 @st.cache_resource(show_spinner="Loading all 4 Bayesian Networks (first visit ~30s)…")
-def load_all_models() -> dict:
+def load_all_models(_version: str = APP_VERSION) -> dict:
     """Train each BN once — every model is distinct (no shared placeholder)."""
+    del _version  # bust cache when APP_VERSION changes
     opt_df = load_cached_optimized()
     opt_train, _, _ = prepare_train_val_test(opt_df, seed=OPTIMIZED_SEED)
     optimized = learn_optimized_clinical_bn(opt_train).model
@@ -244,6 +246,7 @@ def sidebar(report):
     st.sidebar.image("https://img.icons8.com/color/96/heart-with-pulse.png", width=72)
     st.sidebar.title("PGM Medical Diagnosis")
     st.sidebar.caption("Bayesian Networks · UCI Heart Disease")
+    st.sidebar.caption(f"App version: `{APP_VERSION}`")
 
     primary = primary_metrics(report)
     if primary:

@@ -2,6 +2,8 @@
 
 Probabilistic Graphical Models (PGM) course project — **interactive heart disease diagnosis** with Streamlit.
 
+**Live app:** [heartdiseasepredictiondemo.streamlit.app](https://heartdiseasepredictiondemo.streamlit.app/)
+
 > Educational demo only — not for clinical use.
 
 **Authors:** Abiy Alemu & Natnael Abayneh — Addis Ababa University, M.Sc. in AI
@@ -28,6 +30,36 @@ streamlit run app/streamlit_app.py
 ```
 
 Or from repo root: `streamlit run streamlit_app.py`
+
+## Live demo (Streamlit Cloud)
+
+**Try the deployed app:** [https://heartdiseasepredictiondemo.streamlit.app/](https://heartdiseasepredictiondemo.streamlit.app/)
+
+Hosted on [Streamlit Community Cloud](https://share.streamlit.io) from this repository:
+
+| Setting | Value |
+|---------|--------|
+| **Live URL** | [heartdiseasepredictiondemo.streamlit.app](https://heartdiseasepredictiondemo.streamlit.app/) |
+| **Repository** | [`Natiabay/Heart_disease_prediction_in_Probablistic_graphical_model`](https://github.com/Natiabay/Heart_disease_prediction_in_Probablistic_graphical_model) |
+| **Branch** | `main` |
+| **Main file path** | `streamlit_app.py` |
+
+### Redeploy after code changes
+
+After code changes:
+
+```bash
+cd heart-disease-bn
+git add .
+git commit -m "Your message"
+git push origin main
+```
+
+Streamlit Cloud **redeploys automatically** on each push to `main`.
+
+**Note:** The first visitor after a cold start may wait ~1–3 minutes while all 4 Bayesian Networks load; later visits use Streamlit cache.
+
+See **DEPLOY.md** for the instructor demo script and troubleshooting.
 
 ## Streamlit interactive demo
 
@@ -75,4 +107,4 @@ heart-disease-bn/
 
 Upload `presentation-overleaf.zip` to [Overleaf](https://www.overleaf.com), compile `main.tex`.
 
-GitHub: [Heart_disease_prediction_in_Probablistic_graphical_model](https://github.com/Natiabay/Heart_disease_prediction_in_Probablistic_graphical_model)
+GitHub: [Heart_disease_prediction_in_Probablistic_graphical_model](https://github.com/Natiabay/Heart_disease_prediction_in_Probablistic_graphical_model) · Live demo: [heartdiseasepredictiondemo.streamlit.app](https://heartdiseasepredictiondemo.streamlit.app/)

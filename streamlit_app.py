@@ -1,6 +1,7 @@
 """
 Streamlit Cloud entry point (repo root).
-Deploy with main file path: streamlit_app.py
+Live app: https://heartdiseasepredictiondemo.streamlit.app/
+Deploy main file path: streamlit_app.py
 """
 import runpy
 import sys

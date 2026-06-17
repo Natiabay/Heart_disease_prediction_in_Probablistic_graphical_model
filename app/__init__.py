@@ -1,2 +1,2 @@
 # Streamlit Cloud entrypoint
-# Deploy path: app/streamlit_app.py
+# Deploy path: streamlit_app.py (repo root)
